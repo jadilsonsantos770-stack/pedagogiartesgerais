@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PedagoArt Kids Store</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --amarelo-sol: #FFD93D;
+      --laranja-divertido: #FF9B42;
+      --rosa-pink: #FF6B9D;
+      --roxo-magico: #A855F7;
+      --azul-ceu: #38BDF8;
+      --verde-natureza: #4ADE80;
+      --whatsapp: #25D366;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FFF9E6 0%, #FFE8F0 50%, #E0F2FE 100%);
+      color: #4A3A2A;
+      min-height: 100vh;
+    }
+
+    /* CABEÇALHO */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--amarelo-sol);
+      padding: 0.8rem 2rem;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo p {
+      font-size: 0.7rem;
+      color: #8B6B4D;
+    }
+
+    .admin-btn {
+      background: var(--roxo-magico);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+
+    .admin-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* MODAL DE LOGIN */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      border: 2px solid var(--amarelo-sol);
+      border-radius: 1rem;
+    }
+
+    .modal-content button {
+      background: var(--laranja-divertido);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* PAINEL ADMIN */
+    .admin-panel {
+      display: none;
+      max-width: 1400px;
+      margin: 100px auto 2rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 2rem;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-add {
+      background: var(--verde-natureza);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .form-produto {
+      background: #FFF9E6;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      border: 2px solid var(--amarelo-sol);
+      display: none;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--amarelo-sol);
+      border-radius: 1rem;
+      font-family: inherit;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .btn-salvar {
+      background: var(--verde-natureza);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-cancelar {
+      background: #ccc;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+
+    .btn-site {
+      background: var(--laranja-divertido);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+    }
+
+    /* LISTA DE PRODUTOS NO ADMIN */
+    .admin-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .admin-product-card {
+      background: #FFF9E6;
+      border: 2px solid var(--amarelo-sol);
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+
+    .admin-product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .admin-product-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-edit, .btn-delete {
+      flex: 1;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-edit {
+      background: var(--azul-ceu);
+      color: white;
+    }
+
+    .btn-delete {
+      background: #FB7185;
+      color: white;
+    }
+
+    .images-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .image-item {
+      width: 50px;
+      height: 50px;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .add-image-input {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .add-image-input input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid var(--amarelo-sol);
+      border-radius: 0.5rem;
+    }
+
+    /* SITE PRINCIPAL */
+    .main-site {
+      padding-top: 80px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      border: 2px solid var(--amarelo-sol);
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #f0f0f0;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--verde-natureza);
+      margin: 0.5rem 0;
+    }
+
+    .btn-gallery {
+      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 2rem;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .gallery-preview {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .gallery-preview img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      border: 2px solid var(--amarelo-sol);
+    }
+
+    /* MODAIS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-box {
+      background: white;
+      max-width: 900px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border-radius: 2rem;
+      padding: 2rem;
+    }
+
+    .close-modal {
+      background: #ccc;
+      border: none;
+      padding: 0.5rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .gallery-item {
+      background: #FFF9E6;
+      border: 2px solid var(--amarelo-sol);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .image-zoom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 3000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .image-zoom img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CABEÇALHO -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo">
+      <h1>🎨 PedagoArt Kids</h1>
+      <p>Materiais Pedagógicos Infantis</p>
+    </div>
+    <button class="admin-btn" onclick="openLoginModal()">🔒 Admin</button>
+  </div>
+</header>
+
+<!-- SITE PRINCIPAL -->
+<main class="main-site" id="mainSite">
+  <div class="hero">
+    <h2>📚 Materiais Pedagógicos</h2>
+    <p style="color: #8B6B4D;">Clique em "Ver opções" para ver as amostras</p>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</main>
+
+<!-- MODAL DE LOGIN -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <h2>🔒 Acesso Restrito</h2>
+    <p>Digite a senha para acessar o painel</p>
+    <input type="password" id="adminPassword" placeholder="Digite a senha">
+    <button onclick="checkLogin()">Entrar</button>
+    <button onclick="closeLoginModal()" style="background:#ccc; margin-top:0.5rem;">Cancelar</button>
+  </div>
+</div>
+
+<!-- PAINEL ADMIN -->
+<div id="adminPanel" class="admin-panel">
+  <div class="admin-header">
+    <h2>🛠️ Painel do Proprietário</h2>
+    <div>
+      <button class="btn-add" onclick="showAddForm()">➕ Adicionar Produto</button>
+      <button class="btn-site" onclick="closeAdminPanel()">🌐 Ver Site</button>
+    </div>
+  </div>
+
+  <div id="productForm" class="form-produto">
+    <h3 id="formTitle">➕ Adicionar Produto</h3>
+    <input type="hidden" id="productId">
+    
+    <div class="form-group">
+      <label>📌 Título</label>
+      <input type="text" id="prodTitle" placeholder="Ex: 🎉 Datas Comemorativas">
+    </div>
+    
+    <div class="form-group">
+      <label>📝 Descrição</label>
+      <textarea id="prodDescription" rows="3" placeholder="Descreva o produto..."></textarea>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label>💰 Preço do Kit</label>
+        <input type="text" id="prodPrice" placeholder="Ex: R$ 19,90">
+      </div>
+      <div class="form-group">
+        <label>📂 Categoria</label>
+        <select id="prodCategory">
+          <option value="datas">🎉 Datas Comemorativas</option>
+          <option value="alfabetizacao">📖 Alfabetização</option>
+          <option value="kits">🏆 Kits Premium</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>🖼️ URL da Imagem de Capa</label>
+      <input type="text" id="prodImage" placeholder="https://..." value="https://placehold.co/600x400/FFD93D/white?text=PedagoArt">
+      <small style="color:#888;">Use imagens do site: https://placehold.co/ ou faça upload no Imgur</small>
+    </div>
+    
+    <div class="form-group">
+      <label>🖼️ Amostras do Produto</label>
+      <div id="imagesList"></div>
+      <div class="add-image-input">
+        <input type="text" id="newImageUrl" placeholder="URL da imagem">
+        <input type="text" id="newImageCaption" placeholder="Legenda" style="width: 40%;">
+        <input type="text" id="newImagePrice" placeholder="Preço" style="width: 30%;" value="R$ 4,90">
+        <button onclick="addImageToList()" style="background: var(--azul-ceu); border:none; border-radius:1rem; padding:0 1rem;">➕</button>
+      </div>
+    </div>
+    
+    <div style="margin-top: 1rem;">
+      <button class="btn-salvar" onclick="saveProduct()">💾 Salvar</button>
+      <button class="btn-cancelar" onclick="hideForm()">Cancelar</button>
+    </div>
+  </div>
+
+  <h3>📦 Seus Produtos</h3>
+  <div id="adminProductsList" class="admin-products"></div>
+</div>
+
+<script>
+  // SENHA DO ADMIN (VOCÊ PODE MUDAR)
+  const ADMIN_PASSWORD = "admin123";
+  
+  let products = [];
+
+  // ============================================
+  // CARREGAR PRODUTOS
+  // ============================================
+  function loadProducts() {
+    const saved = localStorage.getItem('pedagoart_products');
+    if (saved) {
+      products = JSON.parse(saved);
+    } else {
+      // PRODUTOS PADRÃO COM IMAGENS SEGURAS
+      products = [
+        {
+          id: 1,
+          title: "🎉 Datas Comemorativas",
+          description: "Kit completo com atividades para todas as datas comemorativas do ano letivo. Carnaval, Páscoa, Festa Junina, Natal e muito mais!",
+          price: "R$ 19,90",
+          image: "https://placehold.co/600x400/FF6B9D/white?text=Datas+Comemorativas",
+          category: "datas",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Carnaval", caption: "Carnaval", price: "R$ 3,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Páscoa", caption: "Páscoa", price: "R$ 4,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Festa+Junina", caption: "Festa Junina", price: "R$ 4,90" },
+            { url: "https://placehold.co/400x300/38BDF8/white?text=Natal", caption: "Natal", price: "R$ 4,90" }
+          ]
+        },
+        {
+          id: 2,
+          title: "📖 Alfabetização Completa",
+          description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano. Mais de 200 páginas!",
+          price: "R$ 24,90",
+          image: "https://placehold.co/600x400/4ADE80/white?text=Alfabetização",
+          category: "alfabetizacao",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Alfabeto", caption: "Alfabeto", price: "R$ 5,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Coordenação+Motora", caption: "Coordenação Motora", price: "R$ 5,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Leitura", caption: "Leitura", price: "R$ 6,90" }
+          ]
+        },
+        {
+          id: 3,
+          title: "🏆 Kits Premium Professor",
+          description: "Pacote completo com planners, calendários, fichas de avaliação e materiais exclusivos.",
+          price: "R$ 49,90",
+          image: "https://placehold.co/600x400/FF6B9D/white?text=Kits+Premium",
+          category: "kits",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Planner", caption: "Planner", price: "R$ 12,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Planejamento", caption: "Planejamento", price: "R$ 15,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Calendário", caption: "Calendário", price: "R$ 7,90" }
+          ]
+        },
+        {
+          id: 4,
+          title: "🧮 Matemática Lúdica",
+          description: "Jogos e atividades matemáticas para aprender brincando. Números, tabuada e formas geométricas.",
+          price: "R$ 27,90",
+          image: "https://placehold.co/600x400/38BDF8/white?text=Matemática",
+          category: "alfabetizacao",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Números", caption: "Números", price: "R$ 5,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Adição", caption: "Adição", price: "R$ 6,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Tabuada", caption: "Tabuada", price: "R$ 7,90" }
+          ]
+        }
+      ];
+      saveProducts();
+    }
+    renderSiteProducts();
+  }
+
+  function saveProducts() {
+    localStorage.setItem('pedagoart_products', JSON.stringify(products));
+  }
+
+  // ============================================
+  // RENDERIZAR SITE
+  // ============================================
+  function renderSiteProducts() {
+    const container = document.getElementById('productsGrid');
+    if (!container) return;
+    
+    let html = '';
+    for (let product of products) {
+      html += `
+        <div class="product-card">
+          <img class="product-image" src="${product.image}" alt="${product.title}" onerror="this.src='https://placehold.co/600x400/FFD93D/white?text=Imagem'">
+          <div class="product-info">
+            <h3 class="product-title">${product.title}</h3>
+            <p style="color:#8B6B4D; font-size:0.85rem;">${product.description.substring(0, 80)}...</p>
+            <div class="product-price">💰 ${product.price}</div>
+            <button class="btn-gallery" onclick="openProductOptions(${product.id})">🛒 Ver opções (${product.images.length} itens)</button>
+            <div class="gallery-preview" id="preview-${product.id}"></div>
+          </div>
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+    
+    // Pré-visualizações
+    for (let product of products) {
+      const previewDiv = document.getElementById(`preview-${product.id}`);
+      if (previewDiv && product.images.length > 0) {
+        let previewHtml = '';
+        for (let i = 0; i < Math.min(product.images.length, 4); i++) {
+          previewHtml += `<img src="${product.images[i].url}" onclick="openImageZoom('${product.images[i].url}')" onerror="this.src='https://placehold.co/100x100/FFD93D/white?text=Erro'">`;
+        }
+        previewDiv.innerHTML = previewHtml;
+      }
+    }
+  }
+
+  // ============================================
+  // ABRIR OPÇÕES DO PRODUTO
+  // ============================================
+  function openProductOptions(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    const modalDiv = document.createElement('div');
+    modalDiv.className = 'modal-overlay';
+    modalDiv.onclick = (e) => { if (e.target === modalDiv) modalDiv.remove(); };
+    
+    let imagesHtml = '';
+    for (let img of product.images) {
+      imagesHtml += `
+        <div class="gallery-item">
+          <img src="${img.url}" onclick="openImageZoom('${img.url}')" onerror="this.src='https://placehold.co/400x300/FFD93D/white?text=Erro'">
+          <div style="padding:0.5rem; text-align:center; font-weight:bold;">${img.caption}</div>
+          <div style="padding:0.5rem; text-align:center; color:green; font-weight:bold;">💰 ${img.price}</div>
+          <div style="display:flex; gap:0.5rem; padding:0.5rem;">
+            <button onclick="openImageZoom('${img.url}')" style="flex:1; background:#38BDF8; border:none; border-radius:2rem; padding:0.5rem; cursor:pointer;">🔍 Ampliar</button>
+            <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar: ${img.caption} - ${img.price}" style="flex:1; background:#25D366; color:white; text-align:center; text-decoration:none; border-radius:2rem; padding:0.5rem;">🛒 Comprar</a>
+          </div>
+        </div>
+      `;
+    }
+    
+    modalDiv.innerHTML = `
+      <div class="modal-box">
+        <h2>📦 ${product.title}</h2>
+        <div style="color:green; font-size:1.5rem; font-weight:bold;">💰 ${product.price} - Kit Completo</div>
+        <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" style="display:block; background:#25D366; color:white; text-align:center; padding:1rem; border-radius:2rem; text-decoration:none; margin:1rem 0;">🎁 Comprar Kit Completo (${product.images.length} itens)</a>
+        <div style="text-align:center; margin:1rem 0;">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div>
+        <div class="gallery-grid">${imagesHtml}</div>
+        <button class="close-modal" onclick="this.closest('.modal-overlay').remove()">Fechar</button>
+      </div>
+    `;
+    
+    document.body.appendChild(modalDiv);
+  }
+  
+  function openImageZoom(url) {
+    const zoomDiv = document.createElement('div');
+    zoomDiv.className = 'image-zoom';
+    zoomDiv.onclick = () => zoomDiv.remove();
+    zoomDiv.innerHTML = `
+      <img src="${url}" onerror="this.src='https://placehold.co/800x600/FFD93D/white?text=Erro+ao+carregar'">
+      <div style="position:absolute; top:20px; right:30px; color:white; font-size:2rem; cursor:pointer;">✕</div>
+    `;
+    document.body.appendChild(zoomDiv);
+  }
+
+  // ============================================
+  // PAINEL ADMIN
+  // ============================================
+  let imagesTemp = [];
+
+  function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+  
+  function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+    document.getElementById('adminPassword').value = '';
+  }
+  
+  function checkLogin() {
+    const password = document.getElementById('adminPassword').value;
+    if (password === ADMIN_PASSWORD) {
+      closeLoginModal();
+      document.getElementById('mainSite').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      renderAdminProducts();
+    } else {
+      alert('Senha incorreta! Use: admin123');
+    }
+  }
+  
+  function closeAdminPanel() {
+    document.getElementById('mainSite').style.display = 'block';
+    document.getElementById('adminPanel').style.display = 'none';
+    renderSiteProducts();
+  }
+  
+  function addImageToList() {
+    const url = document.getElementById('newImageUrl').value;
+    const caption = document.getElementById('newImageCaption').value;
+    const price = document.getElementById('newImagePrice').value;
+    
+    if (!url) {
+      alert('Digite a URL da imagem');
+      return;
+    }
+    
+    imagesTemp.push({ url, caption: caption || 'Amostra', price: price || 'R$ 4,90' });
+    renderImagesList();
+    
+    document.getElementById('newImageUrl').value = '';
+    document.getElementById('newImageCaption').value = '';
+    document.getElementById('newImagePrice').value = 'R$ 4,90';
+  }
+  
+  function removeImageTemp(index) {
+    imagesTemp.splice(index, 1);
+    renderImagesList();
+  }
+  
+  function renderImagesList() {
+    const container = document.getElementById('imagesList');
+    if (!container) return;
+    
+    let html = '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
+    for (let i = 0; i < imagesTemp.length; i++) {
+      html += `
+        <div style="position:relative; width:80px;">
+          <img src="${imagesTemp[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;" onerror="this.src='https://placehold.co/100x100/FFD93D/white?text=Erro'">
+          <div style="font-size:10px; text-align:center;">${imagesTemp[i].caption}</div>
+          <div style="font-size:10px; text-align:center; color:green;">${imagesTemp[i].price}</div>
+          <button onclick="removeImageTemp(${i})" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;">✕</button>
+        </div>
+      `;
+    }
+    html += '</div>';
+    container.innerHTML = html;
+  }
+  
+  function showAddForm() {
+    document.getElementById('formTitle').innerText = '➕ Adicionar Produto';
+    document.getElementById('productId').value = '';
+    document.getElementById('prodTitle').value = '';
+    document.getElementById('prodDescription').value = '';
+    document.getElementById('prodPrice').value = '';
+    document.getElementById('prodCategory').value = 'datas';
+    document.getElementById('prodImage').value = 'https://placehold.co/600x400/FFD93D/white?text=Novo+Produto';
+    imagesTemp = [];
+    renderImagesList();
+    document.getElementById('productForm').style.display = 'block';
+  }
+  
+  function hideForm() {
+    document.getElementById('productForm').style.display = 'none';
+    imagesTemp = [];
+  }
+  
+  function editProduct(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+    
+    document.getElementById('formTitle').innerText = '✏️ Editar Produto';
+    document.getElementById('productId').value = product.id;
+    document.getElementById('prodTitle').value = product.title;
+    document.getElementById('prodDescription').value = product.description;
+    document.getElementById('prodPrice').value = product.price;
+    document.getElementById('prodCategory').value = product.category;
+    document.getElementById('prodImage').value = product.image;
+    imagesTemp = [...product.images];
+    renderImagesList();
+    document.getElementById('productForm').style.display = 'block';
+  }
+  
+  function saveProduct() {
+    const id = document.getElementById('productId').value;
+    const title = document.getElementById('prodTitle').value;
+    const description = document.getElementById('prodDescription').value;
+    const price = document.getElementById('prodPrice').value;
+    const category = document.getElementById('prodCategory').value;
+    const image = document.getElementById('prodImage').value;
+    
+    if (!title || !description || !price || !image) {
+      alert('Preencha todos os campos obrigatórios!');
+      return;
+    }
+    
+    if (id) {
+      const index = products.findIndex(p => p.id == id);
+      if (index !== -1) {
+        products[index] = {
+          ...products[index],
+          title, description, price, category, image,
+          images: imagesTemp
+        };
+      }
+    } else {
+      const newId = Math.max(...products.map(p => p.id), 0) + 1;
+      products.push({
+        id: newId,
+        title,
+        description,
+        price,
+        category,
+        image,
+        images: imagesTemp
+      });
+    }
+    
+    saveProducts();
+    renderAdminProducts();
+    hideForm();
+    alert('Produto salvo com sucesso!');
+  }
+  
+  function deleteProduct(id) {
+    if (confirm('Tem certeza que deseja excluir este produto?')) {
+      products = products.filter(p => p.id !== id);
+      saveProducts();
+      renderAdminProducts();
+    }
+  }
+  
+  function renderAdminProducts() {
+    const container = document.getElementById('adminProductsList');
+    if (!container) return;
+    
+    let html = '';
+    for (let product of products) {
+      html += `
+        <div class="admin-product-card">
+          <img src="${product.image}" onerror="this.src='https://placehold.co/600x400/FFD93D/white?text=Erro'">
+          <h4>${product.title}</h4>
+          <p style="font-size:0.8rem;">${product.description.substring(0, 60)}...</p>
+          <p><strong>💰 ${product.price}</strong></p>
+          <div class="images-list">
+      `;
+      
+      for (let img of product.images) {
+        html += `
+          <div class="image-item">
+            <img src="${img.url}" onerror="this.src='https://placehold.co/100x100/FFD93D/white?text=Erro'">
+          </div>
+        `;
+      }
+      
+      html += `
+          </div>
+          <div class="admin-product-actions">
+            <button class="btn-edit" onclick="editProduct(${product.id})">✏️ Editar</button>
+            <button class="btn-delete" onclick="deleteProduct(${product.id})">🗑️ Excluir</button>
+          </div>
+        </div>
+      `;
+    }
+    
+    container.innerHTML = html;
+  }
+
+  // INICIALIZAR
+  loadProducts();
+</script>
+</body>
+</html>
