@@ -3,40 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PedagoArt Kids - Materiais Pedagógicos Digitais Premium para Educação Infantil e Ensino Fundamental">
-    <meta name="author" content="Cleisiane Barreto">
-    <title>PedagoArt Kids | Materiais Pedagógicos Premium</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <meta name="description" content="PedagoArt Kids - Materiais Pedagógicos Digitais Premium">
+    <title>PedagoArt Kids | Materiais Pedagógicos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* ============================================
-           VARIÁVEIS E RESET
-           ============================================ */
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --white: #ffffff;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            --radius: 1rem;
-            --radius-lg: 1.5rem;
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --success: #10b981;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 35px -10px rgba(0,0,0,0.15);
+            --radius: 1rem;
+            --radius-lg: 1.5rem;
         }
 
         body {
@@ -44,78 +33,28 @@
             background: linear-gradient(135deg, #fef2f2 0%, #fdf4ff 50%, #f0fdf4 100%);
             color: var(--dark);
             line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* ============================================
-           SCROLLBAR PERSONALIZADA
-           ============================================ */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
-
-        /* ============================================
-           ANIMAÇÕES
-           ============================================ */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* ============================================
-           CABEÇALHO
-           ============================================ */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .header.scrolled {
-            box-shadow: var(--shadow-lg);
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        /* CABEÇALHO */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow);
         }
 
         .header-content {
@@ -135,7 +74,7 @@
         }
 
         .logo p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--gray);
         }
 
@@ -149,13 +88,14 @@
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            transition: var(--transition);
+            transition: color 0.3s;
         }
 
         .nav a:hover {
             color: var(--primary);
         }
 
+        /* BOTÃO ADMIN (SÓ APARECE NO LINK SECRETO) */
         .admin-trigger {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -164,30 +104,23 @@
             border-radius: 2rem;
             cursor: pointer;
             font-weight: 600;
-            transition: var(--transition);
+            transition: all 0.3s;
         }
 
         .admin-trigger:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow-md);
         }
 
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .hidden {
+            display: none !important;
         }
 
-        /* ============================================
-           HERO SECTION
-           ============================================ */
+        /* HERO */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 6rem 0 4rem;
-            position: relative;
-            overflow: hidden;
         }
 
         .hero-grid {
@@ -197,10 +130,6 @@
             align-items: center;
         }
 
-        .hero-content {
-            animation: fadeInUp 0.8s ease;
-        }
-
         .hero-badge {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -208,15 +137,14 @@
             padding: 0.25rem 1rem;
             border-radius: 2rem;
             font-size: 0.75rem;
-            font-weight: 600;
             margin-bottom: 1.5rem;
         }
 
         .hero h2 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--dark), var(--primary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -224,10 +152,8 @@
         }
 
         .hero p {
-            font-size: 1.125rem;
             color: var(--gray);
             margin-bottom: 2rem;
-            max-width: 500px;
         }
 
         .hero-stats {
@@ -236,12 +162,8 @@
             margin-bottom: 2rem;
         }
 
-        .stat {
-            text-align: center;
-        }
-
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
         }
@@ -251,12 +173,6 @@
             color: var(--gray);
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -264,78 +180,32 @@
             border-radius: 2rem;
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            transition: all 0.3s;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.75rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .hero-image {
-            position: relative;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
+            box-shadow: var(--shadow);
         }
 
         .hero-image img {
             width: 100%;
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .floating-card {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background: white;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            animation: float 3s ease-in-out infinite;
         }
 
-        /* ============================================
-           FILTROS
-           ============================================ */
+        /* FILTROS */
         .filters {
             padding: 2rem 0;
             text-align: center;
         }
 
         .filters h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .filter-buttons {
@@ -352,12 +222,7 @@
             border-radius: 2rem;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .filter-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
+            transition: all 0.3s;
         }
 
         .filter-btn.active {
@@ -366,11 +231,9 @@
             color: white;
         }
 
-        /* ============================================
-           PRODUTOS
-           ============================================ */
+        /* PRODUTOS */
         .products {
-            padding: 3rem 0 5rem;
+            padding: 2rem 0 5rem;
         }
 
         .products-grid {
@@ -380,22 +243,22 @@
         }
 
         .product-card {
-            background: var(--white);
+            background: white;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
             cursor: pointer;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         .product-image {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
         }
 
@@ -404,261 +267,25 @@
         }
 
         .product-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .product-description {
             color: var(--gray);
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             margin-bottom: 1rem;
-            line-height: 1.6;
         }
 
         .product-price {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--success);
             margin-bottom: 1rem;
         }
 
-        .product-footer {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .btn-view {
-            flex: 1;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn-view:hover {
-            transform: scale(0.98);
-        }
-
-        .btn-whats {
-            flex: 1;
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .btn-whats:hover {
-            background: #128C7E;
-            transform: scale(0.98);
-        }
-
-        /* ============================================
-           BENEFÍCIOS
-           ============================================ */
-        .benefits {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .benefit-card h4 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .benefit-card p {
-            color: var(--gray);
-            font-size: 0.875rem;
-        }
-
-        /* ============================================
-           SOBRE A PROFESSORA
-           ============================================ */
-        .about {
-            padding: 5rem 0;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .about-content h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .about-content p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .signature {
-            font-size: 1rem;
-            font-style: italic;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* ============================================
-           CTA
-           ============================================ */
-        .cta {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .cta h3 {
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta p {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-whats-large {
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-        }
-
-        .btn-whats-large:hover {
-            background: #128C7E;
-            transform: scale(1.05);
-        }
-
-        .btn-email {
-            background: white;
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-        }
-
-        .btn-email:hover {
-            transform: scale(1.05);
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            background: var(--dark);
-            color: var(--gray);
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* ============================================
-           MODAL
-           ============================================ */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -668,7 +295,7 @@
             height: 100%;
             background: rgba(0,0,0,0.8);
             backdrop-filter: blur(10px);
-            z-index: 2000;
+            z-index: 1000;
             justify-content: center;
             align-items: center;
         }
@@ -676,12 +303,11 @@
         .modal-content {
             background: white;
             border-radius: var(--radius-lg);
-            max-width: 900px;
+            max-width: 1000px;
             width: 90%;
             max-height: 85vh;
             overflow-y: auto;
             padding: 2rem;
-            animation: fadeIn 0.3s ease;
         }
 
         .modal-header {
@@ -691,101 +317,192 @@
             margin-bottom: 1.5rem;
         }
 
-        .modal-header h2 {
-            font-size: 1.5rem;
+        /* PASTAS E SUBPASTAS (CARNAVAL COM VÁRIAS IMAGENS) */
+        .folder-structure {
+            margin: 1rem 0;
         }
 
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray);
-        }
-
-        .modal-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--success);
+        .folder {
+            background: #f1f5f9;
+            border-radius: var(--radius);
             margin-bottom: 1rem;
+            overflow: hidden;
         }
 
-        .modal-gallery {
+        .folder-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: #e2e8f0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .folder-header i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .folder-content {
+            display: none;
+            padding: 1rem;
+            background: white;
+        }
+
+        .folder-content.show {
+            display: block;
+        }
+
+        .images-subgrid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 1rem;
-            margin: 1.5rem 0;
         }
 
-        .modal-item {
+        .sub-item {
             background: #f8fafc;
             border-radius: var(--radius);
-            padding: 1rem;
+            padding: 0.75rem;
             text-align: center;
             border: 1px solid #e2e8f0;
         }
 
-        .modal-item img {
+        .sub-item img {
             width: 100%;
-            height: 150px;
+            height: 120px;
             object-fit: cover;
-            border-radius: var(--radius);
+            border-radius: 0.5rem;
             cursor: pointer;
         }
 
-        .modal-item p {
+        .sub-item p {
             margin: 0.5rem 0;
             font-weight: 600;
+            font-size: 0.8rem;
         }
 
-        .item-price {
+        .sub-price {
             color: var(--success);
             font-weight: 700;
+            font-size: 0.9rem;
         }
 
-        .modal-buttons {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .btn-modal-whats {
-            flex: 1;
+        .btn-whats-sub {
             background: #25D366;
             color: white;
-            padding: 0.5rem;
-            border-radius: 2rem;
+            padding: 0.3rem 0.5rem;
+            border-radius: 1rem;
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+
+        /* BENEFÍCIOS */
+        .benefits {
+            padding: 4rem 0;
+            background: var(--light);
+        }
+
+        .section-title {
             text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .btn-modal-zoom {
-            flex: 1;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem;
-            border-radius: 2rem;
-            border: none;
-            cursor: pointer;
-            font-size: 0.875rem;
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
         }
 
-        .btn-kit {
+        .benefit-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 4rem 0;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 1rem;
-            border-radius: 2rem;
-            text-decoration: none;
             text-align: center;
-            display: block;
-            margin-top: 1rem;
-            font-weight: 700;
+            color: white;
         }
 
-        /* ============================================
-           ADMIN PANEL
-           ============================================ */
+        .cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-whats-large {
+            background: #25D366;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+        }
+
+        .btn-email {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: var(--gray);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background: #25D366;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ADMIN PANEL */
         .admin-panel {
             display: none;
             position: fixed;
@@ -794,7 +511,7 @@
             width: 100%;
             height: 100%;
             background: var(--dark);
-            z-index: 1500;
+            z-index: 2000;
             overflow-y: auto;
         }
 
@@ -809,11 +526,6 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .admin-header h2 {
             color: white;
         }
 
@@ -856,12 +568,6 @@
             border: none;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
         .btn-save {
             background: var(--success);
             color: white;
@@ -873,7 +579,7 @@
 
         .admin-products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
@@ -891,16 +597,7 @@
 
         .admin-card-info {
             padding: 1rem;
-        }
-
-        .admin-card-info h4 {
             color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .admin-card-info p {
-            color: var(--gray);
-            font-size: 0.875rem;
         }
 
         .admin-card-actions {
@@ -910,89 +607,30 @@
             border-top: 1px solid #334155;
         }
 
-        .btn-edit {
+        .btn-edit, .btn-delete {
             flex: 1;
-            background: var(--primary);
-            color: white;
-            border: none;
             padding: 0.5rem;
+            border: none;
             border-radius: 0.5rem;
             cursor: pointer;
         }
 
-        .btn-delete {
-            flex: 1;
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
+        .btn-edit { background: var(--primary); color: white; }
+        .btn-delete { background: #ef4444; color: white; }
 
-        /* ============================================
-           WHATSAPP FLOAT
-           ============================================ */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 100;
-        }
-
-        .whatsapp-float a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            font-size: 2rem;
-            color: white;
-            text-decoration: none;
-            box-shadow: var(--shadow-xl);
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float a:hover {
-            transform: scale(1.1);
-            animation: none;
-        }
-
-        /* ============================================
-           RESPONSIVIDADE
-           ============================================ */
         @media (max-width: 768px) {
-            .nav {
-                display: none;
-            }
-            .mobile-menu {
-                display: block;
-            }
             .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .hero h2 {
-                font-size: 2rem;
-            }
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
             .hero-stats {
                 justify-content: center;
             }
-            .hero-buttons {
-                justify-content: center;
+            .nav {
+                display: none;
             }
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 1rem;
             }
         }
     </style>
@@ -1005,61 +643,43 @@
         <div class="header-content">
             <div class="logo">
                 <h1>✨ PedagoArt Kids</h1>
-                <p>Materiais Pedagógicos Premium</p>
+                <p>Materiais Pedagógicos</p>
             </div>
             <nav class="nav">
                 <a href="#home">Início</a>
                 <a href="#products">Catálogo</a>
                 <a href="#benefits">Benefícios</a>
-                <a href="#about">Sobre</a>
                 <a href="#contact">Contato</a>
             </nav>
-            <button class="admin-trigger" onclick="openAdminLogin()">
+            <button id="adminBtn" class="admin-trigger hidden" onclick="openAdminLogin()">
                 <i class="fas fa-lock"></i> Admin
             </button>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </div>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section id="home" class="hero">
     <div class="container">
         <div class="hero-grid">
-            <div class="hero-content">
-                <span class="hero-badge">✨ Lançamento 2026</span>
-                <h2>Materiais pedagógicos que transformam o ensino</h2>
-                <p>Arquivos digitais exclusivos para educação infantil e ensino fundamental I. Baixe imediatamente após a compra.</p>
+            <div>
+                <span class="hero-badge">✨ Materiais Exclusivos</span>
+                <h2>Arquivos pedagógicos para transformar suas aulas</h2>
+                <p>Materiais digitais prontos para usar. Baixe imediatamente após a compra.</p>
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number">+100</div>
                         <div class="stat-label">Arquivos</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">⭐ 4.9</div>
+                        <div class="stat-number">⭐ 5.0</div>
                         <div class="stat-label">Avaliações</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">+500</div>
-                        <div class="stat-label">Educadores</div>
-                    </div>
                 </div>
-                <div class="hero-buttons">
-                    <a href="#products" class="btn-primary"><i class="fas fa-book"></i> Explorar Catálogo</a>
-                    <a href="https://wa.me/5500000000000" class="btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                </div>
+                <a href="#products" class="btn-primary"><i class="fas fa-book"></i> Ver Catálogo</a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Materiais pedagógicos">
-                <div class="floating-card">
-                    <i class="fas fa-download" style="font-size: 2rem; color: var(--primary);"></i>
-                    <div>
-                        <p style="font-weight: 700;">Download Imediato</p>
-                        <p style="font-size: 0.75rem; color: var(--gray);">Após a compra</p>
-                    </div>
-                </div>
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Materiais">
             </div>
         </div>
     </div>
@@ -1088,42 +708,10 @@
     <div class="container">
         <h3 class="section-title">✨ Por que escolher nossos materiais?</h3>
         <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">🎨</div>
-                <h4>Design Profissional</h4>
-                <p>Materiais visualmente incríveis que encantam os alunos</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">⚡</div>
-                <h4>Download Imediato</h4>
-                <p>Receba seus arquivos na hora após a compra</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">📚</div>
-                <h4>Alinhado à BNCC</h4>
-                <p>Todos os materiais seguem a Base Nacional Comum</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">💳</div>
-                <h4>Pagamento Seguro</h4>
-                <p>Pix, cartão ou boleto com total segurança</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SOBRE -->
-<section id="about" class="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Professora">
-            </div>
-            <div class="about-content">
-                <h3>Cleisiane Barreto</h3>
-                <p>Sou pedagoga e crio materiais pedagógicos com muito carinho para ajudar educadores a terem aulas mais dinâmicas, criativas e produtivas. Cada arquivo é pensado para facilitar o dia a dia em sala de aula e proporcionar uma aprendizagem significativa para os alunos.</p>
-                <p class="signature">"Ensinar é transformar vidas, um material de cada vez."</p>
-            </div>
+            <div class="benefit-card"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4><p>Materiais coloridos e criativos</p></div>
+            <div class="benefit-card"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4><p>Receba na hora</p></div>
+            <div class="benefit-card"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4><p>Base Nacional Comum</p></div>
+            <div class="benefit-card"><div class="benefit-icon">💳</div><h4>Pagamento Seguro</h4><p>Pix ou Cartão</p></div>
         </div>
     </div>
 </section>
@@ -1132,28 +720,23 @@
 <section id="contact" class="cta">
     <div class="container">
         <h3>🚀 Pronto para transformar suas aulas?</h3>
-        <p>Adquira já nossos materiais pedagógicos premium e revolucione sua rotina escolar</p>
+        <p>Adquira já os materiais e revolucione sua rotina escolar</p>
         <div class="cta-buttons">
-            <a href="https://wa.me/5500000000000" class="btn-whats-large"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</a>
-            <a href="mailto:contato@pedagoart.com" class="btn-email"><i class="fas fa-envelope"></i> Enviar Email</a>
+            <a href="https://wa.me/5500000000000" class="btn-whats-large"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:contato@pedagoart.com" class="btn-email"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <p>© 2026 Cleisiane Barreto • PedagoArt Kids Store</p>
-        <p style="font-size: 0.75rem;">✨ Materiais pedagógicos criados com carinho para educadores ✨</p>
-    </div>
+    <p>© 2026 Cleisiane Barreto • PedagoArt Kids</p>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
 <div class="whatsapp-float">
-    <a href="https://wa.me/5500000000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/5500000000000"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL DE PRODUTO (COM PASTAS) -->
 <div id="productModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -1164,150 +747,126 @@
     </div>
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel" class="admin-panel">
-    <div class="admin-container">
-        <div class="admin-header">
-            <h2>🛠️ Painel Administrativo</h2>
-            <div>
-                <button class="btn-admin" onclick="showAddForm()">➕ Adicionar Produto</button>
-                <button class="btn-admin" onclick="closeAdminPanel()" style="background: #ef4444;">🔒 Sair</button>
-            </div>
-        </div>
-        
-        <div id="productForm" class="product-form">
-            <h3 id="formTitle">➕ Adicionar Produto</h3>
-            <input type="hidden" id="productId">
-            <div class="form-group">
-                <label>Título</label>
-                <input type="text" id="prodTitle" placeholder="Ex: 🎉 Datas Comemorativas">
-            </div>
-            <div class="form-group">
-                <label>Descrição</label>
-                <textarea id="prodDescription" rows="3" placeholder="Descrição do produto..."></textarea>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Preço do Kit</label>
-                    <input type="text" id="prodPrice" placeholder="Ex: R$ 19,90">
-                </div>
-                <div class="form-group">
-                    <label>Categoria</label>
-                    <select id="prodCategory">
-                        <option value="datas">Datas Comemorativas</option>
-                        <option value="alfabetizacao">Alfabetização</option>
-                        <option value="kits">Kits Premium</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>URL da Imagem de Capa</label>
-                <input type="text" id="prodImage" placeholder="https://...">
-            </div>
-            <div class="form-group">
-                <label>Amostras (URL, Legenda, Preço)</label>
-                <div id="imagesList"></div>
-                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-                    <input type="text" id="newImageUrl" placeholder="URL da imagem" style="flex: 2;">
-                    <input type="text" id="newImageCaption" placeholder="Legenda" style="flex: 1;">
-                    <input type="text" id="newImagePrice" placeholder="Preço" style="flex: 1;" value="R$ 4,90">
-                    <button onclick="addImageToList()" style="background: var(--primary); border: none; padding: 0 1rem; border-radius: 0.5rem; cursor: pointer;">➕</button>
-                </div>
-            </div>
-            <div style="margin-top: 1rem;">
-                <button class="btn-save" onclick="saveProduct()">💾 Salvar</button>
-                <button class="btn-save" onclick="hideForm()" style="background: #ef4444;">Cancelar</button>
-            </div>
-        </div>
-        
-        <h3 style="color: white; margin-bottom: 1rem;">📦 Seus Produtos</h3>
-        <div id="adminProductsList" class="admin-products"></div>
+<!-- MODAL ADMIN LOGIN -->
+<div id="adminLoginModal" class="modal">
+    <div class="modal-content" style="max-width: 400px;">
+        <h2>🔒 Acesso Restrito</h2>
+        <input type="password" id="adminPassword" style="width:100%; padding:0.5rem; margin:1rem 0; border:1px solid #ccc; border-radius:0.5rem;" placeholder="Senha">
+        <button onclick="checkAdminLogin()" style="background:var(--primary); color:white; border:none; padding:0.5rem 1rem; border-radius:0.5rem; width:100%; cursor:pointer;">Entrar</button>
     </div>
 </div>
 
-<!-- ADMIN LOGIN MODAL -->
-<div id="adminLoginModal" class="modal">
-    <div class="modal-content" style="max-width: 400px;">
-        <div class="modal-header">
-            <h2>🔒 Acesso Restrito</h2>
-            <button class="modal-close" onclick="closeAdminLoginModal()">&times;</button>
+<!-- PAINEL ADMIN -->
+<div id="adminPanel" class="admin-panel">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2>🛠️ Painel do Proprietário</h2>
+            <button class="btn-admin" onclick="closeAdminPanel()">🔒 Sair</button>
         </div>
-        <p>Digite a senha para acessar o painel administrativo</p>
-        <input type="password" id="adminPassword" style="width: 100%; padding: 0.5rem; margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 0.5rem;">
-        <button onclick="checkAdminLogin()" style="background: var(--primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; width: 100%; cursor: pointer;">Entrar</button>
+        <button class="btn-admin" onclick="showAddForm()" style="margin-bottom:1rem;">➕ Adicionar Produto</button>
+
+        <div id="productForm" class="product-form">
+            <h3 id="formTitle">➕ Adicionar Produto</h3>
+            <input type="hidden" id="productId">
+            <div class="form-group"><label>Título</label><input type="text" id="prodTitle" placeholder="Ex: 🎉 Datas Comemorativas"></div>
+            <div class="form-group"><label>Descrição</label><textarea id="prodDescription" rows="3"></textarea></div>
+            <div class="form-group"><label>Preço do Kit</label><input type="text" id="prodPrice" placeholder="Ex: R$ 19,90"></div>
+            <div class="form-group"><label>Categoria</label><select id="prodCategory"><option value="datas">Datas</option><option value="alfabetizacao">Alfabetização</option><option value="kits">Kits Premium</option></select></div>
+            <div class="form-group"><label>URL Capa</label><input type="text" id="prodImage" placeholder="https://..."></div>
+            <div class="form-group"><label>Pastas (ex: Carnaval com imagens)</label>
+                <div id="foldersList"></div>
+                <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                    <input type="text" id="newFolderName" placeholder="Nome da pasta (Ex: Carnaval)" style="flex:2;">
+                    <button onclick="addFolder()" style="background:var(--primary); border:none; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">➕ Adicionar Pasta</button>
+                </div>
+            </div>
+            <div style="margin-top:1rem;"><button class="btn-save" onclick="saveProduct()">💾 Salvar</button><button class="btn-save" onclick="hideForm()" style="background:#ef4444; margin-left:0.5rem;">Cancelar</button></div>
+        </div>
+
+        <h3 style="color:white;">📦 Seus Produtos</h3>
+        <div id="adminProductsList" class="admin-products"></div>
     </div>
 </div>
 
 <script>
     // ============================================
+    // ACESSO RESTRITO - SÓ APARECE COM ?admin=true
+    // ============================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdminMode = urlParams.get('admin') === 'true';
+    
+    if (isAdminMode) {
+        document.getElementById('adminBtn').classList.remove('hidden');
+    }
+
+    // ============================================
     // CONFIGURAÇÕES
     // ============================================
     const ADMIN_PASSWORD = "admin123";
     let products = [];
-    let imagesTemp = [];
+    let currentFolders = [];
 
     // ============================================
-    // PRODUTOS PADRÃO
+    // PRODUTOS PADRÃO COM SUBPASTAS
     // ============================================
     const defaultProducts = [
         {
             id: 1,
             title: "🎉 Datas Comemorativas",
-            description: "Kit completo com atividades para todas as datas comemorativas do ano letivo: Carnaval, Páscoa, Festa Junina, Dia das Mães, Dia dos Pais, Natal e muito mais.",
+            description: "Materiais para todas as datas especiais do ano",
             price: "R$ 19,90",
             image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
             category: "datas",
-            images: [
-                { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Carnaval", price: "R$ 3,90" },
-                { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=300&q=80", caption: "Páscoa", price: "R$ 4,90" },
-                { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Festa Junina", price: "R$ 4,90" },
-                { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=300&q=80", caption: "Natal", price: "R$ 4,90" }
+            folders: [
+                {
+                    name: "🎭 Carnaval",
+                    images: [
+                        { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval 1", price: "R$ 2,90" },
+                        { url: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval 2", price: "R$ 2,90" },
+                        { url: "https://images.unsplash.com/photo-1532689373850-cf3e8d4b78f9?auto=format&fit=crop&w=300&q=80", caption: "Atividade Carnaval", price: "R$ 3,90" }
+                    ]
+                },
+                {
+                    name: "🐰 Páscoa",
+                    images: [
+                        { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=300&q=80", caption: "Ovo de Páscoa", price: "R$ 3,90" },
+                        { url: "https://images.unsplash.com/photo-1510695425548-1c82f5e8c0b5?auto=format&fit=crop&w=300&q=80", caption: "Coelho da Páscoa", price: "R$ 3,90" }
+                    ]
+                },
+                {
+                    name: "🌽 Festa Junina",
+                    images: [
+                        { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Bandeirinhas", price: "R$ 3,90" },
+                        { url: "https://images.unsplash.com/photo-1533681478154-7e3bbf3fcb1c?auto=format&fit=crop&w=300&q=80", caption: "Balão Junino", price: "R$ 2,90" }
+                    ]
+                }
             ]
         },
         {
             id: 2,
-            title: "📖 Alfabetização Completa",
-            description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano. Mais de 200 páginas com exercícios progressivos.",
+            title: "📖 Alfabetização",
+            description: "Atividades de leitura e escrita",
             price: "R$ 24,90",
             image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
             category: "alfabetizacao",
-            images: [
-                { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=300&q=80", caption: "Alfabeto", price: "R$ 5,90" },
-                { url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80", caption: "Coordenação Motora", price: "R$ 5,90" },
-                { url: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=300&q=80", caption: "Formação de Palavras", price: "R$ 6,90" }
-            ]
-        },
-        {
-            id: 3,
-            title: "🏆 Kits Premium Professor",
-            description: "Pacote completo com planners, calendários, fichas de avaliação e materiais exclusivos para organizar o ano letivo.",
-            price: "R$ 49,90",
-            image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=600&q=80",
-            category: "kits",
-            images: [
-                { url: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=300&q=80", caption: "Planner", price: "R$ 12,90" },
-                { url: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=300&q=80", caption: "Planejamento Anual", price: "R$ 15,90" },
-                { url: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=300&q=80", caption: "Fichas de Avaliação", price: "R$ 9,90" }
-            ]
-        },
-        {
-            id: 4,
-            title: "🧮 Matemática Lúdica",
-            description: "Jogos e atividades matemáticas para aprender brincando. Números, operações, tabuada e formas geométricas.",
-            price: "R$ 27,90",
-            image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80",
-            category: "alfabetizacao",
-            images: [
-                { url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=300&q=80", caption: "Números", price: "R$ 5,90" },
-                { url: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=300&q=80", caption: "Adição", price: "R$ 6,90" },
-                { url: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?auto=format&fit=crop&w=300&q=80", caption: "Tabuada", price: "R$ 7,90" }
+            folders: [
+                {
+                    name: "🔤 Alfabeto",
+                    images: [
+                        { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=300&q=80", caption: "Letra A", price: "R$ 2,90" },
+                        { url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80", caption: "Letra B", price: "R$ 2,90" }
+                    ]
+                },
+                {
+                    name: "✍️ Caligrafia",
+                    images: [
+                        { url: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=300&q=80", caption: "Treino da letra cursiva", price: "R$ 3,90" }
+                    ]
+                }
             ]
         }
     ];
 
-    // ============================================
-    // CARREGAR PRODUTOS
-    // ============================================
     function loadProducts() {
         const saved = localStorage.getItem('pedagoart_products');
         if (saved) {
@@ -1323,33 +882,23 @@
         localStorage.setItem('pedagoart_products', JSON.stringify(products));
     }
 
-    // ============================================
-    // RENDERIZAR PRODUTOS
-    // ============================================
     function renderProducts(filter = "all") {
         const container = document.getElementById('productsGrid');
         if (!container) return;
-
         let filtered = filter === "all" ? products : products.filter(p => p.category === filter);
-        
         if (filtered.length === 0) {
-            container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:3rem;">Nenhum produto encontrado</div>';
+            container.innerHTML = '<div style="grid-column:1/-1; text-align:center;">Nenhum produto encontrado</div>';
             return;
         }
-
         let html = '';
-        for (let product of filtered) {
+        for (let p of filtered) {
             html += `
-                <div class="product-card">
-                    <img class="product-image" src="${product.image}" alt="${product.title}" onerror="this.src='https://placehold.co/600x400/6366f1/white?text=PedagoArt'">
+                <div class="product-card" onclick="openProductModal(${p.id})">
+                    <img class="product-image" src="${p.image}" onerror="this.src='https://placehold.co/600x400'">
                     <div class="product-info">
-                        <h3 class="product-title">${product.title}</h3>
-                        <p class="product-description">${product.description.substring(0, 80)}...</p>
-                        <div class="product-price">💰 ${product.price}</div>
-                        <div class="product-footer">
-                            <button class="btn-view" onclick="openProductModal(${product.id})">📚 Ver opções</button>
-                            <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar ${product.title} - ${product.price}" class="btn-whats">💬 Comprar</a>
-                        </div>
+                        <h3 class="product-title">${p.title}</h3>
+                        <p class="product-description">${p.description.substring(0, 80)}...</p>
+                        <div class="product-price">💰 ${p.price}</div>
                     </div>
                 </div>
             `;
@@ -1357,39 +906,52 @@
         container.innerHTML = html;
     }
 
-    // ============================================
-    // ABRIR MODAL DO PRODUTO
-    // ============================================
-    function openProductModal(productId) {
-        const product = products.find(p => p.id === productId);
+    function openProductModal(id) {
+        const product = products.find(p => p.id === id);
         if (!product) return;
-
         document.getElementById('modalTitle').innerHTML = product.title;
         
-        let imagesHtml = '';
-        for (let img of product.images) {
-            imagesHtml += `
-                <div class="modal-item">
-                    <img src="${img.url}" alt="${img.caption}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/300x200/6366f1/white?text=Imagem'">
-                    <p>${img.caption}</p>
-                    <p class="item-price">💰 ${img.price}</p>
-                    <div class="modal-buttons">
-                        <button class="btn-modal-zoom" onclick="openZoom('${img.url}')">🔍 Ampliar</button>
-                        <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar ${img.caption} - ${img.price}" class="btn-modal-whats">🛒 Comprar</a>
+        let foldersHtml = '<div class="folder-structure">';
+        for (let folder of (product.folders || [])) {
+            foldersHtml += `
+                <div class="folder">
+                    <div class="folder-header" onclick="toggleFolder(this)">
+                        <i class="fas fa-folder"></i> 📁 ${folder.name}
+                    </div>
+                    <div class="folder-content">
+                        <div class="images-subgrid">
+            `;
+            for (let img of folder.images) {
+                foldersHtml += `
+                    <div class="sub-item">
+                        <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/150x120'">
+                        <p>${img.caption}</p>
+                        <div class="sub-price">💰 ${img.price}</div>
+                        <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar ${img.caption} - ${img.price}" class="btn-whats-sub">🛒 Comprar</a>
+                    </div>
+                `;
+            }
+            foldersHtml += `
+                        </div>
                     </div>
                 </div>
             `;
         }
-
-        document.getElementById('modalBody').innerHTML = `
-            <div class="modal-price">💰 ${product.price} - Kit Completo</div>
-            <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-kit">🎁 Comprar Kit Completo (${product.images.length} itens)</a>
-            <div style="text-align:center; margin: 1rem 0;">⭐ OU ESCOLHA INDIVIDUALMENTE ⭐</div>
-            <div class="modal-gallery">${imagesHtml}</div>
-        `;
+        foldersHtml += '</div>';
         
+        document.getElementById('modalBody').innerHTML = `
+            <div style="color:green; font-size:1.3rem; font-weight:bold; margin-bottom:1rem;">💰 ${product.price} - Kit Completo</div>
+            <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-primary" style="display:block; text-align:center;">🎁 Comprar Kit Completo</a>
+            <div style="text-align:center; margin:1rem 0;">⭐ ESCOLHA POR PASTA ⭐</div>
+            ${foldersHtml}
+        `;
         document.getElementById('productModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
+    }
+
+    function toggleFolder(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle('show');
     }
 
     function closeModal() {
@@ -1398,49 +960,41 @@
     }
 
     function openZoom(url) {
-        const zoomWindow = window.open();
-        zoomWindow.document.write(`
-            <html>
-            <head><title>Visualização</title></head>
-            <body style="margin:0; display:flex; justify-content:center; align-items:center; min-height:100vh; background:#000;">
-                <img src="${url}" style="max-width:90%; max-height:90vh; border-radius:1rem;">
-                <button onclick="window.close()" style="position:fixed; top:20px; right:20px; background:white; border:none; padding:10px 20px; border-radius:1rem; cursor:pointer;">Fechar</button>
-            </body>
-            </html>
-        `);
+        const win = window.open();
+        win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;">Fechar</button></body></html>`);
     }
 
-    // ============================================
-    // FILTROS
-    // ============================================
     function setupFilters() {
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => {
+        const btns = document.querySelectorAll('.filter-btn');
+        btns.forEach(btn => {
             btn.addEventListener('click', function() {
-                buttons.forEach(b => b.classList.remove('active'));
+                btns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 renderProducts(this.dataset.filter);
             });
         });
     }
 
-    // ============================================
     // ADMIN
-    // ============================================
+    let tempFolders = [];
+
     function openAdminLogin() {
+        if (!isAdminMode) return;
         document.getElementById('adminLoginModal').style.display = 'flex';
     }
 
-    function closeAdminLoginModal() {
-        document.getElementById('adminLoginModal').style.display = 'none';
-        document.getElementById('adminPassword').value = '';
-    }
-
     function checkAdminLogin() {
-        const password = document.getElementById('adminPassword').value;
-        if (password === ADMIN_PASSWORD) {
-            closeAdminLoginModal();
-            document.getElementById('mainSite').style.display = 'none';
+        const pass = document.getElementById('adminPassword').value;
+        if (pass === ADMIN_PASSWORD) {
+            document.getElementById('adminLoginModal').style.display = 'none';
+            document.querySelector('.header').style.display = 'none';
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.filters').style.display = 'none';
+            document.querySelector('.products').style.display = 'none';
+            document.querySelector('.benefits').style.display = 'none';
+            document.querySelector('.cta').style.display = 'none';
+            document.querySelector('.footer').style.display = 'none';
+            document.querySelector('.whatsapp-float').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
             renderAdminProducts();
         } else {
@@ -1450,83 +1004,91 @@
 
     function closeAdminPanel() {
         document.getElementById('adminPanel').style.display = 'none';
-        document.getElementById('mainSite').style.display = 'block';
-        renderProducts();
+        location.reload();
+    }
+
+    function addFolder() {
+        const name = document.getElementById('newFolderName').value;
+        if (!name) { alert('Digite o nome da pasta'); return; }
+        tempFolders.push({ name, images: [] });
+        renderFoldersList();
+        document.getElementById('newFolderName').value = '';
+    }
+
+    function removeFolder(index) {
+        tempFolders.splice(index, 1);
+        renderFoldersList();
+    }
+
+    function addImageToFolder(folderIndex) {
+        const url = prompt('URL da imagem:');
+        const caption = prompt('Legenda:');
+        const price = prompt('Preço (Ex: R$ 2,90):');
+        if (url) {
+            tempFolders[folderIndex].images.push({ url, caption: caption || 'Imagem', price: price || 'R$ 2,90' });
+            renderFoldersList();
+        }
+    }
+
+    function removeImageFromFolder(folderIndex, imageIndex) {
+        tempFolders[folderIndex].images.splice(imageIndex, 1);
+        renderFoldersList();
+    }
+
+    function renderFoldersList() {
+        const container = document.getElementById('foldersList');
+        if (!container) return;
+        let html = '';
+        for (let i = 0; i < tempFolders.length; i++) {
+            html += `<div style="background:#334155; padding:1rem; border-radius:0.5rem; margin-bottom:1rem;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <strong>📁 ${tempFolders[i].name}</strong>
+                            <button onclick="removeFolder(${i})" style="background:#ef4444; border:none; border-radius:0.5rem; padding:0.2rem 0.5rem; cursor:pointer;">🗑️</button>
+                        </div>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">`;
+            for (let j = 0; j < tempFolders[i].images.length; j++) {
+                html += `<div style="background:#1e293b; padding:0.5rem; border-radius:0.5rem; width:100px;">
+                            <img src="${tempFolders[i].images[j].url}" style="width:100%; height:60px; object-fit:cover; border-radius:0.3rem;">
+                            <div style="font-size:10px;">${tempFolders[i].images[j].caption}</div>
+                            <div style="font-size:10px; color:green;">${tempFolders[i].images[j].price}</div>
+                            <button onclick="removeImageFromFolder(${i}, ${j})" style="background:#ef4444; border:none; border-radius:0.3rem; font-size:10px; padding:2px; cursor:pointer; margin-top:3px;">Remover</button>
+                        </div>`;
+            }
+            html += `</div><button onclick="addImageToFolder(${i})" style="background:var(--primary); border:none; border-radius:0.5rem; padding:0.3rem 0.8rem; margin-top:0.5rem; cursor:pointer;">➕ Adicionar Imagem</button>
+                    </div>`;
+        }
+        container.innerHTML = html;
     }
 
     function showAddForm() {
-        document.getElementById('formTitle').innerText = '➕ Adicionar Produto';
+        document.getElementById('formTitle').innerHTML = '➕ Adicionar Produto';
         document.getElementById('productId').value = '';
         document.getElementById('prodTitle').value = '';
         document.getElementById('prodDescription').value = '';
         document.getElementById('prodPrice').value = '';
         document.getElementById('prodCategory').value = 'datas';
         document.getElementById('prodImage').value = '';
-        imagesTemp = [];
-        renderImagesList();
+        tempFolders = [];
+        renderFoldersList();
         document.getElementById('productForm').style.display = 'block';
     }
 
     function hideForm() {
         document.getElementById('productForm').style.display = 'none';
-        imagesTemp = [];
-    }
-
-    function addImageToList() {
-        const url = document.getElementById('newImageUrl').value;
-        const caption = document.getElementById('newImageCaption').value;
-        const price = document.getElementById('newImagePrice').value;
-        
-        if (!url) {
-            alert('Digite a URL da imagem');
-            return;
-        }
-        
-        imagesTemp.push({ url, caption: caption || 'Amostra', price: price || 'R$ 4,90' });
-        renderImagesList();
-        
-        document.getElementById('newImageUrl').value = '';
-        document.getElementById('newImageCaption').value = '';
-        document.getElementById('newImagePrice').value = 'R$ 4,90';
-    }
-
-    function removeImageTemp(index) {
-        imagesTemp.splice(index, 1);
-        renderImagesList();
-    }
-
-    function renderImagesList() {
-        const container = document.getElementById('imagesList');
-        if (!container) return;
-        
-        let html = '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
-        for (let i = 0; i < imagesTemp.length; i++) {
-            html += `
-                <div style="position:relative; width:80px;">
-                    <img src="${imagesTemp[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;">
-                    <div style="font-size:10px;">${imagesTemp[i].caption}</div>
-                    <div style="font-size:10px; color:green;">${imagesTemp[i].price}</div>
-                    <button onclick="removeImageTemp(${i})" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;">✕</button>
-                </div>
-            `;
-        }
-        html += '</div>';
-        container.innerHTML = html;
     }
 
     function editProduct(id) {
         const product = products.find(p => p.id === id);
         if (!product) return;
-        
-        document.getElementById('formTitle').innerText = '✏️ Editar Produto';
+        document.getElementById('formTitle').innerHTML = '✏️ Editar Produto';
         document.getElementById('productId').value = product.id;
         document.getElementById('prodTitle').value = product.title;
         document.getElementById('prodDescription').value = product.description;
         document.getElementById('prodPrice').value = product.price;
         document.getElementById('prodCategory').value = product.category;
         document.getElementById('prodImage').value = product.image;
-        imagesTemp = [...product.images];
-        renderImagesList();
+        tempFolders = product.folders ? [...product.folders] : [];
+        renderFoldersList();
         document.getElementById('productForm').style.display = 'block';
     }
 
@@ -1537,31 +1099,23 @@
         const price = document.getElementById('prodPrice').value;
         const category = document.getElementById('prodCategory').value;
         const image = document.getElementById('prodImage').value;
-        
-        if (!title || !description || !price || !image) {
-            alert('Preencha todos os campos obrigatórios!');
-            return;
-        }
-        
+        if (!title || !description || !price || !image) { alert('Preencha todos os campos!'); return; }
         if (id) {
             const index = products.findIndex(p => p.id == id);
-            if (index !== -1) {
-                products[index] = { ...products[index], title, description, price, category, image, images: imagesTemp };
-            }
+            if (index !== -1) products[index] = { ...products[index], title, description, price, category, image, folders: tempFolders };
         } else {
             const newId = Math.max(...products.map(p => p.id), 0) + 1;
-            products.push({ id: newId, title, description, price, category, image, images: imagesTemp });
+            products.push({ id: newId, title, description, price, category, image, folders: tempFolders });
         }
-        
         saveProducts();
         renderAdminProducts();
         renderProducts();
         hideForm();
-        alert('Produto salvo com sucesso!');
+        alert('Produto salvo!');
     }
 
     function deleteProduct(id) {
-        if (confirm('Tem certeza que deseja excluir este produto?')) {
+        if (confirm('Excluir produto?')) {
             products = products.filter(p => p.id !== id);
             saveProducts();
             renderAdminProducts();
@@ -1572,20 +1126,19 @@
     function renderAdminProducts() {
         const container = document.getElementById('adminProductsList');
         if (!container) return;
-        
         let html = '';
-        for (let product of products) {
+        for (let p of products) {
             html += `
                 <div class="admin-card">
-                    <img src="${product.image}" onerror="this.src='https://placehold.co/600x400/6366f1/white?text=PedagoArt'">
+                    <img src="${p.image}" onerror="this.src='https://placehold.co/600x400'">
                     <div class="admin-card-info">
-                        <h4>${product.title}</h4>
-                        <p>💰 ${product.price}</p>
-                        <p style="font-size:0.75rem;">${product.images.length} amostras</p>
+                        <h4>${p.title}</h4>
+                        <p>💰 ${p.price}</p>
+                        <p style="font-size:0.7rem;">📁 ${p.folders?.length || 0} pastas</p>
                     </div>
                     <div class="admin-card-actions">
-                        <button class="btn-edit" onclick="editProduct(${product.id})">✏️ Editar</button>
-                        <button class="btn-delete" onclick="deleteProduct(${product.id})">🗑️ Excluir</button>
+                        <button class="btn-edit" onclick="editProduct(${p.id})">✏️</button>
+                        <button class="btn-delete" onclick="deleteProduct(${p.id})">🗑️</button>
                     </div>
                 </div>
             `;
@@ -1593,33 +1146,38 @@
         container.innerHTML = html;
     }
 
-    // ============================================
-    // HEADER SCROLL
-    // ============================================
     window.addEventListener('scroll', () => {
         const header = document.getElementById('header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
     });
 
-    // ============================================
-    // INICIALIZAÇÃO
-    // ============================================
-    document.addEventListener('DOMContentLoaded', () => {
-        loadProducts();
-        setupFilters();
-        
-        // Fechar modal ao clicar fora
-        window.onclick = (event) => {
-            const modal = document.getElementById('productModal');
-            const adminLoginModal = document.getElementById('adminLoginModal');
-            if (event.target === modal) closeModal();
-            if (event.target === adminLoginModal) closeAdminLoginModal();
-        };
-    });
+    window.onclick = (e) => {
+        const modal = document.getElementById('productModal');
+        const loginModal = document.getElementById('adminLoginModal');
+        if (e.target === modal) closeModal();
+        if (e.target === loginModal) loginModal.style.display = 'none';
+    };
+
+    loadProducts();
+    setupFilters();
+
+    window.toggleFolder = toggleFolder;
+    window.openProductModal = openProductModal;
+    window.closeModal = closeModal;
+    window.openZoom = openZoom;
+    window.openAdminLogin = openAdminLogin;
+    window.checkAdminLogin = checkAdminLogin;
+    window.closeAdminPanel = closeAdminPanel;
+    window.showAddForm = showAddForm;
+    window.hideForm = hideForm;
+    window.addFolder = addFolder;
+    window.removeFolder = removeFolder;
+    window.addImageToFolder = addImageToFolder;
+    window.removeImageFromFolder = removeImageFromFolder;
+    window.saveProduct = saveProduct;
+    window.editProduct = editProduct;
+    window.deleteProduct = deleteProduct;
 </script>
 </body>
 </html>
