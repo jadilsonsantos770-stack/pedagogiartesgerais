@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PedagoArt Kids | Cleisiane Barreto - Materiais Pedagógicos Inclusivos</title>
+    <title>PedagoArt Kids | Cleisiane Barreto - Materiais Pedagógicos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -15,65 +15,35 @@
 
         :root {
             --laranja: #FF6B35;
-            --laranja-claro: #FF8C5A;
             --azul: #3B82F6;
-            --azul-claro: #60A5FA;
             --verde: #10B981;
-            --verde-claro: #34D399;
             --roxo: #8B5CF6;
-            --roxo-claro: #A78BFA;
             --rosa: #EC4899;
-            --rosa-claro: #F472B6;
             --amarelo: #F59E0B;
-            --amarelo-claro: #FBBF24;
-            --ciano: #06B6D4;
             --dark: #1E293B;
-            --light: #F8FAFC;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #FFF9F0 0%, #F0F9FF 50%, #F0FDF4 100%);
             color: var(--dark);
-            overflow-x: hidden;
-        }
-
-        /* ANIMAÇÕES */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes float-reverse {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(15px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes shine {
-            0% { background-position: -100%; }
-            100% { background-position: 200%; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px #FF6B35; }
-            50% { box-shadow: 0 0 20px #FF6B35; }
-            100% { box-shadow: 0 0 5px #FF6B35; }
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* CABEÇALHO */
@@ -86,7 +56,6 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             padding: 0.8rem 0;
-            transition: all 0.3s;
         }
 
         .header-content {
@@ -98,16 +67,10 @@
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa), var(--amarelo));
+            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .logo p {
-            font-size: 0.7rem;
-            color: var(--dark-claro);
         }
 
         .nav {
@@ -119,7 +82,8 @@
             text-decoration: none;
             color: var(--dark);
             font-weight: 600;
-            transition: all 0.3s;
+            transition: color 0.3s;
+            cursor: pointer;
         }
 
         .nav a:hover {
@@ -140,29 +104,14 @@
 
         .admin-trigger:hover {
             transform: scale(1.05);
-            animation: glow 1s infinite;
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
-            padding: 7rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 60%;
-            height: 140%;
-            background: radial-gradient(circle, rgba(255,107,53,0.1), transparent);
-            border-radius: 50%;
-            z-index: 0;
+            padding: 7rem 0 3rem;
         }
 
         .hero-grid {
@@ -170,79 +119,13 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--laranja), var(--rosa));
-            color: white;
-            padding: 0.4rem 1.2rem;
-            border-radius: 2rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
         }
 
         .hero h2 {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 900;
             line-height: 1.2;
-            margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -1px;
-        }
-
-        .hero-highlight {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--amarelo), var(--laranja));
-            padding: 0.2rem 0.8rem;
-            border-radius: 1rem;
-            color: white;
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
-        }
-
-        .hero p {
-            color: #64748B;
-            font-size: 1.1rem;
-            margin: 1.5rem 0;
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .stat {
-            text-align: center;
-            background: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-
-        .stat:hover {
-            transform: translateY(-3px);
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -251,168 +134,101 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--laranja), var(--rosa));
             color: white;
-            padding: 1rem 2.2rem;
+            padding: 1rem 2rem;
             border-radius: 3rem;
             text-decoration: none;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
+            margin-top: 1rem;
             transition: all 0.3s;
-            box-shadow: 0 10px 20px -5px rgba(236,72,153,0.3);
+            cursor: pointer;
+            border: none;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(236,72,153,0.4);
-        }
-
-        .hero-image {
-            position: relative;
-            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .hero-image img {
             width: 100%;
             border-radius: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .floating-card {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
+        /* SEÇÃO DE ABAS */
+        .abas-section {
+            padding: 2rem 0 4rem;
             background: white;
-            padding: 1rem;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--laranja);
-            animation: float-reverse 3s ease-in-out infinite;
-        }
-
-        /* ELEMENTOS FLUTUANTES */
-        .floating-deco {
-            position: absolute;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .deco-1 { top: 15%; left: 5%; font-size: 2.5rem; animation: float 4s ease-in-out infinite; }
-        .deco-2 { top: 70%; right: 3%; font-size: 2rem; animation: float-reverse 3.5s ease-in-out infinite; }
-        .deco-3 { bottom: 10%; left: 10%; font-size: 2rem; animation: float 5s ease-in-out infinite; }
-        .deco-4 { top: 40%; right: 15%; font-size: 1.8rem; animation: float-reverse 4s ease-in-out infinite; }
-        .deco-5 { top: 20%; right: 25%; font-size: 1.5rem; animation: float 3s ease-in-out infinite; }
-
-        /* CATEGORIAS */
-        .categories {
-            padding: 4rem 0;
-            position: relative;
+            border-radius: 3rem 3rem 0 0;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .section-title span {
+            margin-bottom: 2rem;
             background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .category-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .cat-btn {
-            padding: 0.8rem 1.8rem;
-            border-radius: 3rem;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .cat-btn[data-cat="all"] { background: linear-gradient(135deg, #64748B, #475569); color: white; }
-        .cat-btn[data-cat="datas"] { background: linear-gradient(135deg, var(--laranja), var(--amarelo)); color: white; }
-        .cat-btn[data-cat="alfabetizacao"] { background: linear-gradient(135deg, var(--verde), var(--azul)); color: white; }
-        .cat-btn[data-cat="matematica"] { background: linear-gradient(135deg, var(--azul), var(--roxo)); color: white; }
-        .cat-btn[data-cat="artes"] { background: linear-gradient(135deg, var(--rosa), var(--roxo)); color: white; }
-        .cat-btn[data-cat="inclusao"] { background: linear-gradient(135deg, var(--amarelo), var(--laranja)); color: white; }
-
-        .cat-btn:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.05);
-        }
-
-        .cat-btn.active {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        /* PRODUTOS */
-        .products {
-            padding: 2rem 0 5rem;
-        }
-
-        .products-grid {
+        .abas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .product-card {
+        .aba-card {
             background: white;
             border-radius: 1.5rem;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             cursor: pointer;
             transition: all 0.3s;
-            animation: fadeInUp 0.5s ease backwards;
+            border: 2px solid transparent;
         }
 
-        .product-card:hover {
-            transform: translateY(-8px);
+        .aba-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--laranja);
         }
 
-        .product-image {
+        .aba-icon {
+            font-size: 3rem;
+            text-align: center;
+            padding: 1.5rem 0 0;
+        }
+
+        .aba-image {
             width: 100%;
-            height: 200px;
+            height: 160px;
             object-fit: cover;
         }
 
-        .product-info {
+        .aba-info {
             padding: 1.5rem;
+            text-align: center;
         }
 
-        .product-title {
+        .aba-title {
             font-size: 1.3rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
         }
 
-        .product-price {
-            font-size: 1.4rem;
-            font-weight: 800;
+        .aba-count {
             color: var(--verde);
-            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.8rem;
         }
 
-        /* MODAL COM ABAS */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -442,67 +258,37 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
-        }
-
-        .tabs-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
             border-bottom: 2px solid #E2E8F0;
-            padding-bottom: 0.5rem;
+            padding-bottom: 1rem;
         }
 
-        .tab-btn {
-            padding: 0.6rem 1.2rem;
-            background: #F1F5F9;
-            border: none;
-            border-radius: 2rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--laranja), var(--roxo));
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 1rem 0;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .images-grid {
+        .images-grid-modal {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        .image-card {
+        .image-card-modal {
             background: #F8FAFC;
             border-radius: 1rem;
-            padding: 0.75rem;
+            padding: 1rem;
             text-align: center;
             border: 1px solid #E2E8F0;
-            cursor: pointer;
             transition: all 0.3s;
         }
 
-        .image-card:hover {
+        .image-card-modal:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .image-card img {
+        .image-card-modal img {
             width: 100%;
-            height: 130px;
+            height: 140px;
             object-fit: cover;
             border-radius: 0.5rem;
+            cursor: pointer;
         }
 
         .image-caption {
@@ -513,9 +299,27 @@
         .image-price {
             color: var(--verde);
             font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
         }
 
-        .btn-kit {
+        .btn-whats-image {
+            background: #25D366;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            font-size: 0.75rem;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-whats-image:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-kit-aba {
             background: linear-gradient(135deg, var(--laranja), var(--roxo));
             color: white;
             padding: 0.8rem;
@@ -525,23 +329,19 @@
             display: block;
             margin: 1rem 0;
             font-weight: 700;
+            cursor: pointer;
         }
 
         .empty-message {
             text-align: center;
             padding: 2rem;
             color: #94A3B8;
-            background: #F8FAFC;
-            border-radius: 1rem;
         }
 
         /* BENEFÍCIOS */
         .benefits {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: linear-gradient(135deg, #1E293B, #0F172A);
-        }
-
-        .benefits .section-title {
             color: white;
         }
 
@@ -549,92 +349,60 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .benefit-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 1.5rem;
             text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 1rem;
+            cursor: pointer;
             transition: all 0.3s;
         }
 
         .benefit-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             background: rgba(255,255,255,0.12);
         }
 
         .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .benefit-card h4 {
-            color: white;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
 
-        .benefit-card p {
-            color: #94A3B8;
-            font-size: 0.85rem;
-        }
-
-        /* SOBRE - VERSÃO SIMPLIFICADA */
+        /* SOBRE */
         .about {
-            padding: 5rem 0;
+            padding: 4rem 0;
+            text-align: center;
             background: white;
         }
 
-        .about-content {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content h3 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
+        .about h3 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--laranja), var(--roxo));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 1rem;
         }
 
-        .about-content p {
-            color: #64748B;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
         .signature {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             font-style: italic;
             color: var(--laranja);
-            font-weight: 600;
         }
 
         /* CTA */
         .cta {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
             text-align: center;
+            color: white;
         }
 
         .cta h3 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+            font-size: 2rem;
         }
 
         .btn-whats {
@@ -643,8 +411,10 @@
             padding: 1rem 2rem;
             border-radius: 3rem;
             text-decoration: none;
-            font-weight: 700;
+            display: inline-block;
+            margin-top: 1rem;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .btn-whats:hover {
@@ -678,6 +448,11 @@
             color: white;
             text-decoration: none;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float a:hover {
+            transform: scale(1.1);
         }
 
         /* PAINEL ADMIN */
@@ -716,7 +491,7 @@
             cursor: pointer;
         }
 
-        .product-form {
+        .form-aba {
             background: #334155;
             padding: 1.5rem;
             border-radius: 1rem;
@@ -724,7 +499,7 @@
             display: none;
         }
 
-        .product-form h3 {
+        .form-aba h3 {
             color: white;
             margin-bottom: 1rem;
         }
@@ -739,83 +514,93 @@
             margin-bottom: 0.25rem;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input {
             width: 100%;
             padding: 0.5rem;
             border-radius: 0.5rem;
             border: none;
         }
 
-        .admin-products {
+        .admin-abas-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        .admin-card {
+        .admin-aba-card {
             background: #334155;
             border-radius: 1rem;
             overflow: hidden;
         }
 
-        .admin-card img {
+        .admin-aba-card .aba-image {
             width: 100%;
             height: 150px;
             object-fit: cover;
         }
 
-        .admin-card-info {
+        .admin-aba-info {
             padding: 1rem;
             color: white;
         }
 
-        .admin-card-actions {
+        .admin-aba-actions {
             display: flex;
             gap: 0.5rem;
             padding: 1rem;
             border-top: 1px solid #475569;
         }
 
-        .btn-edit, .btn-delete {
-            flex: 1;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
+        .images-admin-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
         }
 
-        .btn-edit { background: #3B82F6; color: white; }
-        .btn-delete { background: #EF4444; color: white; }
+        .image-admin-item {
+            position: relative;
+            width: 60px;
+        }
+
+        .image-admin-item img {
+            width: 100%;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 0.3rem;
+        }
+
+        .remove-img {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            cursor: pointer;
+        }
 
         @media (max-width: 768px) {
             .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .hero h2 {
-                font-size: 2.2rem;
-            }
             .nav {
                 display: none;
             }
-            .hero-stats {
-                justify-content: center;
-            }
-            .section-title {
-                font-size: 1.8rem;
+            .abas-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="floating-deco deco-1">🎨</div>
-<div class="floating-deco deco-2">📚</div>
-<div class="floating-deco deco-3">🧩</div>
-<div class="floating-deco deco-4">✏️</div>
-<div class="floating-deco deco-5">🌈</div>
-
-<header class="header" id="header">
+<header class="header">
     <div class="container">
         <div class="header-content">
             <div class="logo">
@@ -823,13 +608,13 @@
                 <p>Materiais Pedagógicos Inclusivos</p>
             </div>
             <nav class="nav">
-                <a href="#home">Início</a>
-                <a href="#products">Catálogo</a>
-                <a href="#benefits">Benefícios</a>
-                <a href="#about">Sobre</a>
-                <a href="#contact">Contato</a>
+                <a onclick="scrollToSection('home')">Início</a>
+                <a onclick="scrollToSection('abas')">Catálogo</a>
+                <a onclick="scrollToSection('benefits')">Benefícios</a>
+                <a onclick="scrollToSection('about')">Sobre</a>
+                <a onclick="scrollToSection('contact')">Contato</a>
             </nav>
-            <button id="adminBtn" class="admin-trigger" onclick="openAdminLogin()">
+            <button class="admin-trigger" onclick="openAdminLogin()">
                 <i class="fas fa-lock"></i> Admin
             </button>
         </div>
@@ -839,95 +624,63 @@
 <section id="home" class="hero">
     <div class="container">
         <div class="hero-grid">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-star"></i> Materiais Premium 2026
-                </div>
-                <h2>Transforme suas aulas com <span class="hero-highlight">materiais incríveis</span></h2>
-                <p>🍎 Atividades pedagógicas prontas para usar, coloridas e inclusivas. Baixe imediatamente!</p>
-                <div class="hero-stats">
-                    <div class="stat"><div class="stat-number">+200</div><div>Arquivos</div></div>
-                    <div class="stat"><div class="stat-number">⭐ 5.0</div><div>Avaliações</div></div>
-                    <div class="stat"><div class="stat-number">📚 BNCC</div><div>Alinhado</div></div>
-                </div>
-                <a href="#products" class="btn-primary"><i class="fas fa-book-open"></i> Explorar Materiais</a>
+            <div>
+                <h2>Materiais pedagógicos para <span style="color:var(--laranja);">todos</span> os alunos</h2>
+                <p>Atividades prontas para usar, coloridas e inclusivas. Baixe imediatamente!</p>
+                <button class="btn-primary" onclick="scrollToSection('abas')"><i class="fas fa-book-open"></i> Ver Catálogo</button>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Materiais pedagógicos">
-                <div class="floating-card">
-                    <i class="fas fa-heart" style="font-size: 2rem; color: var(--laranja);"></i>
-                    <div><strong>Download Imediato</strong><br><span style="font-size:0.7rem;">Após a compra</span></div>
-                </div>
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Materiais">
             </div>
         </div>
     </div>
 </section>
 
-<div class="container categories">
-    <h3 class="section-title">
-        <i class="fas fa-graduation-cap"></i>
-        <span>Explore por categoria</span>
-        <i class="fas fa-palette"></i>
-    </h3>
-    <div class="category-buttons" id="categoryButtons">
-        <button class="cat-btn active" data-cat="all">✨ Todos</button>
-        <button class="cat-btn" data-cat="datas">🎉 Datas Comemorativas</button>
-        <button class="cat-btn" data-cat="alfabetizacao">📖 Alfabetização</button>
-        <button class="cat-btn" data-cat="matematica">🧮 Matemática</button>
-        <button class="cat-btn" data-cat="artes">🎨 Artes</button>
-        <button class="cat-btn" data-cat="inclusao">🧩 Inclusão</button>
-    </div>
-</div>
-
-<section id="products" class="products">
+<section id="abas" class="abas-section">
     <div class="container">
-        <div class="products-grid" id="productsGrid"></div>
+        <h2 class="section-title">📚 Nossos Materiais</h2>
+        <div class="abas-grid" id="abasGrid"></div>
     </div>
 </section>
 
 <section id="benefits" class="benefits">
     <div class="container">
-        <h3 class="section-title"><span>✨ Por que escolher a PedagoArt?</span></h3>
+        <h2 style="text-align:center; font-size:2rem;">✨ Benefícios</h2>
         <div class="benefits-grid">
-            <div class="benefit-card"><div class="benefit-icon">🧩</div><h4>Materiais Inclusivos</h4><p>Adaptados para todos os alunos</p></div>
-            <div class="benefit-card"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4><p>Receba na hora</p></div>
-            <div class="benefit-card"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4><p>Base Nacional</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4><p>Cores que encantam</p></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">🧩</div><h4>Materiais Inclusivos</h4></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4></div>
         </div>
     </div>
 </section>
 
 <section id="about" class="about">
     <div class="container">
-        <div class="about-content">
-            <h3>🌸 Cleisiane Barreto</h3>
-            <p>🎓 Pedagoga especializada em criar materiais inclusivos que transformam a rotina escolar em uma experiência mágica e acolhedora para todos os alunos.</p>
-            <p class="signature">"Ensinar é transformar vidas, um material de cada vez."</p>
-        </div>
+        <h3>🌸 Cleisiane Barreto</h3>
+        <p>Pedagoga especializada em criar materiais inclusivos que transformam a rotina escolar em uma experiência mágica e acolhedora.</p>
+        <p class="signature">"Ensinar é transformar vidas, um material de cada vez."</p>
+        <button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Falar com a Pedagoga</button>
     </div>
 </section>
 
 <section id="contact" class="cta">
     <div class="container">
         <h3>🚀 Pronto para transformar suas aulas?</h3>
-        <p>Adquira já os materiais e revolucione sua rotina escolar</p>
-        <div class="cta-buttons">
-            <a href="https://wa.me/5500000000000" class="btn-whats"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</a>
-        </div>
+        <button class="btn-whats" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</button>
     </div>
 </section>
 
 <footer class="footer">
     <p>© 2026 Cleisiane Barreto • PedagoArt Kids</p>
-    <p style="font-size:0.7rem;">🌈 Materiais inclusivos para uma educação que acolhe a todos</p>
 </footer>
 
 <div class="whatsapp-float">
-    <a href="https://wa.me/5500000000000"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" onclick="openWhatsApp(); return false;"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<!-- MODAL DO PRODUTO -->
-<div id="productModal" class="modal">
+<!-- MODAL DE IMAGENS DA ABA -->
+<div id="imagesModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <h2 id="modalTitle"></h2>
@@ -937,13 +690,12 @@
     </div>
 </div>
 
-<!-- MODAL DE LOGIN ADMIN -->
+<!-- MODAL LOGIN ADMIN -->
 <div id="adminLoginModal" class="modal">
     <div class="modal-content" style="max-width:400px; text-align:center;">
         <h2>🔒 Acesso Restrito</h2>
-        <p style="margin:1rem 0;">Digite a senha para acessar o painel</p>
-        <input type="password" id="adminPassword" style="width:100%; padding:0.8rem; border:1px solid #ccc; border-radius:0.5rem; margin-bottom:1rem;" placeholder="Senha">
-        <button onclick="checkAdminLogin()" style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; border:none; padding:0.8rem; border-radius:0.5rem; width:100%; cursor:pointer; font-weight:700;">Entrar</button>
+        <input type="password" id="adminPassword" style="width:100%; padding:0.8rem; margin:1rem 0; border:1px solid #ccc; border-radius:0.5rem;" placeholder="Senha">
+        <button onclick="checkAdminLogin()" style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; border:none; padding:0.8rem; border-radius:0.5rem; width:100%; cursor:pointer;">Entrar</button>
     </div>
 </div>
 
@@ -954,212 +706,349 @@
             <h2>🛠️ Painel do Proprietário</h2>
             <button class="btn-admin" onclick="closeAdminPanel()">🔒 Sair</button>
         </div>
-        <button class="btn-admin" onclick="showAddForm()" style="margin-bottom:1rem;">➕ Adicionar Produto</button>
+        <button class="btn-admin" onclick="showAddAbaForm()" style="margin-bottom:1rem;">➕ Adicionar Nova ABA</button>
 
-        <div id="productForm" class="product-form">
-            <h3 id="formTitle">➕ Adicionar Produto</h3>
-            <input type="hidden" id="productId">
-            <div class="form-group"><label>Título</label><input type="text" id="prodTitle" placeholder="Ex: 🎉 Datas Comemorativas"></div>
-            <div class="form-group"><label>Descrição</label><textarea id="prodDescription" rows="3"></textarea></div>
-            <div class="form-group"><label>Preço</label><input type="text" id="prodPrice" placeholder="Ex: R$ 29,90"></div>
-            <div class="form-group"><label>Categoria</label><select id="prodCategory"><option value="datas">Datas</option><option value="alfabetizacao">Alfabetização</option><option value="matematica">Matemática</option><option value="artes">Artes</option><option value="inclusao">Inclusão</option></select></div>
-            <div class="form-group"><label>URL da Imagem</label><input type="text" id="prodImage" placeholder="https://..."></div>
-            <div class="form-group"><label>ABAS (Carnaval, Páscoa, etc)</label><div id="tabsList"></div>
-            <div style="display:flex; gap:0.5rem; margin-top:0.5rem;"><input type="text" id="newTabName" placeholder="Nome da Aba" style="flex:2;"><button onclick="addTab()" style="background:#3B82F6; border:none; padding:0.5rem; border-radius:0.5rem; cursor:pointer;">➕</button></div></div>
-            <div><button class="btn-admin" onclick="saveProduct()">💾 Salvar</button><button class="btn-admin" onclick="hideForm()" style="background:#EF4444; margin-left:0.5rem;">Cancelar</button></div>
+        <div id="abaForm" class="form-aba">
+            <h3 id="formTitle">➕ Adicionar Nova ABA</h3>
+            <input type="hidden" id="abaId">
+            <div class="form-group"><label>Nome da ABA</label><input type="text" id="abaName" placeholder="Ex: 🎭 Carnaval"></div>
+            <div class="form-group"><label>Ícone/Emoji</label><input type="text" id="abaIcon" placeholder="Ex: 🎭"></div>
+            <div class="form-group"><label>URL da Imagem de Capa</label><input type="text" id="abaImage" placeholder="https://..."></div>
+            <div class="form-group"><label>Preço do Kit Completo</label><input type="text" id="abaKitPrice" placeholder="Ex: R$ 19,90"></div>
+            
+            <div class="form-group">
+                <label>📸 Imagens desta ABA</label>
+                <div id="imagesList"></div>
+                <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                    <input type="text" id="newImageUrl" placeholder="URL da imagem" style="flex:2;">
+                    <input type="text" id="newImageCaption" placeholder="Legenda" style="flex:1;">
+                    <input type="text" id="newImagePrice" placeholder="Preço" style="flex:1;" value="R$ 3,90">
+                    <button onclick="addImage()" style="background:#3B82F6; border:none; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">➕</button>
+                </div>
+            </div>
+            
+            <div><button class="btn-admin" onclick="saveAba()">💾 Salvar</button><button class="btn-admin" onclick="hideForm()" style="background:#EF4444; margin-left:0.5rem;">Cancelar</button></div>
         </div>
 
-        <h3 style="color:white;">📦 Seus Produtos</h3>
-        <div id="adminProductsList" class="admin-products"></div>
+        <h3 style="color:white;">📦 Todas as ABAS</h3>
+        <div id="adminAbasList" class="admin-abas-list"></div>
     </div>
 </div>
 
 <script>
-    // ACESSO RESTRITO - SENHA DENTRO DO SITE
-    const ADMIN_PASSWORD = "admin123";
-    let products = [];
-    let tempTabs = [];
+    // LINK DO WHATSAPP
+    const WHATSAPP_LINK = "https://wa.me/qr/QMLMG265QVDKE1";
+    
+    function openWhatsApp() {
+        window.open(WHATSAPP_LINK, '_blank');
+    }
 
-    const defaultProducts = [
+    function scrollToSection(sectionId) {
+        document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const ADMIN_PASSWORD = "admin123";
+    let abas = [];
+    let tempImages = [];
+
+    // ABAS PADRÃO
+    const defaultAbas = [
         {
-            id: 1, title: "🎉 Datas Comemorativas", description: "Materiais para todas as datas especiais do ano",
-            price: "R$ 29,90", image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
-            category: "datas", tags: ["Carnaval", "Páscoa", "Natal"],
-            tabs: [
-                { name: "🎭 Carnaval", images: [
-                    { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" },
-                    { url: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=300&q=80", caption: "Fantasia Colorida", price: "R$ 4,90" },
-                    { url: "https://images.unsplash.com/photo-1532689373850-cf3e8d4b78f9?auto=format&fit=crop&w=300&q=80", caption: "Atividade Carnaval", price: "R$ 2,90" }
-                ]},
-                { name: "🐰 Páscoa", images: [
-                    { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=300&q=80", caption: "Coelhinho", price: "R$ 3,90" },
-                    { url: "https://images.unsplash.com/photo-1510695425548-1c82f5e8c0b5?auto=format&fit=crop&w=300&q=80", caption: "Ovo de Páscoa", price: "R$ 4,90" }
-                ]},
-                { name: "🎄 Natal", images: [
-                    { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=300&q=80", caption: "Árvore de Natal", price: "R$ 3,90" },
-                    { url: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=300&q=80", caption: "Papai Noel", price: "R$ 4,90" }
-                ]},
-                { name: "🌽 Festa Junina", images: [
-                    { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Bandeirinhas", price: "R$ 3,90" }
-                ]}
+            id: 1, name: "🎭 Carnaval", icon: "🎭",
+            image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 19,90",
+            images: [
+                { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" },
+                { url: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=300&q=80", caption: "Fantasia Colorida", price: "R$ 4,90" }
             ]
         },
         {
-            id: 2, title: "📖 Alfabetização", description: "Atividades de leitura e escrita",
-            price: "R$ 24,90", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
-            category: "alfabetizacao", tags: ["Alfabeto", "Leitura"], tabs: [
-                { name: "🔤 Alfabeto", images: [] }, { name: "✍️ Caligrafia", images: [] }, { name: "📖 Leitura", images: [] }
+            id: 2, name: "🐰 Páscoa", icon: "🐰",
+            image: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 14,90",
+            images: [
+                { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=300&q=80", caption: "Coelhinho da Páscoa", price: "R$ 3,90" }
             ]
         },
         {
-            id: 3, title: "🧮 Matemática Lúdica", description: "Jogos e atividades matemáticas",
-            price: "R$ 27,90", image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80",
-            category: "matematica", tags: ["Números", "Tabuada"], tabs: [
-                { name: "🔢 Números", images: [] }, { name: "➕ Adição", images: [] }, { name: "✖️ Tabuada", images: [] }
+            id: 3, name: "🌽 Festa Junina", icon: "🌽",
+            image: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 14,90",
+            images: [
+                { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Bandeirinhas Juninas", price: "R$ 3,90" }
             ]
         },
         {
-            id: 4, title: "🎨 Artes Criativas", description: "Desenho, pintura e colagem",
-            price: "R$ 19,90", image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80",
-            category: "artes", tags: ["Pintura", "Desenho"], tabs: [
-                { name: "🎨 Pintura", images: [] }, { name: "✂️ Colagem", images: [] }, { name: "🖍️ Desenho", images: [] }
+            id: 4, name: "🎄 Natal", icon: "🎄",
+            image: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 19,90",
+            images: [
+                { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=300&q=80", caption: "Árvore de Natal", price: "R$ 3,90" }
             ]
         },
         {
-            id: 5, title: "🧩 Inclusão", description: "Atividades adaptadas para TEA, TDAH, Dislexia",
-            price: "R$ 34,90", image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
-            category: "inclusao", tags: ["TEA", "TDAH"], tabs: [
-                { name: "🧩 TEA", images: [] }, { name: "🧠 TDAH", images: [] }, { name: "📖 Dislexia", images: [] }
+            id: 5, name: "💐 Dia das Mães", icon: "💐",
+            image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 12,90",
+            images: [
+                { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=300&q=80", caption: "Cartão para Mamãe", price: "R$ 3,90" }
             ]
+        },
+        {
+            id: 6, name: "👨 Dia dos Pais", icon: "👨",
+            image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 12,90",
+            images: []
+        },
+        {
+            id: 7, name: "🇧🇷 Independência", icon: "🇧🇷",
+            image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 12,90",
+            images: []
+        },
+        {
+            id: 8, name: "📖 Alfabetização", icon: "📖",
+            image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 24,90",
+            images: []
+        },
+        {
+            id: 9, name: "🧩 Inclusão (TEA)", icon: "🧩",
+            image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
+            kitPrice: "R$ 29,90",
+            images: []
         }
     ];
 
-    function loadProducts() {
-        const saved = localStorage.getItem('pedagoart_products');
-        if (saved) products = JSON.parse(saved);
-        else { products = defaultProducts; saveProducts(); }
-        renderProducts();
+    function loadAbas() {
+        const saved = localStorage.getItem('pedagoart_abas');
+        if (saved) abas = JSON.parse(saved);
+        else { abas = defaultAbas; saveAbas(); }
+        renderAbas();
     }
 
-    function saveProducts() { localStorage.setItem('pedagoart_products', JSON.stringify(products)); }
+    function saveAbas() { localStorage.setItem('pedagoart_abas', JSON.stringify(abas)); }
 
-    function renderProducts() {
-        const container = document.getElementById('productsGrid');
-        const activeFilter = document.querySelector('.cat-btn.active')?.dataset.cat || 'all';
-        let filtered = products.filter(p => activeFilter === 'all' ? true : p.category === activeFilter);
+    function renderAbas() {
+        const container = document.getElementById('abasGrid');
         let html = '';
-        for (let p of filtered) {
-            html += `<div class="product-card" onclick="openProductModal(${p.id})">
-                        <img class="product-image" src="${p.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'">
-                        <div class="product-info">
-                            <h3 class="product-title">${p.title}</h3>
-                            <p style="color:#64748B; font-size:0.8rem;">${p.description.substring(0, 80)}...</p>
-                            <div class="product-price">💰 ${p.price}</div>
-                        </div>
-                    </div>`;
+        for (let aba of abas) {
+            html += `
+                <div class="aba-card" onclick="openAbaModal(${aba.id})">
+                    <div class="aba-icon">${aba.icon}</div>
+                    <img class="aba-image" src="${aba.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'">
+                    <div class="aba-info">
+                        <h3 class="aba-title">${aba.name}</h3>
+                        <div class="aba-count">💰 ${aba.kitPrice} - Kit Completo</div>
+                        <div style="font-size:0.7rem; color:#64748B; margin-top:0.3rem;">📸 ${aba.images.length} imagens</div>
+                    </div>
+                </div>
+            `;
         }
         container.innerHTML = html;
     }
 
-    function openProductModal(id) {
-        const product = products.find(p => p.id === id);
-        if (!product) return;
-        document.getElementById('modalTitle').innerHTML = product.title;
-        let tabsHtml = `<div style="color:#10B981; font-size:1.2rem; font-weight:bold;">💰 ${product.price} - Kit Completo</div>
-                        <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-kit">🎁 Comprar Kit Completo</a>
-                        <div class="tabs-buttons" id="tabsButtons"></div><div id="tabsContents"></div>`;
-        document.getElementById('modalBody').innerHTML = tabsHtml;
-        const tabsButtons = document.getElementById('tabsButtons');
-        const tabsContents = document.getElementById('tabsContents');
-        let buttonsHtml = '', contentsHtml = '';
-        for (let i = 0; i < product.tabs.length; i++) {
-            const tab = product.tabs[i];
-            buttonsHtml += `<button class="tab-btn ${i === 0 ? 'active' : ''}" onclick="switchTab(${i})">${tab.name}</button>`;
-            let imagesHtml = '';
-            if (tab.images.length === 0) imagesHtml = `<div class="empty-message"><i class="fas fa-images"></i> Nenhuma imagem disponível ainda</div>`;
-            else for (let img of tab.images) imagesHtml += `<div class="image-card" onclick="openZoom('${img.url}')"><img src="${img.url}" onerror="this.src='https://placehold.co/300x200/ccc/white?text=Erro'"><div class="image-caption">${img.caption}</div><div class="image-price">💰 ${img.price}</div><a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar ${img.caption} - ${img.price}" style="background:#25D366; color:white; padding:0.3rem 0.5rem; border-radius:1rem; text-decoration:none; font-size:0.7rem; display:inline-block; margin-top:0.5rem;" onclick="event.stopPropagation()">🛒 Comprar</a></div>`;
-            contentsHtml += `<div class="tab-content ${i === 0 ? 'active' : ''}" id="tabContent${i}"><div class="images-grid">${imagesHtml}</div></div>`;
+    function openAbaModal(abaId) {
+        const aba = abas.find(a => a.id === abaId);
+        if (!aba) return;
+        
+        document.getElementById('modalTitle').innerHTML = `${aba.icon} ${aba.name}`;
+        
+        let imagesHtml = '';
+        for (let img of aba.images) {
+            imagesHtml += `
+                <div class="image-card-modal">
+                    <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/300x200/ccc/white?text=Erro'">
+                    <div class="image-caption">${img.caption}</div>
+                    <div class="image-price">💰 ${img.price}</div>
+                    <button class="btn-whats-image" onclick="openWhatsApp()">🛒 Comprar este item</button>
+                </div>
+            `;
         }
-        tabsButtons.innerHTML = buttonsHtml;
-        tabsContents.innerHTML = contentsHtml;
-        document.getElementById('productModal').style.display = 'flex';
+        
+        if (aba.images.length === 0) {
+            imagesHtml = `<div class="empty-message"><i class="fas fa-images"></i> Nenhuma imagem disponível ainda.<br><button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Solicitar via WhatsApp</button></div>`;
+        }
+        
+        document.getElementById('modalBody').innerHTML = `
+            <div style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; padding:1rem; border-radius:1rem; text-align:center; margin-bottom:1rem;">
+                <strong>💰 Kit Completo: ${aba.kitPrice}</strong>
+            </div>
+            <button class="btn-kit-aba" onclick="openWhatsApp()">🎁 Comprar Kit Completo (Todas as imagens)</button>
+            <div style="text-align:center; margin:1rem 0;">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div>
+            <div class="images-grid-modal">${imagesHtml}</div>
+        `;
+        
+        document.getElementById('imagesModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 
-    function switchTab(index) {
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        document.getElementById(`tabContent${index}`).classList.add('active');
-        document.querySelectorAll('.tab-btn').forEach((btn, i) => { btn.classList.toggle('active', i === index); });
+    function openZoom(url) {
+        const win = window.open();
+        win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;background:white;border:none;padding:10px 20px;border-radius:1rem;">Fechar</button></body></html>`);
     }
 
-    function closeModal() { document.getElementById('productModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-    function openZoom(url) { const win = window.open(); win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;background:white;border:none;padding:10px 20px;border-radius:1rem;">Fechar</button></body></html>`); }
-
-    // FILTROS
-    function setupFilters() {
-        document.querySelectorAll('.cat-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                renderProducts();
-            });
-        });
+    function closeModal() {
+        document.getElementById('imagesModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 
-    // ADMIN (ACESSO DENTRO DO SITE)
+    // ADMIN
     function openAdminLogin() { document.getElementById('adminLoginModal').style.display = 'flex'; }
     function closeAdminLogin() { document.getElementById('adminLoginModal').style.display = 'none'; document.getElementById('adminPassword').value = ''; }
+    
     function checkAdminLogin() {
         if (document.getElementById('adminPassword').value === ADMIN_PASSWORD) {
             closeAdminLogin();
             document.querySelector('.header').style.display = 'none';
             document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.categories').style.display = 'none';
-            document.querySelector('.products').style.display = 'none';
+            document.querySelector('.abas-section').style.display = 'none';
             document.querySelector('.benefits').style.display = 'none';
             document.querySelector('.about').style.display = 'none';
             document.querySelector('.cta').style.display = 'none';
             document.querySelector('.footer').style.display = 'none';
             document.querySelector('.whatsapp-float').style.display = 'none';
-            document.querySelectorAll('.floating-deco').forEach(el => el.style.display = 'none');
             document.getElementById('adminPanel').style.display = 'block';
-            renderAdminProducts();
-        } else alert('Senha incorreta!');
+            renderAdminAbas();
+        } else alert('Senha incorreta! Use: admin123');
     }
+    
     function closeAdminPanel() { location.reload(); }
 
-    function renderTabsList() {
-        let html = '';
-        for (let i = 0; i < tempTabs.length; i++) {
-            html += `<div style="background:#475569; padding:1rem; border-radius:0.5rem; margin-bottom:1rem;">
-                        <div style="display:flex; justify-content:space-between;"><strong>📁 ${tempTabs[i].name}</strong><button onclick="removeTab(${i})" style="background:#EF4444; border:none; border-radius:0.5rem; padding:0.2rem 0.5rem;">🗑️</button></div>
-                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">`;
-            for (let j = 0; j < tempTabs[i].images.length; j++) {
-                html += `<div style="position:relative; width:80px;"><img src="${tempTabs[i].images[j].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;"><div style="font-size:10px;">${tempTabs[i].images[j].caption}</div><div style="font-size:10px; color:#10B981;">${tempTabs[i].images[j].price}</div><button onclick="removeImageFromTab(${i}, ${j})" style="position:absolute; top:-5px; right:-5px; background:#EF4444; color:white; border:none; border-radius:50%; width:18px; height:18px;">✕</button></div>`;
-            }
-            html += `</div><button onclick="addImageToTab(${i})" style="background:#3B82F6; border:none; border-radius:0.5rem; padding:0.3rem 0.8rem; margin-top:0.5rem;">➕ Adicionar Imagem</button></div>`;
+    function renderImagesList() {
+        const container = document.getElementById('imagesList');
+        let html = '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
+        for (let i = 0; i < tempImages.length; i++) {
+            html += `
+                <div style="position:relative; width:80px;">
+                    <img src="${tempImages[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;">
+                    <div style="font-size:10px;">${tempImages[i].caption}</div>
+                    <div style="font-size:10px; color:#10B981;">${tempImages[i].price}</div>
+                    <button onclick="removeImage(${i})" style="position:absolute; top:-5px; right:-5px; background:#EF4444; color:white; border:none; border-radius:50%; width:18px; height:18px;">✕</button>
+                </div>
+            `;
         }
-        document.getElementById('tabsList').innerHTML = html;
+        html += '</div>';
+        container.innerHTML = html;
     }
 
-    function addTab() { const name = document.getElementById('newTabName').value; if (name) { tempTabs.push({ name, images: [] }); renderTabsList(); document.getElementById('newTabName').value = ''; } else alert('Digite o nome da aba'); }
-    function removeTab(i) { tempTabs.splice(i, 1); renderTabsList(); }
-    function addImageToTab(i) { const url = prompt('URL da imagem:'); if (url) { const caption = prompt('Legenda:'); const price = prompt('Preço:'); tempTabs[i].images.push({ url, caption: caption || 'Imagem', price: price || 'R$ 3,90' }); renderTabsList(); } }
-    function removeImageFromTab(tabIdx, imgIdx) { tempTabs[tabIdx].images.splice(imgIdx, 1); renderTabsList(); }
-    function showAddForm() { document.getElementById('formTitle').innerHTML = '➕ Adicionar Produto'; document.getElementById('productId').value = ''; document.getElementById('prodTitle').value = ''; document.getElementById('prodDescription').value = ''; document.getElementById('prodPrice').value = ''; document.getElementById('prodCategory').value = 'datas'; document.getElementById('prodImage').value = ''; tempTabs = []; renderTabsList(); document.getElementById('productForm').style.display = 'block'; }
-    function hideForm() { document.getElementById('productForm').style.display = 'none'; }
-    function editProduct(id) { const p = products.find(p => p.id === id); if (p) { document.getElementById('formTitle').innerHTML = '✏️ Editar Produto'; document.getElementById('productId').value = p.id; document.getElementById('prodTitle').value = p.title; document.getElementById('prodDescription').value = p.description; document.getElementById('prodPrice').value = p.price; document.getElementById('prodCategory').value = p.category; document.getElementById('prodImage').value = p.image; tempTabs = p.tabs ? [...p.tabs] : []; renderTabsList(); document.getElementById('productForm').style.display = 'block'; } }
-    function saveProduct() { const id = document.getElementById('productId').value; const title = document.getElementById('prodTitle').value; const description = document.getElementById('prodDescription').value; const price = document.getElementById('prodPrice').value; const category = document.getElementById('prodCategory').value; const image = document.getElementById('prodImage').value; if (!title || !description || !price || !image) { alert('Preencha todos os campos!'); return; } if (id) { const idx = products.findIndex(p => p.id == id); if (idx !== -1) products[idx] = { ...products[idx], title, description, price, category, image, tabs: tempTabs }; } else { const newId = Math.max(...products.map(p => p.id), 0) + 1; products.push({ id: newId, title, description, price, category, image, tags: [], tabs: tempTabs }); } saveProducts(); renderAdminProducts(); renderProducts(); hideForm(); alert('Produto salvo!'); }
-    function deleteProduct(id) { if (confirm('Excluir?')) { products = products.filter(p => p.id !== id); saveProducts(); renderAdminProducts(); renderProducts(); } }
-    function renderAdminProducts() { let html = ''; for (let p of products) { html += `<div class="admin-card"><img src="${p.image}"><div class="admin-card-info"><h4>${p.title}</h4><p>💰 ${p.price}</p><p>📑 ${p.tabs?.length || 0} abas</p></div><div class="admin-card-actions"><button class="btn-edit" onclick="editProduct(${p.id})">✏️</button><button class="btn-delete" onclick="deleteProduct(${p.id})">🗑️</button></div></div>`; } document.getElementById('adminProductsList').innerHTML = html; }
+    function addImage() {
+        const url = document.getElementById('newImageUrl').value;
+        const caption = document.getElementById('newImageCaption').value;
+        const price = document.getElementById('newImagePrice').value;
+        if (!url) { alert('Digite a URL da imagem'); return; }
+        tempImages.push({ url, caption: caption || 'Imagem', price: price || 'R$ 3,90' });
+        renderImagesList();
+        document.getElementById('newImageUrl').value = '';
+        document.getElementById('newImageCaption').value = '';
+        document.getElementById('newImagePrice').value = 'R$ 3,90';
+    }
 
-    loadProducts();
-    setupFilters();
-    window.onclick = (e) => { if (e.target === document.getElementById('productModal')) closeModal(); if (e.target === document.getElementById('adminLoginModal')) closeAdminLogin(); };
-    window.switchTab = switchTab; window.openProductModal = openProductModal; window.closeModal = closeModal; window.openZoom = openZoom;
-    window.openAdminLogin = openAdminLogin; window.checkAdminLogin = checkAdminLogin; window.closeAdminPanel = closeAdminPanel;
-    window.showAddForm = showAddForm; window.hideForm = hideForm; window.addTab = addTab; window.removeTab = removeTab; window.addImageToTab = addImageToTab; window.removeImageFromTab = removeImageFromTab;
-    window.saveProduct = saveProduct; window.editProduct = editProduct; window.deleteProduct = deleteProduct;
+    function removeImage(index) { tempImages.splice(index, 1); renderImagesList(); }
+
+    function showAddAbaForm() {
+        document.getElementById('formTitle').innerHTML = '➕ Adicionar Nova ABA';
+        document.getElementById('abaId').value = '';
+        document.getElementById('abaName').value = '';
+        document.getElementById('abaIcon').value = '';
+        document.getElementById('abaImage').value = '';
+        document.getElementById('abaKitPrice').value = '';
+        tempImages = [];
+        renderImagesList();
+        document.getElementById('abaForm').style.display = 'block';
+    }
+
+    function hideForm() { document.getElementById('abaForm').style.display = 'none'; }
+
+    function editAba(id) {
+        const aba = abas.find(a => a.id === id);
+        if (!aba) return;
+        document.getElementById('formTitle').innerHTML = '✏️ Editar ABA';
+        document.getElementById('abaId').value = aba.id;
+        document.getElementById('abaName').value = aba.name;
+        document.getElementById('abaIcon').value = aba.icon;
+        document.getElementById('abaImage').value = aba.image;
+        document.getElementById('abaKitPrice').value = aba.kitPrice;
+        tempImages = [...aba.images];
+        renderImagesList();
+        document.getElementById('abaForm').style.display = 'block';
+    }
+
+    function saveAba() {
+        const id = document.getElementById('abaId').value;
+        const name = document.getElementById('abaName').value;
+        const icon = document.getElementById('abaIcon').value;
+        const image = document.getElementById('abaImage').value;
+        const kitPrice = document.getElementById('abaKitPrice').value;
+        
+        if (!name || !icon || !image || !kitPrice) { alert('Preencha todos os campos!'); return; }
+        
+        if (id) {
+            const index = abas.findIndex(a => a.id == id);
+            if (index !== -1) abas[index] = { ...abas[index], name, icon, image, kitPrice, images: tempImages };
+        } else {
+            const newId = Math.max(...abas.map(a => a.id), 0) + 1;
+            abas.push({ id: newId, name, icon, image, kitPrice, images: tempImages });
+        }
+        
+        saveAbas();
+        renderAbas();
+        renderAdminAbas();
+        hideForm();
+        alert('ABA salva com sucesso!');
+    }
+
+    function deleteAba(id) {
+        if (confirm('Tem certeza que deseja excluir esta ABA?')) {
+            abas = abas.filter(a => a.id !== id);
+            saveAbas();
+            renderAbas();
+            renderAdminAbas();
+        }
+    }
+
+    function renderAdminAbas() {
+        const container = document.getElementById('adminAbasList');
+        let html = '';
+        for (let aba of abas) {
+            html += `
+                <div class="admin-aba-card">
+                    <img class="aba-image" src="${aba.image}" onerror="this.src='https://placehold.co/600x400'">
+                    <div class="admin-aba-info">
+                        <h4>${aba.icon} ${aba.name}</h4>
+                        <p>💰 ${aba.kitPrice}</p>
+                        <div class="images-admin-list">
+                            ${aba.images.map(img => `<div class="image-admin-item"><img src="${img.url}"><div style="font-size:8px;">${img.caption}</div></div>`).join('')}
+                        </div>
+                        <p style="font-size:0.7rem;">📸 ${aba.images.length} imagens</p>
+                    </div>
+                    <div class="admin-aba-actions">
+                        <button class="btn-admin" onclick="editAba(${aba.id})" style="background:#3B82F6;">✏️ Editar</button>
+                        <button class="btn-admin" onclick="deleteAba(${aba.id})" style="background:#EF4444;">🗑️ Excluir</button>
+                    </div>
+                </div>
+            `;
+        }
+        container.innerHTML = html;
+    }
+
+    loadAbas();
+    window.onclick = (e) => { if (e.target === document.getElementById('imagesModal')) closeModal(); if (e.target === document.getElementById('adminLoginModal')) closeAdminLogin(); };
+    window.openWhatsApp = openWhatsApp;
+    window.scrollToSection = scrollToSection;
+    window.openAbaModal = openAbaModal;
+    window.closeModal = closeModal;
+    window.openZoom = openZoom;
+    window.openAdminLogin = openAdminLogin;
+    window.checkAdminLogin = checkAdminLogin;
+    window.closeAdminPanel = closeAdminPanel;
+    window.showAddAbaForm = showAddAbaForm;
+    window.hideForm = hideForm;
+    window.editAba = editAba;
+    window.deleteAba = deleteAba;
+    window.addImage = addImage;
+    window.removeImage = removeImage;
+    window.saveAba = saveAba;
 </script>
 </body>
 </html>
