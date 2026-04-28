@@ -20,7 +20,6 @@
             --roxo: #8B5CF6;
             --rosa: #EC4899;
             --amarelo: #F59E0B;
-            --vermelho: #EF4444;
             --ciano: #06B6D4;
             --dark: #1E293B;
             --light: #F8FAFC;
@@ -30,23 +29,12 @@
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #FFF9F0 0%, #F0F9FF 50%, #F0FDF4 100%);
             color: var(--dark);
-            overflow-x: hidden;
         }
 
-        /* ANIMAÇÕES */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes shine {
-            0% { background-position: -100%; }
-            100% { background-position: 200%; }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         /* CABEÇALHO */
@@ -61,12 +49,6 @@
             padding: 0.8rem 0;
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -74,18 +56,12 @@
         }
 
         .logo h1 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-
-        .logo p {
-            font-size: 0.7rem;
-            color: var(--dark);
-            opacity: 0.7;
         }
 
         .nav {
@@ -97,33 +73,30 @@
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            transition: color 0.3s;
         }
 
-        .nav a:hover {
-            color: var(--laranja);
+        /* BOTÃO ADMIN - SÓ APARECE NO LINK SECRETO */
+        .admin-trigger {
+            background: linear-gradient(135deg, var(--roxo), var(--rosa));
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 1rem;
         }
 
-        /* HERO SECTION - IMPACTANTE */
+        .hidden {
+            display: none !important;
+        }
+
+        /* HERO */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 7rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 70%;
-            height: 140%;
-            background: radial-gradient(circle, rgba(255,107,53,0.08), transparent);
-            border-radius: 50%;
-            z-index: -1;
         }
 
         .hero-grid {
@@ -133,63 +106,11 @@
             align-items: center;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--laranja), var(--rosa));
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
         .hero h2 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
-            line-height: 1.2;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-highlight {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--amarelo), var(--laranja));
-            padding: 0.2rem 0.8rem;
-            border-radius: 1rem;
-            color: white;
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
-        }
-
-        .hero p {
-            color: #64748B;
-            font-size: 1.1rem;
-            margin: 1.5rem 0;
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .stat {
-            text-align: center;
-            background: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo));
+            background: linear-gradient(135deg, var(--dark), var(--laranja));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -198,50 +119,17 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--laranja), var(--rosa));
             color: white;
-            padding: 0.9rem 2rem;
+            padding: 0.8rem 2rem;
             border-radius: 3rem;
             text-decoration: none;
-            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px -5px rgba(236,72,153,0.3);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(236,72,153,0.4);
-        }
-
-        .hero-image {
-            position: relative;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .floating-card {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background: white;
-            padding: 1rem;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--laranja);
-        }
-
-        /* CATEGORIAS COLORIDAS */
+        /* CATEGORIAS */
         .categories {
-            padding: 3rem 0;
+            padding: 2rem 0;
         }
 
         .section-title {
@@ -249,17 +137,6 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .section-title span {
-            background: linear-gradient(135deg, var(--laranja), var(--roxo));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
 
         .category-buttons {
@@ -270,13 +147,12 @@
         }
 
         .cat-btn {
-            padding: 0.7rem 1.5rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 3rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             border: none;
-            font-size: 0.9rem;
+            transition: all 0.3s;
         }
 
         .cat-btn[data-cat="all"] { background: linear-gradient(135deg, #64748B, #475569); color: white; }
@@ -285,21 +161,11 @@
         .cat-btn[data-cat="matematica"] { background: linear-gradient(135deg, var(--azul), var(--roxo)); color: white; }
         .cat-btn[data-cat="artes"] { background: linear-gradient(135deg, var(--rosa), var(--roxo)); color: white; }
         .cat-btn[data-cat="inclusao"] { background: linear-gradient(135deg, var(--amarelo), var(--laranja)); color: white; }
-        .cat-btn[data-cat="kits"] { background: linear-gradient(135deg, var(--ciano), var(--verde)); color: white; }
-
-        .cat-btn:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.05);
-        }
-
-        .cat-btn.active {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+        .cat-btn.active { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         /* PRODUTOS */
         .products {
-            padding: 3rem 0 5rem;
+            padding: 2rem 0 5rem;
         }
 
         .products-grid {
@@ -315,18 +181,11 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .product-icon {
-            font-size: 3rem;
-            text-align: center;
-            padding: 1rem 0 0;
         }
 
         .product-image {
@@ -342,171 +201,16 @@
         .product-title {
             font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-description {
-            color: #64748B;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
         }
 
         .product-price {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--verde);
-            margin-bottom: 1rem;
+            margin: 0.5rem 0;
         }
 
-        .product-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        .tag {
-            background: #F1F5F9;
-            padding: 0.2rem 0.6rem;
-            border-radius: 1rem;
-            font-size: 0.65rem;
-            font-weight: 600;
-        }
-
-        .tag-inclusao { background: #FEF3C7; color: #D97706; }
-        .tag-matematica { background: #DBEAFE; color: #2563EB; }
-        .tag-artes { background: #FCE7F3; color: #DB2777; }
-
-        /* BENEFÍCIOS */
-        .benefits {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #1E293B, #0F172A);
-            color: white;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .benefit-card {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 1.5rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* SOBRE */
-        .about {
-            padding: 5rem 0;
-            background: white;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .about h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .signature {
-            margin-top: 1.5rem;
-            font-style: italic;
-            color: var(--laranja);
-            font-weight: 600;
-        }
-
-        /* CTA */
-        .cta {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '❤️ 🧩 ✨ 🎨 📚';
-            position: absolute;
-            font-size: 8rem;
-            opacity: 0.1;
-            bottom: -20px;
-            right: -20px;
-        }
-
-        .cta h3 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .btn-whats {
-            background: #25D366;
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 3rem;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-
-        .btn-whats:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-email {
-            background: white;
-            color: var(--laranja);
-            padding: 1rem 2.5rem;
-            border-radius: 3rem;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--dark);
-            color: #94A3B8;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* MODAL */
+        /* MODAL COM ABAS */
         .modal {
             display: none;
             position: fixed;
@@ -538,40 +242,47 @@
             margin-bottom: 1rem;
         }
 
-        .folder {
-            background: #F1F5F9;
-            border-radius: 1rem;
-            margin-bottom: 1rem;
-            overflow: hidden;
+        /* ESTILO DAS ABAS */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 0.5rem;
         }
 
-        .folder-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem;
-            background: #E2E8F0;
+        .tab-btn {
+            padding: 0.6rem 1.2rem;
+            background: #F1F5F9;
+            border: none;
+            border-radius: 2rem;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.3s;
         }
 
-        .folder-content {
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--laranja), var(--roxo));
+            color: white;
+        }
+
+        .tab-content {
             display: none;
-            padding: 1rem;
-            background: white;
+            padding: 1rem 0;
         }
 
-        .folder-content.show {
+        .tab-content.active {
             display: block;
         }
 
-        .images-subgrid {
+        .images-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 1rem;
         }
 
-        .sub-item {
+        .image-item {
             background: #F8FAFC;
             border-radius: 1rem;
             padding: 0.75rem;
@@ -579,7 +290,7 @@
             border: 1px solid #E2E8F0;
         }
 
-        .sub-item img {
+        .image-item img {
             width: 100%;
             height: 120px;
             object-fit: cover;
@@ -587,13 +298,13 @@
             cursor: pointer;
         }
 
-        .sub-price {
+        .image-price {
             color: var(--verde);
             font-weight: 700;
             margin: 0.5rem 0;
         }
 
-        .btn-whats-sub {
+        .btn-whats-image {
             background: #25D366;
             color: white;
             padding: 0.3rem 0.5rem;
@@ -615,45 +326,242 @@
             font-weight: 600;
         }
 
+        .empty-message {
+            text-align: center;
+            padding: 2rem;
+            color: #94A3B8;
+            background: #F8FAFC;
+            border-radius: 1rem;
+        }
+
+        /* BENEFÍCIOS */
+        .benefits {
+            padding: 4rem 0;
+            background: #F8FAFC;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* CTA */
+        .cta {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--laranja), var(--roxo));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .btn-whats {
+            background: #25D366;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: #94A3B8;
+            text-align: center;
+            padding: 2rem;
+        }
+
         .whatsapp-float {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             z-index: 100;
-            animation: pulse 2s infinite;
         }
 
         .whatsapp-float a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             background: #25D366;
             border-radius: 50%;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: white;
             text-decoration: none;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* PAINEL ADMIN */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            z-index: 3000;
+            overflow-y: auto;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .btn-admin {
+            background: var(--verde);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .product-form {
+            background: #1E293B;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .product-form h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: none;
+        }
+
+        .admin-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .admin-card {
+            background: #1E293B;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .admin-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .admin-card-info {
+            padding: 1rem;
+            color: white;
+        }
+
+        .admin-card-actions {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-top: 1px solid #334155;
+        }
+
+        .btn-edit, .btn-delete {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .btn-edit { background: var(--azul); color: white; }
+        .btn-delete { background: #EF4444; color: white; }
+
+        .tab-admin {
+            background: #334155;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab-admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .images-admin-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .image-admin-item {
+            position: relative;
+            width: 80px;
+        }
+
+        .image-admin-item img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
         }
 
         @media (max-width: 768px) {
-            .hero-grid, .about-grid {
+            .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
-            }
-            .hero h2 {
-                font-size: 2rem;
             }
             .nav {
                 display: none;
             }
-            .category-buttons {
-                gap: 0.5rem;
-            }
-            .cat-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.7rem;
+            .tabs {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -671,9 +579,11 @@
                 <a href="#home">Início</a>
                 <a href="#products">Catálogo</a>
                 <a href="#benefits">Benefícios</a>
-                <a href="#about">Sobre</a>
                 <a href="#contact">Contato</a>
             </nav>
+            <button id="adminBtn" class="admin-trigger hidden" onclick="openAdminLogin()">
+                <i class="fas fa-lock"></i> Admin
+            </button>
         </div>
     </div>
 </header>
@@ -682,39 +592,26 @@
     <div class="container">
         <div class="hero-grid">
             <div>
-                <span class="hero-badge">✨ Novo! Pacotes 2026</span>
-                <h2>Materiais pedagógicos para <span class="hero-highlight">TODOS</span> os alunos</h2>
-                <p>Atividades adaptadas para <strong>autismo (TEA)</strong>, <strong>dislexia</strong>, <strong>TDAH</strong>, <strong>deficiência intelectual</strong> e muito mais. Inclusão que funciona na prática!</p>
-                <div class="hero-stats">
-                    <div class="stat"><div class="stat-number">+200</div><div>Arquivos</div></div>
-                    <div class="stat"><div class="stat-number">⭐ 5.0</div><div>Avaliações</div></div>
-                    <div class="stat"><div class="stat-number">📚 BNCC</div><div>Alinhado</div></div>
-                </div>
-                <a href="#products" class="btn-primary"><i class="fas fa-book-open"></i> Explorar Materiais</a>
+                <h2>Materiais pedagógicos para TODOS os alunos</h2>
+                <p>Atividades inclusivas para TEA, TDAH, dislexia e deficiência intelectual. Materiais prontos para usar!</p>
+                <a href="#products" class="btn-primary"><i class="fas fa-book"></i> Ver Catálogo</a>
             </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Materiais pedagógicos">
-                <div class="floating-card">
-                    <i class="fas fa-universal-access" style="font-size: 2rem; color: var(--laranja);"></i>
-                    <div><strong>+50 atividades inclusivas</strong><br><span style="font-size:0.7rem;">Adaptadas para TEA e PCD</span></div>
-                </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" style="width:100%; border-radius:1.5rem;" alt="Materiais">
             </div>
         </div>
     </div>
 </section>
 
 <div class="container categories">
-    <div class="section-title">
-        <span>📚</span> <span>Nossas categorias</span> <span>🎨</span>
-    </div>
+    <h3 class="section-title">📚 Nossas Categorias</h3>
     <div class="category-buttons" id="categoryButtons">
         <button class="cat-btn active" data-cat="all">✨ Todos</button>
         <button class="cat-btn" data-cat="datas">🎉 Datas Comemorativas</button>
         <button class="cat-btn" data-cat="alfabetizacao">📖 Alfabetização</button>
-        <button class="cat-btn" data-cat="matematica">🧮 Matemática Lúdica</button>
-        <button class="cat-btn" data-cat="artes">🎨 Artes Criativas</button>
+        <button class="cat-btn" data-cat="matematica">🧮 Matemática</button>
+        <button class="cat-btn" data-cat="artes">🎨 Artes</button>
         <button class="cat-btn" data-cat="inclusao">🧩 Inclusão (TEA/PCD)</button>
-        <button class="cat-btn" data-cat="kits">🏆 Kits Premium</button>
     </div>
 </div>
 
@@ -726,30 +623,12 @@
 
 <section id="benefits" class="benefits">
     <div class="container">
-        <h3 style="text-align:center; font-size:2rem;">✨ Por que escolher a PedagoArt?</h3>
+        <h3 style="text-align:center; font-size:1.8rem;">✨ Benefícios</h3>
         <div class="benefits-grid">
-            <div class="benefit-card"><div class="benefit-icon">🧩</div><h4>Materiais Inclusivos</h4><p>Adaptados para TEA, TDAH, Dislexia e Deficiência Intelectual</p></div>
-            <div class="benefit-card"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4><p>Receba seus arquivos na hora</p></div>
-            <div class="benefit-card"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4><p>Todos os materiais seguem a Base Nacional</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4><p>Cores e ilustrações que encantam</p></div>
-            <div class="benefit-card"><div class="benefit-icon">💳</div><h4>Pagamento Seguro</h4><p>Pix, cartão ou boleto</p></div>
-            <div class="benefit-card"><div class="benefit-icon">👩‍🏫</div><h4>Criado por Pedagoga</h4><p>Materiais testados em sala de aula</p></div>
-        </div>
-    </div>
-</section>
-
-<section id="about" class="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Professora">
-            </div>
-            <div>
-                <h3>Cleisiane Barreto</h3>
-                <p>🌱 Sou pedagoga especializada em <strong>Educação Inclusiva</strong> e crio materiais que realmente funcionam em sala de aula. Minha missão é ajudar outros educadores a terem aulas mais dinâmicas, criativas e inclusivas.</p>
-                <p>💙 Tenho experiência com alunos <strong>autistas (TEA)</strong>, com <strong>TDAH</strong>, <strong>dislexia</strong> e <strong>deficiência intelectual</strong>. Cada atividade é pensada para acolher todos os estudantes.</p>
-                <p class="signature">"Ensinar é transformar vidas, um material de cada vez."</p>
-            </div>
+            <div class="benefit-card">🧩 Inclusivo</div>
+            <div class="benefit-card">⚡ Download Imediato</div>
+            <div class="benefit-card">📚 Alinhado à BNCC</div>
+            <div class="benefit-card">🎨 Design Atraente</div>
         </div>
     </div>
 </section>
@@ -757,23 +636,22 @@
 <section id="contact" class="cta">
     <div class="container">
         <h3>🚀 Pronto para transformar suas aulas?</h3>
-        <p>Materiais inclusivos, criativos e prontos para usar. Baixe imediatamente!</p>
+        <p>Adquira já os materiais e revolucione sua rotina escolar</p>
         <div class="cta-buttons">
-            <a href="https://wa.me/5500000000000" class="btn-whats"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</a>
-            <a href="mailto:contato@pedagoart.com" class="btn-email"><i class="fas fa-envelope"></i> Enviar Email</a>
+            <a href="https://wa.me/5500000000000" class="btn-whats"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </section>
 
 <footer class="footer">
     <p>© 2026 Cleisiane Barreto • PedagoArt Kids</p>
-    <p style="font-size:0.7rem; margin-top:0.5rem;">🌈 Materiais inclusivos para uma educação que acolhe a todos</p>
 </footer>
 
 <div class="whatsapp-float">
     <a href="https://wa.me/5500000000000"><i class="fab fa-whatsapp"></i></a>
 </div>
 
+<!-- MODAL DO PRODUTO (COM ABAS) -->
 <div id="productModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -784,117 +662,167 @@
     </div>
 </div>
 
+<!-- MODAL DE LOGIN ADMIN -->
+<div id="adminLoginModal" class="modal">
+    <div class="modal-content" style="max-width:400px;">
+        <h2>🔒 Acesso Restrito</h2>
+        <input type="password" id="adminPassword" style="width:100%; padding:0.8rem; margin:1rem 0; border:1px solid #ccc; border-radius:0.5rem;" placeholder="Digite a senha">
+        <button onclick="checkAdminLogin()" style="background:var(--laranja); color:white; border:none; padding:0.8rem; border-radius:0.5rem; width:100%; cursor:pointer;">Entrar</button>
+    </div>
+</div>
+
+<!-- PAINEL ADMIN -->
+<div id="adminPanel" class="admin-panel">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2>🛠️ Painel do Proprietário</h2>
+            <button class="btn-admin" onclick="closeAdminPanel()">🔒 Sair</button>
+        </div>
+        <button class="btn-admin" onclick="showAddForm()" style="margin-bottom:1rem;">➕ Adicionar Produto</button>
+
+        <div id="productForm" class="product-form">
+            <h3 id="formTitle">➕ Adicionar Produto</h3>
+            <input type="hidden" id="productId">
+            <div class="form-group"><label>Título</label><input type="text" id="prodTitle" placeholder="Ex: 🎉 Datas Comemorativas"></div>
+            <div class="form-group"><label>Descrição</label><textarea id="prodDescription" rows="3"></textarea></div>
+            <div class="form-group"><label>Preço do Kit</label><input type="text" id="prodPrice" placeholder="Ex: R$ 29,90"></div>
+            <div class="form-group"><label>Categoria</label><select id="prodCategory"><option value="datas">Datas</option><option value="alfabetizacao">Alfabetização</option><option value="matematica">Matemática</option><option value="artes">Artes</option><option value="inclusao">Inclusão</option></select></div>
+            <div class="form-group"><label>URL da Imagem de Capa</label><input type="text" id="prodImage" placeholder="https://..."></div>
+            
+            <div class="form-group">
+                <label>📑 Abas do Produto (Carnaval, Páscoa, Natal, etc)</label>
+                <div id="tabsList"></div>
+                <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                    <input type="text" id="newTabName" placeholder="Nome da Aba (Ex: Carnaval)" style="flex:2;">
+                    <button onclick="addTab()" style="background:var(--azul); border:none; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">➕ Adicionar Aba</button>
+                </div>
+            </div>
+            
+            <div style="margin-top:1rem;"><button class="btn-admin" onclick="saveProduct()">💾 Salvar</button><button class="btn-admin" onclick="hideForm()" style="background:#EF4444; margin-left:0.5rem;">Cancelar</button></div>
+        </div>
+
+        <h3 style="color:white;">📦 Seus Produtos</h3>
+        <div id="adminProductsList" class="admin-products"></div>
+    </div>
+</div>
+
 <script>
-    // PRODUTOS COM TODAS AS CATEGORIAS
-    const products = [
+    // VERIFICAR LINK SECRETO
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdminMode = urlParams.get('admin') === 'true';
+    
+    if (isAdminMode) {
+        document.getElementById('adminBtn').classList.remove('hidden');
+    }
+
+    const ADMIN_PASSWORD = "admin123";
+    let products = [];
+    let currentTabs = []; // Para o admin
+    
+    // PRODUTOS PADRÃO COM ABAS
+    const defaultProducts = [
         {
             id: 1,
             title: "🎉 Datas Comemorativas",
-            description: "Materiais para todas as datas especiais do ano letivo: Carnaval, Páscoa, Festa Junina, Natal e muito mais.",
+            description: "Materiais para Carnaval, Páscoa, Festa Junina, Natal e muito mais",
             price: "R$ 29,90",
             image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
             category: "datas",
-            tags: ["🎭 Carnaval", "🐰 Páscoa", "🌽 Festa Junina", "🎄 Natal"],
-            folders: [
+            tabs: [
                 { name: "🎭 Carnaval", images: [] },
                 { name: "🐰 Páscoa", images: [] },
                 { name: "🌽 Festa Junina", images: [] },
-                { name: "🎄 Natal", images: [] }
+                { name: "🎄 Natal", images: [] },
+                { name: "🇧🇷 Independência do Brasil", images: [] },
+                { name: "👨 Dia dos Pais", images: [] },
+                { name: "💐 Dia das Mães", images: [] },
+                { name: "🧸 Dia das Crianças", images: [] }
             ]
         },
         {
             id: 2,
-            title: "📖 Alfabetização Completa",
-            description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano.",
+            title: "📖 Alfabetização",
+            description: "Atividades de leitura, escrita e coordenação motora",
             price: "R$ 24,90",
             image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
             category: "alfabetizacao",
-            tags: ["🔤 Letras", "✍️ Caligrafia", "📝 Leitura"],
-            folders: [
+            tabs: [
                 { name: "🔤 Alfabeto", images: [] },
                 { name: "✍️ Caligrafia", images: [] },
-                { name: "📖 Leitura e Interpretação", images: [] }
+                { name: "📖 Leitura", images: [] }
             ]
         },
         {
             id: 3,
             title: "🧮 Matemática Lúdica",
-            description: "Jogos e atividades matemáticas para aprender brincando. Números, operações, tabuada e formas geométricas.",
+            description: "Jogos e atividades matemáticas",
             price: "R$ 27,90",
             image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80",
             category: "matematica",
-            tags: ["🔢 Números", "➕ Adição", "✖️ Tabuada", "🔺 Formas"],
-            folders: [
-                { name: "🔢 Números e Quantidades", images: [] },
-                { name: "➕ Adição e Subtração", images: [] },
-                { name: "✖️ Tabuada Divertida", images: [] },
-                { name: "🔺 Formas Geométricas", images: [] }
+            tabs: [
+                { name: "🔢 Números", images: [] },
+                { name: "➕ Adição", images: [] },
+                { name: "✖️ Tabuada", images: [] }
             ]
         },
         {
             id: 4,
             title: "🎨 Artes Criativas",
-            description: "Atividades de desenho, pintura, colagem e expressão artística para desenvolver a criatividade.",
+            description: "Desenho, pintura, colagem e expressão artística",
             price: "R$ 19,90",
             image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80",
             category: "artes",
-            tags: ["🎨 Pintura", "✂️ Colagem", "🖍️ Desenho"],
-            folders: [
-                { name: "🎨 Pintura e Cores", images: [] },
-                { name: "✂️ Colagem e Recorte", images: [] },
-                { name: "🖍️ Desenho Livre", images: [] }
+            tabs: [
+                { name: "🎨 Pintura", images: [] },
+                { name: "✂️ Colagem", images: [] },
+                { name: "🖍️ Desenho", images: [] }
             ]
         },
         {
             id: 5,
             title: "🧩 Inclusão - Atividades Adaptadas",
-            description: "Materiais exclusivos para alunos com TEA (autismo), TDAH, dislexia e deficiência intelectual. Inclusão que funciona!",
+            description: "Materiais para TEA (autismo), TDAH, dislexia e deficiência intelectual",
             price: "R$ 34,90",
             image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
             category: "inclusao",
-            tags: ["🧩 TEA", "🧠 TDAH", "📖 Dislexia", "💙 Def. Intelectual"],
-            folders: [
-                { name: "🧩 Comunicação Alternativa - TEA", images: [] },
-                { name: "🧠 Foco e Atenção - TDAH", images: [] },
-                { name: "📖 Leitura Adaptada - Dislexia", images: [] },
-                { name: "💙 Atividades para Deficiência Intelectual", images: [] },
-                { name: "🖐️ Estimulação Sensorial", images: [] }
-            ]
-        },
-        {
-            id: 6,
-            title: "🏆 Kit Premium Professor Inclusivo",
-            description: "Pacote completo com planners, calendários, fichas de avaliação adaptadas e materiais exclusivos.",
-            price: "R$ 59,90",
-            image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=600&q=80",
-            category: "kits",
-            tags: ["📅 Planner", "📊 Avaliações", "🎁 Bônus"],
-            folders: [
-                { name: "📅 Planner do Professor Inclusivo", images: [] },
-                { name: "📊 Fichas de Avaliação Adaptadas", images: [] },
-                { name: "🎁 Bônus: 50 Atividades Extras", images: [] }
+            tabs: [
+                { name: "🧩 TEA - Autismo", images: [] },
+                { name: "🧠 TDAH - Foco", images: [] },
+                { name: "📖 Dislexia", images: [] },
+                { name: "💙 Def. Intelectual", images: [] }
             ]
         }
     ];
 
-    let currentFilter = "all";
+    function loadProducts() {
+        const saved = localStorage.getItem('pedagoart_products');
+        if (saved) {
+            products = JSON.parse(saved);
+        } else {
+            products = defaultProducts;
+            saveProducts();
+        }
+        renderProducts();
+    }
+
+    function saveProducts() {
+        localStorage.setItem('pedagoart_products', JSON.stringify(products));
+    }
 
     function renderProducts() {
         const container = document.getElementById('productsGrid');
-        let filtered = products.filter(p => currentFilter === "all" ? true : p.category === currentFilter);
+        const activeFilter = document.querySelector('.cat-btn.active')?.dataset.cat || 'all';
+        let filtered = products.filter(p => activeFilter === 'all' ? true : p.category === activeFilter);
         
         let html = '';
         for (let p of filtered) {
-            let tagsHtml = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
             html += `
                 <div class="product-card" onclick="openProductModal(${p.id})">
-                    <div class="product-icon">${p.title.charAt(0)}</div>
                     <img class="product-image" src="${p.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'">
                     <div class="product-info">
                         <h3 class="product-title">${p.title}</h3>
-                        <p class="product-description">${p.description.substring(0, 80)}...</p>
+                        <p style="color:#64748B; font-size:0.8rem;">${p.description.substring(0, 80)}...</p>
                         <div class="product-price">💰 ${p.price}</div>
-                        <div class="product-tags">${tagsHtml}</div>
                     </div>
                 </div>
             `;
@@ -902,45 +830,71 @@
         container.innerHTML = html;
     }
 
+    // ABRIR MODAL COM ABAS
     function openProductModal(id) {
         const product = products.find(p => p.id === id);
         if (!product) return;
         
         document.getElementById('modalTitle').innerHTML = product.title;
         
-        let foldersHtml = `<div style="color:var(--verde); font-size:1.3rem; font-weight:bold; margin-bottom:1rem;">💰 ${product.price} - Kit Completo</div>
-                           <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-kit">🎁 Comprar Kit Completo (Todas as pastas)</a>
-                           <div style="text-align:center; margin:1rem 0;">⭐ ESCOLHA POR PASTA ⭐</div>
-                           <div class="folder-structure">`;
+        let tabsHtml = `<div style="color:var(--verde); font-size:1.2rem; font-weight:bold; margin-bottom:1rem;">💰 ${product.price} - Kit Completo</div>
+                        <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-kit">🎁 Comprar Kit Completo (Todas as abas)</a>
+                        <div style="text-align:center; margin:1rem 0;">⭐ ESCOLHA POR ABA ⭐</div>
+                        <div class="tabs" id="modalTabs"></div>
+                        <div id="modalTabContents"></div>`;
         
-        for (let folder of product.folders) {
-            foldersHtml += `
-                <div class="folder">
-                    <div class="folder-header" onclick="toggleFolder(this)">
-                        <i class="fas fa-folder"></i> 📁 ${folder.name}
-                        <span style="margin-left:auto; font-size:0.7rem;">Adicione suas imagens aqui</span>
-                    </div>
-                    <div class="folder-content">
-                        <div class="images-subgrid">
-                            <div style="grid-column:1/-1; text-align:center; padding:1rem; color:#64748B;">
-                                <i class="fas fa-upload"></i> Você pode adicionar suas imagens em cada pasta<br>
-                                <small>Entre no painel admin para adicionar as fotos</small>
-                            </div>
+        document.getElementById('modalBody').innerHTML = tabsHtml;
+        
+        // Criar abas
+        const tabsContainer = document.getElementById('modalTabs');
+        const contentsContainer = document.getElementById('modalTabContents');
+        
+        let tabsButtons = '';
+        let contentsHtml = '';
+        
+        for (let i = 0; i < product.tabs.length; i++) {
+            const tab = product.tabs[i];
+            const activeClass = i === 0 ? 'active' : '';
+            tabsButtons += `<button class="tab-btn ${activeClass}" onclick="switchTab(${i})">${tab.name}</button>`;
+            
+            let imagesHtml = '';
+            if (tab.images.length === 0) {
+                imagesHtml = `<div class="empty-message"><i class="fas fa-images"></i> Nenhuma imagem nesta aba ainda.<br><small>Em breve mais materiais!</small></div>`;
+            } else {
+                for (let img of tab.images) {
+                    imagesHtml += `
+                        <div class="image-item">
+                            <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/150x120/ccc/white?text=Erro'">
+                            <p style="margin:0.5rem 0; font-size:0.8rem;">${img.caption}</p>
+                            <div class="image-price">💰 ${img.price}</div>
+                            <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar ${img.caption} - ${img.price}" class="btn-whats-image">🛒 Comprar</a>
                         </div>
-                    </div>
-                </div>
-            `;
+                    `;
+                }
+            }
+            
+            contentsHtml += `<div class="tab-content ${activeClass}" id="tabContent${i}"><div class="images-grid">${imagesHtml}</div></div>`;
         }
         
-        foldersHtml += `</div>`;
-        document.getElementById('modalBody').innerHTML = foldersHtml;
+        tabsContainer.innerHTML = tabsButtons;
+        contentsContainer.innerHTML = contentsHtml;
+        
         document.getElementById('productModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 
-    function toggleFolder(element) {
-        const content = element.nextElementSibling;
-        content.classList.toggle('show');
+    function switchTab(index) {
+        // Esconder todos os conteúdos
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        document.getElementById(`tabContent${index}`).classList.add('active');
+        
+        // Atualizar botões
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach((btn, i) => {
+            if (i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
     }
 
     function closeModal() {
@@ -948,26 +902,238 @@
         document.body.style.overflow = 'auto';
     }
 
+    function openZoom(url) {
+        const win = window.open();
+        win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;">Fechar</button></body></html>`);
+    }
+
     // FILTROS
-    const btns = document.querySelectorAll('.cat-btn');
-    btns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            btns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentFilter = this.dataset.cat;
-            renderProducts();
+    function setupFilters() {
+        const btns = document.querySelectorAll('.cat-btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                btns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProducts();
+            });
         });
-    });
+    }
+
+    // ============================================
+    // ADMIN - SÓ APARECE NO LINK SECRETO
+    // ============================================
+    let tempTabs = [];
+
+    function openAdminLogin() {
+        if (!isAdminMode) return;
+        document.getElementById('adminLoginModal').style.display = 'flex';
+    }
+
+    function checkAdminLogin() {
+        const pass = document.getElementById('adminPassword').value;
+        if (pass === ADMIN_PASSWORD) {
+            document.getElementById('adminLoginModal').style.display = 'none';
+            document.querySelector('.header').style.display = 'none';
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.categories').style.display = 'none';
+            document.querySelector('.products').style.display = 'none';
+            document.querySelector('.benefits').style.display = 'none';
+            document.querySelector('.cta').style.display = 'none';
+            document.querySelector('.footer').style.display = 'none';
+            document.querySelector('.whatsapp-float').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            renderAdminProducts();
+        } else {
+            alert('Senha incorreta!');
+        }
+    }
+
+    function closeAdminPanel() {
+        location.reload();
+    }
+
+    // GERENCIAR ABAS NO ADMIN
+    function addTab() {
+        const name = document.getElementById('newTabName').value;
+        if (!name) { alert('Digite o nome da aba'); return; }
+        tempTabs.push({ name, images: [] });
+        renderTabsList();
+        document.getElementById('newTabName').value = '';
+    }
+
+    function removeTab(index) {
+        tempTabs.splice(index, 1);
+        renderTabsList();
+    }
+
+    function addImageToTab(tabIndex) {
+        const url = prompt('URL da imagem (use Imgur ou outro serviço gratuito):');
+        const caption = prompt('Legenda da imagem:');
+        const price = prompt('Preço (Ex: R$ 3,90):');
+        if (url) {
+            tempTabs[tabIndex].images.push({ url, caption: caption || 'Imagem', price: price || 'R$ 3,90' });
+            renderTabsList();
+        }
+    }
+
+    function removeImageFromTab(tabIndex, imageIndex) {
+        tempTabs[tabIndex].images.splice(imageIndex, 1);
+        renderTabsList();
+    }
+
+    function renderTabsList() {
+        const container = document.getElementById('tabsList');
+        if (!container) return;
+        let html = '';
+        for (let i = 0; i < tempTabs.length; i++) {
+            html += `
+                <div class="tab-admin">
+                    <div class="tab-admin-header">
+                        <strong>📁 ${tempTabs[i].name}</strong>
+                        <button onclick="removeTab(${i})" style="background:#EF4444; border:none; border-radius:0.5rem; padding:0.2rem 0.5rem; cursor:pointer;">🗑️</button>
+                    </div>
+                    <div class="images-admin-grid">
+            `;
+            for (let j = 0; j < tempTabs[i].images.length; j++) {
+                html += `
+                    <div class="image-admin-item">
+                        <img src="${tempTabs[i].images[j].url}" onerror="this.src='https://placehold.co/80x80/ccc/white?text=Erro'">
+                        <div style="font-size:10px;">${tempTabs[i].images[j].caption}</div>
+                        <div style="font-size:10px; color:var(--verde);">${tempTabs[i].images[j].price}</div>
+                        <button onclick="removeImageFromTab(${i}, ${j})" style="position:absolute; top:-5px; right:-5px; background:#EF4444; color:white; border:none; border-radius:50%; width:18px; height:18px; font-size:10px; cursor:pointer;">✕</button>
+                    </div>
+                `;
+            }
+            html += `
+                    </div>
+                    <button onclick="addImageToTab(${i})" style="background:var(--azul); border:none; border-radius:0.5rem; padding:0.3rem 0.8rem; margin-top:0.5rem; cursor:pointer;">➕ Adicionar Imagem</button>
+                </div>
+            `;
+        }
+        container.innerHTML = html;
+    }
+
+    function showAddForm() {
+        document.getElementById('formTitle').innerHTML = '➕ Adicionar Produto';
+        document.getElementById('productId').value = '';
+        document.getElementById('prodTitle').value = '';
+        document.getElementById('prodDescription').value = '';
+        document.getElementById('prodPrice').value = '';
+        document.getElementById('prodCategory').value = 'datas';
+        document.getElementById('prodImage').value = '';
+        tempTabs = [];
+        renderTabsList();
+        document.getElementById('productForm').style.display = 'block';
+    }
+
+    function hideForm() {
+        document.getElementById('productForm').style.display = 'none';
+    }
+
+    function editProduct(id) {
+        const product = products.find(p => p.id === id);
+        if (!product) return;
+        document.getElementById('formTitle').innerHTML = '✏️ Editar Produto';
+        document.getElementById('productId').value = product.id;
+        document.getElementById('prodTitle').value = product.title;
+        document.getElementById('prodDescription').value = product.description;
+        document.getElementById('prodPrice').value = product.price;
+        document.getElementById('prodCategory').value = product.category;
+        document.getElementById('prodImage').value = product.image;
+        tempTabs = product.tabs ? [...product.tabs] : [];
+        renderTabsList();
+        document.getElementById('productForm').style.display = 'block';
+    }
+
+    function saveProduct() {
+        const id = document.getElementById('productId').value;
+        const title = document.getElementById('prodTitle').value;
+        const description = document.getElementById('prodDescription').value;
+        const price = document.getElementById('prodPrice').value;
+        const category = document.getElementById('prodCategory').value;
+        const image = document.getElementById('prodImage').value;
+        
+        if (!title || !description || !price || !image) {
+            alert('Preencha todos os campos obrigatórios!');
+            return;
+        }
+        
+        if (id) {
+            const index = products.findIndex(p => p.id == id);
+            if (index !== -1) {
+                products[index] = { ...products[index], title, description, price, category, image, tabs: tempTabs };
+            }
+        } else {
+            const newId = Math.max(...products.map(p => p.id), 0) + 1;
+            products.push({ id: newId, title, description, price, category, image, tabs: tempTabs });
+        }
+        
+        saveProducts();
+        renderAdminProducts();
+        renderProducts();
+        hideForm();
+        alert('Produto salvo com sucesso!');
+    }
+
+    function deleteProduct(id) {
+        if (confirm('Tem certeza que deseja excluir este produto?')) {
+            products = products.filter(p => p.id !== id);
+            saveProducts();
+            renderAdminProducts();
+            renderProducts();
+        }
+    }
+
+    function renderAdminProducts() {
+        const container = document.getElementById('adminProductsList');
+        if (!container) return;
+        let html = '';
+        for (let p of products) {
+            html += `
+                <div class="admin-card">
+                    <img src="${p.image}" onerror="this.src='https://placehold.co/600x400'">
+                    <div class="admin-card-info">
+                        <h4>${p.title}</h4>
+                        <p>💰 ${p.price}</p>
+                        <p style="font-size:0.7rem;">📑 ${p.tabs?.length || 0} abas</p>
+                    </div>
+                    <div class="admin-card-actions">
+                        <button class="btn-edit" onclick="editProduct(${p.id})">✏️ Editar</button>
+                        <button class="btn-delete" onclick="deleteProduct(${p.id})">🗑️ Excluir</button>
+                    </div>
+                </div>
+            `;
+        }
+        container.innerHTML = html;
+    }
+
+    // INICIALIZAÇÃO
+    loadProducts();
+    setupFilters();
 
     window.onclick = (e) => {
         const modal = document.getElementById('productModal');
+        const loginModal = document.getElementById('adminLoginModal');
         if (e.target === modal) closeModal();
+        if (e.target === loginModal) loginModal.style.display = 'none';
     };
 
-    renderProducts();
-    window.toggleFolder = toggleFolder;
+    window.switchTab = switchTab;
     window.openProductModal = openProductModal;
     window.closeModal = closeModal;
+    window.openZoom = openZoom;
+    window.openAdminLogin = openAdminLogin;
+    window.checkAdminLogin = checkAdminLogin;
+    window.closeAdminPanel = closeAdminPanel;
+    window.showAddForm = showAddForm;
+    window.hideForm = hideForm;
+    window.addTab = addTab;
+    window.removeTab = removeTab;
+    window.addImageToTab = addImageToTab;
+    window.removeImageFromTab = removeImageFromTab;
+    window.saveProduct = saveProduct;
+    window.editProduct = editProduct;
+    window.deleteProduct = deleteProduct;
 </script>
 </body>
 </html>
