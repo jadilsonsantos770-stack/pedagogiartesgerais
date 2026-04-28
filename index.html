@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PedagoArt Kids | Materiais Pedagógicos</title>
+    <title>PedagoArt Kids | Materiais Inclusivos e Criativos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -14,36 +14,57 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --success: #10b981;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --light: #f8fafc;
+            --laranja: #FF6B35;
+            --azul: #3B82F6;
+            --verde: #10B981;
+            --roxo: #8B5CF6;
+            --rosa: #EC4899;
+            --amarelo: #F59E0B;
+            --vermelho: #EF4444;
+            --ciano: #06B6D4;
+            --dark: #1E293B;
+            --light: #F8FAFC;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #fef2f2 0%, #fdf4ff 50%, #f0fdf4 100%);
+            background: linear-gradient(135deg, #FFF9F0 0%, #F0F9FF 50%, #F0FDF4 100%);
             color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shine {
+            0% { background-position: -100%; }
+            100% { background-position: 200%; }
+        }
+
+        /* CABEÇALHO */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 0.8rem 0;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
-        }
-
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 0.8rem 0;
         }
 
         .header-content {
@@ -53,12 +74,18 @@
         }
 
         .logo h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: var(--dark);
+            opacity: 0.7;
         }
 
         .nav {
@@ -70,13 +97,33 @@
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
+            transition: color 0.3s;
         }
 
+        .nav a:hover {
+            color: var(--laranja);
+        }
+
+        /* HERO SECTION - IMPACTANTE */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 6rem 0 4rem;
+            padding: 7rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255,107,53,0.08), transparent);
+            border-radius: 50%;
+            z-index: -1;
         }
 
         .hero-grid {
@@ -86,45 +133,200 @@
             align-items: center;
         }
 
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--laranja), var(--rosa));
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
         .hero h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--dark), var(--primary));
+            background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--amarelo), var(--laranja));
+            padding: 0.2rem 0.8rem;
+            border-radius: 1rem;
+            color: white;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        .hero p {
+            color: #64748B;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            background: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--laranja), var(--roxo));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--laranja), var(--rosa));
             color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 2rem;
+            padding: 0.9rem 2rem;
+            border-radius: 3rem;
             text-decoration: none;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px -5px rgba(236,72,153,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(236,72,153,0.4);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--laranja);
+        }
+
+        /* CATEGORIAS COLORIDAS */
+        .categories {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--laranja), var(--roxo));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .cat-btn[data-cat="all"] { background: linear-gradient(135deg, #64748B, #475569); color: white; }
+        .cat-btn[data-cat="datas"] { background: linear-gradient(135deg, var(--laranja), var(--amarelo)); color: white; }
+        .cat-btn[data-cat="alfabetizacao"] { background: linear-gradient(135deg, var(--verde), var(--ciano)); color: white; }
+        .cat-btn[data-cat="matematica"] { background: linear-gradient(135deg, var(--azul), var(--roxo)); color: white; }
+        .cat-btn[data-cat="artes"] { background: linear-gradient(135deg, var(--rosa), var(--roxo)); color: white; }
+        .cat-btn[data-cat="inclusao"] { background: linear-gradient(135deg, var(--amarelo), var(--laranja)); color: white; }
+        .cat-btn[data-cat="kits"] { background: linear-gradient(135deg, var(--ciano), var(--verde)); color: white; }
+
+        .cat-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+
+        .cat-btn.active {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* PRODUTOS */
+        .products {
+            padding: 3rem 0 5rem;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
-            padding: 3rem 0;
         }
 
         .product-card {
             background: white;
             border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            text-align: center;
+            padding: 1rem 0 0;
         }
 
         .product-image {
@@ -138,15 +340,170 @@
         }
 
         .product-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #64748B;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
         .product-price {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 800;
-            color: var(--success);
-            margin: 0.5rem 0;
+            color: var(--verde);
+            margin-bottom: 1rem;
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background: #F1F5F9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+
+        .tag-inclusao { background: #FEF3C7; color: #D97706; }
+        .tag-matematica { background: #DBEAFE; color: #2563EB; }
+        .tag-artes { background: #FCE7F3; color: #DB2777; }
+
+        /* BENEFÍCIOS */
+        .benefits {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* SOBRE */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .signature {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--laranja);
+            font-weight: 600;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '❤️ 🧩 ✨ 🎨 📚';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            bottom: -20px;
+            right: -20px;
+        }
+
+        .cta h3 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-whats {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-whats:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-email {
+            background: white;
+            color: var(--laranja);
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: #94A3B8;
+            text-align: center;
+            padding: 2rem;
         }
 
         /* MODAL */
@@ -159,7 +516,7 @@
             height: 100%;
             background: rgba(0,0,0,0.8);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 2000;
             justify-content: center;
             align-items: center;
         }
@@ -178,11 +535,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .folder {
-            background: #f1f5f9;
+            background: #F1F5F9;
             border-radius: 1rem;
             margin-bottom: 1rem;
             overflow: hidden;
@@ -193,13 +550,9 @@
             align-items: center;
             gap: 0.5rem;
             padding: 1rem;
-            background: #e2e8f0;
+            background: #E2E8F0;
             cursor: pointer;
             font-weight: 600;
-        }
-
-        .folder-header i {
-            color: var(--primary);
         }
 
         .folder-content {
@@ -219,11 +572,11 @@
         }
 
         .sub-item {
-            background: #f8fafc;
+            background: #F8FAFC;
             border-radius: 1rem;
             padding: 0.75rem;
             text-align: center;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #E2E8F0;
         }
 
         .sub-item img {
@@ -235,7 +588,7 @@
         }
 
         .sub-price {
-            color: var(--success);
+            color: var(--verde);
             font-weight: 700;
             margin: 0.5rem 0;
         }
@@ -251,7 +604,7 @@
         }
 
         .btn-kit {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--laranja), var(--roxo));
             color: white;
             padding: 0.8rem;
             border-radius: 2rem;
@@ -259,6 +612,7 @@
             text-decoration: none;
             display: block;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .whatsapp-float {
@@ -266,29 +620,40 @@
             bottom: 2rem;
             right: 2rem;
             z-index: 100;
+            animation: pulse 2s infinite;
         }
 
         .whatsapp-float a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             background: #25D366;
             border-radius: 50%;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: white;
             text-decoration: none;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         @media (max-width: 768px) {
-            .hero-grid {
+            .hero-grid, .about-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+            .hero h2 {
+                font-size: 2rem;
+            }
             .nav {
                 display: none;
+            }
+            .category-buttons {
+                gap: 0.5rem;
+            }
+            .cat-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -299,13 +664,14 @@
     <div class="container">
         <div class="header-content">
             <div class="logo">
-                <h1>✨ PedagoArt Kids</h1>
-                <p>Materiais Pedagógicos</p>
+                <h1>🌈 PedagoArt Kids</h1>
+                <p>Materiais Inclusivos e Criativos</p>
             </div>
             <nav class="nav">
                 <a href="#home">Início</a>
                 <a href="#products">Catálogo</a>
                 <a href="#benefits">Benefícios</a>
+                <a href="#about">Sobre</a>
                 <a href="#contact">Contato</a>
             </nav>
         </div>
@@ -316,16 +682,41 @@
     <div class="container">
         <div class="hero-grid">
             <div>
-                <h2>Arquivos pedagógicos para transformar suas aulas</h2>
-                <p>Materiais digitais prontos para usar. Baixe imediatamente após a compra.</p>
-                <a href="#products" class="btn-primary"><i class="fas fa-book"></i> Ver Catálogo</a>
+                <span class="hero-badge">✨ Novo! Pacotes 2026</span>
+                <h2>Materiais pedagógicos para <span class="hero-highlight">TODOS</span> os alunos</h2>
+                <p>Atividades adaptadas para <strong>autismo (TEA)</strong>, <strong>dislexia</strong>, <strong>TDAH</strong>, <strong>deficiência intelectual</strong> e muito mais. Inclusão que funciona na prática!</p>
+                <div class="hero-stats">
+                    <div class="stat"><div class="stat-number">+200</div><div>Arquivos</div></div>
+                    <div class="stat"><div class="stat-number">⭐ 5.0</div><div>Avaliações</div></div>
+                    <div class="stat"><div class="stat-number">📚 BNCC</div><div>Alinhado</div></div>
+                </div>
+                <a href="#products" class="btn-primary"><i class="fas fa-book-open"></i> Explorar Materiais</a>
             </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" style="width:100%; border-radius:1.5rem;" alt="Materiais">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Materiais pedagógicos">
+                <div class="floating-card">
+                    <i class="fas fa-universal-access" style="font-size: 2rem; color: var(--laranja);"></i>
+                    <div><strong>+50 atividades inclusivas</strong><br><span style="font-size:0.7rem;">Adaptadas para TEA e PCD</span></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="container categories">
+    <div class="section-title">
+        <span>📚</span> <span>Nossas categorias</span> <span>🎨</span>
+    </div>
+    <div class="category-buttons" id="categoryButtons">
+        <button class="cat-btn active" data-cat="all">✨ Todos</button>
+        <button class="cat-btn" data-cat="datas">🎉 Datas Comemorativas</button>
+        <button class="cat-btn" data-cat="alfabetizacao">📖 Alfabetização</button>
+        <button class="cat-btn" data-cat="matematica">🧮 Matemática Lúdica</button>
+        <button class="cat-btn" data-cat="artes">🎨 Artes Criativas</button>
+        <button class="cat-btn" data-cat="inclusao">🧩 Inclusão (TEA/PCD)</button>
+        <button class="cat-btn" data-cat="kits">🏆 Kits Premium</button>
+    </div>
+</div>
 
 <section id="products" class="products">
     <div class="container">
@@ -333,28 +724,50 @@
     </div>
 </section>
 
-<section id="benefits" style="padding:4rem 0; background:#f8fafc;">
+<section id="benefits" class="benefits">
     <div class="container">
-        <h3 style="text-align:center; font-size:2rem; margin-bottom:2rem;">✨ Benefícios</h3>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem;">
-            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">🎨 Design Atraente</div>
-            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">⚡ Download Imediato</div>
-            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">📚 Alinhado à BNCC</div>
-            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">💳 Pagamento Seguro</div>
+        <h3 style="text-align:center; font-size:2rem;">✨ Por que escolher a PedagoArt?</h3>
+        <div class="benefits-grid">
+            <div class="benefit-card"><div class="benefit-icon">🧩</div><h4>Materiais Inclusivos</h4><p>Adaptados para TEA, TDAH, Dislexia e Deficiência Intelectual</p></div>
+            <div class="benefit-card"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4><p>Receba seus arquivos na hora</p></div>
+            <div class="benefit-card"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4><p>Todos os materiais seguem a Base Nacional</p></div>
+            <div class="benefit-card"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4><p>Cores e ilustrações que encantam</p></div>
+            <div class="benefit-card"><div class="benefit-icon">💳</div><h4>Pagamento Seguro</h4><p>Pix, cartão ou boleto</p></div>
+            <div class="benefit-card"><div class="benefit-icon">👩‍🏫</div><h4>Criado por Pedagoga</h4><p>Materiais testados em sala de aula</p></div>
         </div>
     </div>
 </section>
 
-<section id="contact" style="padding:4rem 0; background:linear-gradient(135deg, #6366f1, #4f46e5); text-align:center; color:white;">
+<section id="about" class="about">
     <div class="container">
-        <h3 style="font-size:2rem;">🚀 Pronto para transformar suas aulas?</h3>
-        <p style="margin:1rem 0;">Adquira já os materiais e revolucione sua rotina escolar</p>
-        <a href="https://wa.me/5500000000000" style="background:#25D366; color:white; padding:0.75rem 2rem; border-radius:2rem; text-decoration:none; display:inline-block;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Professora">
+            </div>
+            <div>
+                <h3>Cleisiane Barreto</h3>
+                <p>🌱 Sou pedagoga especializada em <strong>Educação Inclusiva</strong> e crio materiais que realmente funcionam em sala de aula. Minha missão é ajudar outros educadores a terem aulas mais dinâmicas, criativas e inclusivas.</p>
+                <p>💙 Tenho experiência com alunos <strong>autistas (TEA)</strong>, com <strong>TDAH</strong>, <strong>dislexia</strong> e <strong>deficiência intelectual</strong>. Cada atividade é pensada para acolher todos os estudantes.</p>
+                <p class="signature">"Ensinar é transformar vidas, um material de cada vez."</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<footer style="background:#0f172a; color:#64748b; text-align:center; padding:2rem;">
+<section id="contact" class="cta">
+    <div class="container">
+        <h3>🚀 Pronto para transformar suas aulas?</h3>
+        <p>Materiais inclusivos, criativos e prontos para usar. Baixe imediatamente!</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/5500000000000" class="btn-whats"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</a>
+            <a href="mailto:contato@pedagoart.com" class="btn-email"><i class="fas fa-envelope"></i> Enviar Email</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
     <p>© 2026 Cleisiane Barreto • PedagoArt Kids</p>
+    <p style="font-size:0.7rem; margin-top:0.5rem;">🌈 Materiais inclusivos para uma educação que acolhe a todos</p>
 </footer>
 
 <div class="whatsapp-float">
@@ -372,106 +785,116 @@
 </div>
 
 <script>
-    // ============================================
-    // PRODUTO COM TODAS AS PASTAS DE DATAS COMEMORATIVAS
-    // ============================================
+    // PRODUTOS COM TODAS AS CATEGORIAS
     const products = [
         {
             id: 1,
             title: "🎉 Datas Comemorativas",
-            description: "Materiais para todas as datas especiais do ano letivo",
+            description: "Materiais para todas as datas especiais do ano letivo: Carnaval, Páscoa, Festa Junina, Natal e muito mais.",
             price: "R$ 29,90",
             image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
             category: "datas",
+            tags: ["🎭 Carnaval", "🐰 Páscoa", "🌽 Festa Junina", "🎄 Natal"],
             folders: [
-                // JANEIRO
-                { name: "📅 Janeiro", images: [] },
-                // FEVEREIRO
-                { name: "🎭 Fevereiro - Carnaval", images: [
-                    { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" },
-                    { url: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=300&q=80", caption: "Fantasia de Carnaval", price: "R$ 4,90" }
-                ]},
-                // MARÇO
-                { name: "🎪 Março - Dia do Circo", images: [
-                    { url: "https://images.unsplash.com/photo-1532689373850-cf3e8d4b78f9?auto=format&fit=crop&w=300&q=80", caption: "Palhaço - Dia do Circo", price: "R$ 3,90" },
-                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Atividade Circo", price: "R$ 3,90" }
-                ]},
-                // ABRIL - Tiradentes
-                { name: "🇧🇷 Abril - Tiradentes", images: [
-                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "Tiradentes - História", price: "R$ 3,90" }
-                ]},
-                // MAIO - Dia das Mães
-                { name: "💐 Maio - Dia das Mães", images: [
-                    { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=300&q=80", caption: "Cartão para Mamãe", price: "R$ 4,90" },
-                    { url: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=300&q=80", caption: "Atividade Dia das Mães", price: "R$ 3,90" }
-                ]},
-                // JUNHO - Festa Junina
-                { name: "🌽 Junho - Festa Junina", images: [
-                    { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Bandeirinhas Juninas", price: "R$ 3,90" },
-                    { url: "https://images.unsplash.com/photo-1533681478154-7e3bbf3fcb1c?auto=format&fit=crop&w=300&q=80", caption: "Balão Junino", price: "R$ 3,90" }
-                ]},
-                // JULHO - Independência de Sergipe
-                { name: "🏛️ Julho - Independência de Sergipe", images: [
-                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "História de Sergipe", price: "R$ 4,90" }
-                ]},
-                // AGOSTO - Dia dos Pais
-                { name: "👨 Agosto - Dia dos Pais", images: [
-                    { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=300&q=80", caption: "Cartão para Papai", price: "R$ 4,90" }
-                ]},
-                // SETEMBRO - Independência do Brasil
-                { name: "🇧🇷 Setembro - Independência do Brasil", images: [
-                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "7 de Setembro", price: "R$ 4,90" },
-                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Bandeira do Brasil", price: "R$ 3,90" }
-                ]},
-                // OUTUBRO - Dia das Crianças
-                { name: "🧸 Outubro - Dia das Crianças", images: [
-                    { url: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=300&q=80", caption: "Brinquedo para colorir", price: "R$ 3,90" },
-                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Atividade Dia das Crianças", price: "R$ 3,90" }
-                ]},
-                // NOVEMBRO - Proclamação da República e Consciência Negra
-                { name: "📜 Novembro - Proclamação da República", images: [
-                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "15 de Novembro", price: "R$ 4,90" }
-                ]},
-                { name: "✊🏿 Novembro - Consciência Negra", images: [
-                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Cultura Afro", price: "R$ 4,90" }
-                ]},
-                // DEZEMBRO - Natal
-                { name: "🎄 Dezembro - Natal", images: [
-                    { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=300&q=80", caption: "Árvore de Natal", price: "R$ 4,90" },
-                    { url: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=300&q=80", caption: "Presépio", price: "R$ 4,90" }
-                ]}
+                { name: "🎭 Carnaval", images: [] },
+                { name: "🐰 Páscoa", images: [] },
+                { name: "🌽 Festa Junina", images: [] },
+                { name: "🎄 Natal", images: [] }
             ]
         },
         {
             id: 2,
             title: "📖 Alfabetização Completa",
-            description: "Atividades de leitura, escrita e coordenação motora",
+            description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano.",
             price: "R$ 24,90",
             image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
             category: "alfabetizacao",
+            tags: ["🔤 Letras", "✍️ Caligrafia", "📝 Leitura"],
             folders: [
-                { name: "🔤 Alfabeto", images: [
-                    { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=300&q=80", caption: "Letra A", price: "R$ 2,90" },
-                    { url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80", caption: "Letra B", price: "R$ 2,90" }
-                ]},
-                { name: "✍️ Caligrafia", images: [
-                    { url: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=300&q=80", caption: "Treino da letra cursiva", price: "R$ 3,90" }
-                ]}
+                { name: "🔤 Alfabeto", images: [] },
+                { name: "✍️ Caligrafia", images: [] },
+                { name: "📖 Leitura e Interpretação", images: [] }
+            ]
+        },
+        {
+            id: 3,
+            title: "🧮 Matemática Lúdica",
+            description: "Jogos e atividades matemáticas para aprender brincando. Números, operações, tabuada e formas geométricas.",
+            price: "R$ 27,90",
+            image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80",
+            category: "matematica",
+            tags: ["🔢 Números", "➕ Adição", "✖️ Tabuada", "🔺 Formas"],
+            folders: [
+                { name: "🔢 Números e Quantidades", images: [] },
+                { name: "➕ Adição e Subtração", images: [] },
+                { name: "✖️ Tabuada Divertida", images: [] },
+                { name: "🔺 Formas Geométricas", images: [] }
+            ]
+        },
+        {
+            id: 4,
+            title: "🎨 Artes Criativas",
+            description: "Atividades de desenho, pintura, colagem e expressão artística para desenvolver a criatividade.",
+            price: "R$ 19,90",
+            image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80",
+            category: "artes",
+            tags: ["🎨 Pintura", "✂️ Colagem", "🖍️ Desenho"],
+            folders: [
+                { name: "🎨 Pintura e Cores", images: [] },
+                { name: "✂️ Colagem e Recorte", images: [] },
+                { name: "🖍️ Desenho Livre", images: [] }
+            ]
+        },
+        {
+            id: 5,
+            title: "🧩 Inclusão - Atividades Adaptadas",
+            description: "Materiais exclusivos para alunos com TEA (autismo), TDAH, dislexia e deficiência intelectual. Inclusão que funciona!",
+            price: "R$ 34,90",
+            image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
+            category: "inclusao",
+            tags: ["🧩 TEA", "🧠 TDAH", "📖 Dislexia", "💙 Def. Intelectual"],
+            folders: [
+                { name: "🧩 Comunicação Alternativa - TEA", images: [] },
+                { name: "🧠 Foco e Atenção - TDAH", images: [] },
+                { name: "📖 Leitura Adaptada - Dislexia", images: [] },
+                { name: "💙 Atividades para Deficiência Intelectual", images: [] },
+                { name: "🖐️ Estimulação Sensorial", images: [] }
+            ]
+        },
+        {
+            id: 6,
+            title: "🏆 Kit Premium Professor Inclusivo",
+            description: "Pacote completo com planners, calendários, fichas de avaliação adaptadas e materiais exclusivos.",
+            price: "R$ 59,90",
+            image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=600&q=80",
+            category: "kits",
+            tags: ["📅 Planner", "📊 Avaliações", "🎁 Bônus"],
+            folders: [
+                { name: "📅 Planner do Professor Inclusivo", images: [] },
+                { name: "📊 Fichas de Avaliação Adaptadas", images: [] },
+                { name: "🎁 Bônus: 50 Atividades Extras", images: [] }
             ]
         }
     ];
 
+    let currentFilter = "all";
+
     function renderProducts() {
         const container = document.getElementById('productsGrid');
+        let filtered = products.filter(p => currentFilter === "all" ? true : p.category === currentFilter);
+        
         let html = '';
-        for (let p of products) {
+        for (let p of filtered) {
+            let tagsHtml = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
             html += `
                 <div class="product-card" onclick="openProductModal(${p.id})">
-                    <img class="product-image" src="${p.image}" alt="${p.title}">
+                    <div class="product-icon">${p.title.charAt(0)}</div>
+                    <img class="product-image" src="${p.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'">
                     <div class="product-info">
                         <h3 class="product-title">${p.title}</h3>
-                        <p style="color:#64748b;">${p.description.substring(0, 80)}...</p>
+                        <p class="product-description">${p.description.substring(0, 80)}...</p>
                         <div class="product-price">💰 ${p.price}</div>
+                        <div class="product-tags">${tagsHtml}</div>
                     </div>
                 </div>
             `;
@@ -485,7 +908,7 @@
         
         document.getElementById('modalTitle').innerHTML = product.title;
         
-        let foldersHtml = `<div class="modal-price" style="color:green; font-size:1.3rem; font-weight:bold; margin-bottom:1rem;">💰 ${product.price} - Kit Completo</div>
+        let foldersHtml = `<div style="color:var(--verde); font-size:1.3rem; font-weight:bold; margin-bottom:1rem;">💰 ${product.price} - Kit Completo</div>
                            <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-kit">🎁 Comprar Kit Completo (Todas as pastas)</a>
                            <div style="text-align:center; margin:1rem 0;">⭐ ESCOLHA POR PASTA ⭐</div>
                            <div class="folder-structure">`;
@@ -495,22 +918,18 @@
                 <div class="folder">
                     <div class="folder-header" onclick="toggleFolder(this)">
                         <i class="fas fa-folder"></i> 📁 ${folder.name}
-                        <span style="margin-left:auto; font-size:0.7rem;">${folder.images.length} itens</span>
+                        <span style="margin-left:auto; font-size:0.7rem;">Adicione suas imagens aqui</span>
                     </div>
                     <div class="folder-content">
                         <div class="images-subgrid">
-            `;
-            for (let img of folder.images) {
-                foldersHtml += `
-                    <div class="sub-item">
-                        <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/150x120/6366f1/white?text=Imagem'">
-                        <p>${img.caption}</p>
-                        <div class="sub-price">💰 ${img.price}</div>
-                        <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar ${img.caption} - ${img.price}" class="btn-whats-sub">🛒 Comprar</a>
+                            <div style="grid-column:1/-1; text-align:center; padding:1rem; color:#64748B;">
+                                <i class="fas fa-upload"></i> Você pode adicionar suas imagens em cada pasta<br>
+                                <small>Entre no painel admin para adicionar as fotos</small>
+                            </div>
+                        </div>
                     </div>
-                `;
-            }
-            foldersHtml += `</div></div></div>`;
+                </div>
+            `;
         }
         
         foldersHtml += `</div>`;
@@ -529,18 +948,16 @@
         document.body.style.overflow = 'auto';
     }
 
-    function openZoom(url) {
-        const win = window.open();
-        win.document.write(`
-            <html>
-            <head><title>Visualização</title></head>
-            <body style="margin:0; display:flex; justify-content:center; align-items:center; min-height:100vh; background:#000;">
-                <img src="${url}" style="max-width:90%; max-height:90vh; border-radius:1rem;">
-                <button onclick="window.close()" style="position:fixed; top:20px; right:20px; background:white; border:none; padding:10px 20px; border-radius:1rem; cursor:pointer;">Fechar</button>
-            </body>
-            </html>
-        `);
-    }
+    // FILTROS
+    const btns = document.querySelectorAll('.cat-btn');
+    btns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            btns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.dataset.cat;
+            renderProducts();
+        });
+    });
 
     window.onclick = (e) => {
         const modal = document.getElementById('productModal');
@@ -551,7 +968,6 @@
     window.toggleFolder = toggleFolder;
     window.openProductModal = openProductModal;
     window.closeModal = closeModal;
-    window.openZoom = openZoom;
 </script>
 </body>
 </html>
