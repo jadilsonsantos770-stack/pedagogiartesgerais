@@ -50,44 +50,24 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-
-        .logo p { font-size: 0.7rem; color: #64748B; }
-        .nav { display: flex; gap: 2rem; }
-        .nav a { text-decoration: none; color: var(--dark); font-weight: 600; cursor: pointer; }
-
-        .admin-trigger {
-            background: linear-gradient(135deg, var(--roxo), var(--rosa));
-            color: white;
-            border: none;
-            padding: 0.6rem 1.3rem;
-            border-radius: 2rem;
             cursor: pointer;
-            font-weight: 700;
-            margin-left: 1rem;
         }
-
-        .hidden { display: none !important; }
+        .logo p { font-size: 0.7rem; color: #64748B; }
+        .nav { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .nav a { text-decoration: none; color: var(--dark); font-weight: 600; cursor: pointer; }
 
         .hero { min-height: 70vh; display: flex; align-items: center; padding: 7rem 0 3rem; }
         .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .hero h2 { font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--laranja), var(--rosa));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 3rem;
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-
+        .btn-primary { background: linear-gradient(135deg, var(--laranja), var(--rosa)); color: white; padding: 1rem 2rem; border-radius: 3rem; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; }
         .hero-image img { width: 100%; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-        .abas-section { padding: 2rem 0 4rem; background: white; border-radius: 3rem 3rem 0 0; }
+        /* SEÇÃO DE MESES ORGANIZADA */
+        .abas-section { padding: 2rem 0 4rem; background: white; }
         .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        
+        .mes-grupo { margin-bottom: 3rem; }
+        .mes-titulo { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; padding-left: 1rem; border-left: 5px solid var(--laranja); }
         .abas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
 
         .aba-card {
@@ -103,7 +83,7 @@
         .aba-icon { font-size: 3rem; text-align: center; padding: 1.5rem 0 0; }
         .aba-image { width: 100%; height: 160px; object-fit: cover; }
         .aba-info { padding: 1.5rem; text-align: center; }
-        .aba-title { font-size: 1.3rem; font-weight: 800; }
+        .aba-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; }
         .aba-count { color: var(--verde); font-weight: 600; }
 
         .modal {
@@ -119,7 +99,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .modal-content {
             background: white;
             border-radius: 1.5rem;
@@ -129,10 +108,8 @@
             overflow-y: auto;
             padding: 2rem;
         }
-
         .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E2E8F0; padding-bottom: 1rem; margin-bottom: 1rem; }
         .images-grid-modal { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-
         .image-card-modal {
             background: #F8FAFC;
             border-radius: 1rem;
@@ -160,7 +137,7 @@
         .btn-whats { background: #25D366; color: white; padding: 1rem 2rem; border-radius: 3rem; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; }
 
         .footer { background: var(--dark); color: #94A3B8; text-align: center; padding: 2rem; }
-        .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: pulse 2s infinite; }
+        .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: pulse 2s infinite; cursor: pointer; }
         .whatsapp-float a { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; border-radius: 50%; font-size: 2rem; color: white; text-decoration: none; }
 
         /* ADMIN PANEL */
@@ -196,6 +173,7 @@
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .nav { display: none; }
             .abas-grid { grid-template-columns: 1fr; }
+            .mes-titulo { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -205,7 +183,8 @@
     <div class="container">
         <div class="header-content">
             <div class="logo">
-                <h1>🌈 PEDAGOART KIDS</h1>
+                <!-- BOTÃO SECRETO: clique 3 vezes no título (SÓ VOCÊ SABE!) -->
+                <h1 id="secretAdminTrigger">🌈 PEDAGOART KIDS</h1>
                 <p>Materiais Pedagógicos Inclusivos</p>
             </div>
             <nav class="nav">
@@ -215,9 +194,6 @@
                 <a onclick="scrollToSection('about')">Sobre</a>
                 <a onclick="scrollToSection('contact')">Contato</a>
             </nav>
-            <button id="adminBtn" class="admin-trigger hidden" onclick="openAdminLogin()">
-                <i class="fas fa-lock"></i> Admin
-            </button>
         </div>
     </div>
 </header>
@@ -237,10 +213,82 @@
     </div>
 </section>
 
+<!-- CATÁLOGO ORGANIZADO POR MESES -->
 <section id="abas" class="abas-section">
     <div class="container">
-        <h2 class="section-title">📚 Nossos Materiais</h2>
-        <div class="abas-grid" id="abasGrid"></div>
+        <h2 class="section-title">📚 Calendário Pedagógico Completo</h2>
+        
+        <!-- JANEIRO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 JANEIRO</div>
+            <div class="abas-grid" id="janGrid"></div>
+        </div>
+
+        <!-- FEVEREIRO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 FEVEREIRO</div>
+            <div class="abas-grid" id="fevGrid"></div>
+        </div>
+
+        <!-- MARÇO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 MARÇO</div>
+            <div class="abas-grid" id="marGrid"></div>
+        </div>
+
+        <!-- ABRIL -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 ABRIL</div>
+            <div class="abas-grid" id="abrGrid"></div>
+        </div>
+
+        <!-- MAIO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 MAIO</div>
+            <div class="abas-grid" id="maiGrid"></div>
+        </div>
+
+        <!-- JUNHO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 JUNHO</div>
+            <div class="abas-grid" id="junGrid"></div>
+        </div>
+
+        <!-- JULHO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 JULHO</div>
+            <div class="abas-grid" id="julGrid"></div>
+        </div>
+
+        <!-- AGOSTO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 AGOSTO</div>
+            <div class="abas-grid" id="agoGrid"></div>
+        </div>
+
+        <!-- SETEMBRO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 SETEMBRO</div>
+            <div class="abas-grid" id="setGrid"></div>
+        </div>
+
+        <!-- OUTUBRO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 OUTUBRO</div>
+            <div class="abas-grid" id="outGrid"></div>
+        </div>
+
+        <!-- NOVEMBRO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 NOVEMBRO</div>
+            <div class="abas-grid" id="novGrid"></div>
+        </div>
+
+        <!-- DEZEMBRO -->
+        <div class="mes-grupo">
+            <div class="mes-titulo">📅 DEZEMBRO</div>
+            <div class="abas-grid" id="dezGrid"></div>
+        </div>
     </div>
 </section>
 
@@ -308,17 +356,18 @@
             <h2>🛠️ Painel do Proprietário</h2>
             <button class="btn-admin" onclick="closeAdminPanel()">🔒 Sair</button>
         </div>
-        <button class="btn-admin" onclick="showAddAbaForm()" style="margin-bottom:1rem;">➕ Adicionar Nova ABA</button>
+        <button class="btn-admin" onclick="showAddAbaForm()" style="margin-bottom:1rem;">➕ Adicionar Nova Data</button>
 
         <div id="abaForm" class="form-aba">
-            <h3 id="formTitle">➕ Adicionar Nova ABA</h3>
+            <h3 id="formTitle">➕ Adicionar Data Comemorativa</h3>
             <input type="hidden" id="abaId">
-            <div class="form-group"><label>Nome da ABA</label><input type="text" id="abaName" placeholder="Ex: 🎭 Carnaval"></div>
+            <div class="form-group"><label>Nome da Data</label><input type="text" id="abaName" placeholder="Ex: 🎭 Carnaval"></div>
             <div class="form-group"><label>Ícone</label><input type="text" id="abaIcon" placeholder="Ex: 🎭"></div>
+            <div class="form-group"><label>Mês (número)</label><input type="number" id="abaMes" placeholder="1 a 12" min="1" max="12"></div>
             <div class="form-group"><label>URL da Imagem de Capa</label><input type="text" id="abaImage" placeholder="https://..."></div>
             <div class="form-group"><label>Preço do Kit</label><input type="text" id="abaKitPrice" placeholder="Ex: R$ 19,90"></div>
             <div class="form-group">
-                <label>Imagens da ABA</label>
+                <label>Imagens da Data</label>
                 <div id="imagesList"></div>
                 <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
                     <input type="text" id="newImageUrl" placeholder="URL da imagem" style="flex:2;">
@@ -330,84 +379,126 @@
             <div><button class="btn-admin" onclick="saveAba()">💾 Salvar</button><button class="btn-admin" onclick="hideForm()" style="background:#EF4444; margin-left:0.5rem;">Cancelar</button></div>
         </div>
 
-        <h3 style="color:white;">📦 Todas as ABAS</h3>
+        <h3 style="color:white;">📦 Todas as Datas Comemorativas</h3>
         <div id="adminAbasList" class="admin-abas-list"></div>
     </div>
 </div>
 
 <script>
     // ============================================
-    // LINK SECRETO - SÓ APARECE COM ?admin=true
+    // BOTÃO SECRETO - SÓ VOCÊ SABE!
+    // Clique 3 VEZES no título "PEDAGOART KIDS"
     // ============================================
-    const urlParams = new URLSearchParams(window.location.search);
-    const isAdminMode = urlParams.get('admin') === 'true';
+    let clickCount = 0;
+    let clickTimeout;
     
-    // Só mostra o botão Admin se for o link secreto
-    if (isAdminMode) {
-        document.getElementById('adminBtn').classList.remove('hidden');
+    const secretTrigger = document.getElementById('secretAdminTrigger');
+    if (secretTrigger) {
+        secretTrigger.addEventListener('click', function() {
+            clickCount++;
+            clearTimeout(clickTimeout);
+            clickTimeout = setTimeout(() => { clickCount = 0; }, 1000);
+            if (clickCount === 3) {
+                clickCount = 0;
+                openAdminLogin();
+            }
+        });
     }
 
-    // SENHA FORTE
     const ADMIN_PASSWORD = "C1e1s1@ne@2026";
     const WHATSAPP_LINK = "https://wa.me/qr/QMLMG265QVDKE1";
 
     let abas = [];
     let tempImages = [];
 
-    // ============================================
-    // TODAS AS DATAS COMEMORATIVAS DO ANO
-    // ============================================
+    // TODAS AS DATAS COMEMORATIVAS ORGANIZADAS POR MÊS
     const defaultAbas = [
-        { id: 1, name: "🎭 Carnaval", icon: "🎭", image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [{ url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" }] },
-        { id: 2, name: "🐰 Páscoa", icon: "🐰", image: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        { id: 3, name: "🌽 Festa Junina", icon: "🌽", image: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        { id: 4, name: "🇧🇷 Independência do Brasil", icon: "🇧🇷", image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 5, name: "🎄 Natal", icon: "🎄", image: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
-        { id: 6, name: "💐 Dia das Mães", icon: "💐", image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 7, name: "👨 Dia dos Pais", icon: "👨", image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 8, name: "🧸 Dia das Crianças", icon: "🧸", image: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        { id: 9, name: "📖 Alfabetização", icon: "📖", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 24,90", images: [] },
-        { id: 10, name: "🧩 Inclusão (TEA)", icon: "🧩", image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 29,90", images: [] },
-        { id: 11, name: "✊🏿 Consciência Negra", icon: "✊🏿", image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        { id: 12, name: "🏛️ Proclamação da República", icon: "🏛️", image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 13, name: "📚 Dia do Livro", icon: "📚", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        { id: 14, name: "🌳 Dia da Árvore", icon: "🌳", image: "https://images.unscramble.it/l6bIP2.jpg?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 15, name: "💧 Dia da Água", icon: "💧", image: "https://images.unsplash.com/photo-1542601906997-08f3fdefa5b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] }
+        // JANEIRO (mês 1)
+        { id: 1, nome: "🎉 Confraternização Universal", icon: "🎉", mes: 1, image: "https://images.unsplash.com/photo-1517298225863-9042b6c17eb7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 9,90", images: [] },
+        { id: 2, nome: "👑 Dia de Reis", icon: "👑", mes: 1, image: "https://images.unsplash.com/photo-1605296867424-35fc25c9210a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 9,90", images: [] },
+        // FEVEREIRO (mês 2)
+        { id: 3, nome: "🎭 Carnaval", icon: "🎭", mes: 2, image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [{ url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" }] },
+        { id: 4, nome: "💘 Dia dos Namorados", icon: "💘", mes: 2, image: "https://images.unsplash.com/photo-1518199266791-5375a83190b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        // MARÇO (mês 3)
+        { id: 5, nome: "🎪 Dia do Circo", icon: "🎪", mes: 3, image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        { id: 6, nome: "💧 Dia Mundial da Água", icon: "💧", mes: 3, image: "https://images.unsplash.com/photo-1542601906997-08f3fdefa5b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 7, nome: "🌸 Dia da Mulher", icon: "🌸", mes: 3, image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        // ABRIL (mês 4)
+        { id: 8, nome: "🐰 Páscoa", icon: "🐰", mes: 4, image: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
+        { id: 9, nome: "🇧🇷 Tiradentes", icon: "🇧🇷", mes: 4, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 10, nome: "📚 Dia do Livro", icon: "📚", mes: 4, image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        // MAIO (mês 5)
+        { id: 11, nome: "💐 Dia das Mães", icon: "💐", mes: 5, image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
+        { id: 12, nome: "👷 Dia do Trabalho", icon: "👷", mes: 5, image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        // JUNHO (mês 6)
+        { id: 13, nome: "🌽 Festa Junina", icon: "🌽", mes: 6, image: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
+        { id: 14, nome: "💚 Dia do Meio Ambiente", icon: "💚", mes: 6, image: "https://images.unsplash.com/photo-1542601906997-08f3fdefa5b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        // JULHO (mês 7)
+        { id: 15, nome: "🏛️ Independência da Bahia", icon: "🏛️", mes: 7, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 16, nome: "👴 Dia dos Avós", icon: "👴", mes: 7, image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        // AGOSTO (mês 8)
+        { id: 17, nome: "👨 Dia dos Pais", icon: "👨", mes: 8, image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
+        { id: 18, nome: "🎓 Dia do Estudante", icon: "🎓", mes: 8, image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 19, nome: "🧩 Dia do Folclore", icon: "🧩", mes: 8, image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        // SETEMBRO (mês 9)
+        { id: 20, nome: "🇧🇷 Independência do Brasil", icon: "🇧🇷", mes: 9, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
+        { id: 21, nome: "🌳 Dia da Árvore", icon: "🌳", mes: 9, image: "https://plus.unsplash.com/premium_photo-1675824741426-594dca588c04?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        // OUTUBRO (mês 10)
+        { id: 22, nome: "🧸 Dia das Crianças", icon: "🧸", mes: 10, image: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
+        { id: 23, nome: "👩‍🏫 Dia do Professor", icon: "👩‍🏫", mes: 10, image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        // NOVEMBRO (mês 11)
+        { id: 24, nome: "✊🏿 Consciência Negra", icon: "✊🏿", mes: 11, image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 16,90", images: [] },
+        { id: 25, nome: "🏛️ Proclamação da República", icon: "🏛️", mes: 11, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        // DEZEMBRO (mês 12)
+        { id: 26, nome: "🎄 Natal", icon: "🎄", mes: 12, image: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 24,90", images: [] },
+        { id: 27, nome: "🎆 Réveillon", icon: "🎆", mes: 12, image: "https://images.unsplash.com/photo-1517298225863-9042b6c17eb7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] }
     ];
 
     function loadAbas() {
         const saved = localStorage.getItem('pedagoart_abas');
         if (saved) abas = JSON.parse(saved);
         else { abas = defaultAbas; saveAbas(); }
-        renderAbas();
+        renderAllAbas();
     }
 
     function saveAbas() { localStorage.setItem('pedagoart_abas', JSON.stringify(abas)); }
 
-    function renderAbas() {
-        const container = document.getElementById('abasGrid');
-        let html = '';
-        for (let aba of abas) {
-            html += `
-                <div class="aba-card" onclick="openAbaModal(${aba.id})">
-                    <div class="aba-icon">${aba.icon}</div>
-                    <img class="aba-image" src="${aba.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'">
-                    <div class="aba-info">
-                        <h3 class="aba-title">${aba.name}</h3>
-                        <div class="aba-count">💰 ${aba.kitPrice} - Kit Completo</div>
-                        <div style="font-size:0.7rem;">📸 ${aba.images.length} imagens</div>
-                    </div>
-                </div>
-            `;
+    function renderAllAbas() {
+        // Renderizar por mês
+        for (let mes = 1; mes <= 12; mes++) {
+            const mesAbas = abas.filter(a => a.mes === mes);
+            const gridId = getGridIdByMes(mes);
+            const container = document.getElementById(gridId);
+            if (container) {
+                let html = '';
+                for (let aba of mesAbas) {
+                    html += `
+                        <div class="aba-card" onclick="openAbaModal(${aba.id})">
+                            <div class="aba-icon">${aba.icon}</div>
+                            <img class="aba-image" src="${aba.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'">
+                            <div class="aba-info">
+                                <h3 class="aba-title">${aba.nome}</h3>
+                                <div class="aba-count">💰 ${aba.kitPrice} - Kit Completo</div>
+                                <div style="font-size:0.7rem;">📸 ${aba.images.length} imagens</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                container.innerHTML = html;
+            }
         }
-        container.innerHTML = html;
+    }
+
+    function getGridIdByMes(mes) {
+        const meses = ['janGrid', 'fevGrid', 'marGrid', 'abrGrid', 'maiGrid', 'junGrid', 'julGrid', 'agoGrid', 'setGrid', 'outGrid', 'novGrid', 'dezGrid'];
+        return meses[mes - 1];
     }
 
     function openAbaModal(abaId) {
         const aba = abas.find(a => a.id === abaId);
         if (!aba) return;
         
-        document.getElementById('modalTitle').innerHTML = `${aba.icon} ${aba.name}`;
+        document.getElementById('modalTitle').innerHTML = `${aba.icon} ${aba.nome}`;
         
         let imagesHtml = '';
         for (let img of aba.images) {
@@ -443,8 +534,8 @@
     function closeModal() { document.getElementById('imagesModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
     function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
 
-    // ADMIN - SÓ FUNCIONA NO LINK SECRETO
-    function openAdminLogin() { if (isAdminMode) document.getElementById('adminLoginModal').style.display = 'flex'; }
+    // ADMIN - Só você sabe onde clicar!
+    function openAdminLogin() { document.getElementById('adminLoginModal').style.display = 'flex'; }
     function closeAdminLogin() { document.getElementById('adminLoginModal').style.display = 'none'; document.getElementById('adminPassword').value = ''; }
     
     function checkAdminLogin() {
@@ -490,10 +581,11 @@
     function removeImage(index) { tempImages.splice(index, 1); renderImagesList(); }
 
     function showAddAbaForm() {
-        document.getElementById('formTitle').innerHTML = '➕ Adicionar Nova ABA';
+        document.getElementById('formTitle').innerHTML = '➕ Adicionar Data Comemorativa';
         document.getElementById('abaId').value = '';
         document.getElementById('abaName').value = '';
         document.getElementById('abaIcon').value = '';
+        document.getElementById('abaMes').value = '';
         document.getElementById('abaImage').value = '';
         document.getElementById('abaKitPrice').value = '';
         tempImages = [];
@@ -506,10 +598,11 @@
     function editAba(id) {
         const aba = abas.find(a => a.id === id);
         if (!aba) return;
-        document.getElementById('formTitle').innerHTML = '✏️ Editar ABA';
+        document.getElementById('formTitle').innerHTML = '✏️ Editar Data';
         document.getElementById('abaId').value = aba.id;
-        document.getElementById('abaName').value = aba.name;
+        document.getElementById('abaName').value = aba.nome;
         document.getElementById('abaIcon').value = aba.icon;
+        document.getElementById('abaMes').value = aba.mes;
         document.getElementById('abaImage').value = aba.image;
         document.getElementById('abaKitPrice').value = aba.kitPrice;
         tempImages = [...aba.images];
@@ -519,33 +612,34 @@
 
     function saveAba() {
         const id = document.getElementById('abaId').value;
-        const name = document.getElementById('abaName').value;
+        const nome = document.getElementById('abaName').value;
         const icon = document.getElementById('abaIcon').value;
+        const mes = parseInt(document.getElementById('abaMes').value);
         const image = document.getElementById('abaImage').value;
         const kitPrice = document.getElementById('abaKitPrice').value;
         
-        if (!name || !icon || !image || !kitPrice) { alert('Preencha todos os campos!'); return; }
+        if (!nome || !icon || !mes || !image || !kitPrice) { alert('Preencha todos os campos!'); return; }
         
         if (id) {
             const index = abas.findIndex(a => a.id == id);
-            if (index !== -1) abas[index] = { ...abas[index], name, icon, image, kitPrice, images: tempImages };
+            if (index !== -1) abas[index] = { ...abas[index], nome, icon, mes, image, kitPrice, images: tempImages };
         } else {
             const newId = Math.max(...abas.map(a => a.id), 0) + 1;
-            abas.push({ id: newId, name, icon, image, kitPrice, images: tempImages });
+            abas.push({ id: newId, nome, icon, mes, image, kitPrice, images: tempImages });
         }
         
         saveAbas();
-        renderAbas();
+        renderAllAbas();
         renderAdminAbas();
         hideForm();
-        alert('ABA salva com sucesso!');
+        alert('Data salva com sucesso!');
     }
 
     function deleteAba(id) {
         if (confirm('Tem certeza?')) {
             abas = abas.filter(a => a.id !== id);
             saveAbas();
-            renderAbas();
+            renderAllAbas();
             renderAdminAbas();
         }
     }
@@ -558,8 +652,8 @@
                 <div class="admin-aba-card">
                     <img class="aba-image" src="${aba.image}">
                     <div class="admin-aba-info">
-                        <h4>${aba.icon} ${aba.name}</h4>
-                        <p>💰 ${aba.kitPrice}</p>
+                        <h4>${aba.icon} ${aba.nome}</h4>
+                        <p>📅 Mês: ${aba.mes} | 💰 ${aba.kitPrice}</p>
                         <div class="images-admin-list">${aba.images.map(img => `<div class="image-admin-item"><img src="${img.url}"><div style="font-size:8px;">${img.caption}</div></div>`).join('')}</div>
                         <p>📸 ${aba.images.length} imagens</p>
                     </div>
