@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PedagoArt Kids - Materiais Pedagógicos Digitais Premium">
     <title>PedagoArt Kids | Materiais Pedagógicos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,17 +21,12 @@
             --dark: #0f172a;
             --gray: #64748b;
             --light: #f8fafc;
-            --shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 35px -10px rgba(0,0,0,0.15);
-            --radius: 1rem;
-            --radius-lg: 1.5rem;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #fef2f2 0%, #fdf4ff 50%, #f0fdf4 100%);
             color: var(--dark);
-            line-height: 1.5;
         }
 
         .container {
@@ -41,7 +35,6 @@
             padding: 0 2rem;
         }
 
-        /* CABEÇALHO */
         .header {
             position: fixed;
             top: 0;
@@ -50,18 +43,13 @@
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-
-        .header.scrolled {
-            box-shadow: var(--shadow);
+            padding: 0.8rem 0;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo h1 {
@@ -73,49 +61,17 @@
             color: transparent;
         }
 
-        .logo p {
-            font-size: 0.7rem;
-            color: var(--gray);
-        }
-
         .nav {
             display: flex;
             gap: 2rem;
-            align-items: center;
         }
 
         .nav a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            transition: color 0.3s;
         }
 
-        .nav a:hover {
-            color: var(--primary);
-        }
-
-        /* BOTÃO ADMIN (SÓ APARECE NO LINK SECRETO) */
-        .admin-trigger {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .admin-trigger:hover {
-            transform: scale(1.05);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* HERO */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -130,47 +86,14 @@
             align-items: center;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
         .hero h2 {
             font-size: 3rem;
             font-weight: 800;
-            line-height: 1.2;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--dark), var(--primary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-
-        .hero p {
-            color: var(--gray);
-            margin-bottom: 2rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--gray);
         }
 
         .btn-primary {
@@ -179,81 +102,29 @@
             padding: 0.75rem 2rem;
             border-radius: 2rem;
             text-decoration: none;
-            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* FILTROS */
-        .filters {
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .filters h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: white;
-            border: 2px solid #e2e8f0;
-            padding: 0.5rem 1.5rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filter-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-color: transparent;
-            color: white;
-        }
-
-        /* PRODUTOS */
-        .products {
-            padding: 2rem 0 5rem;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
+            padding: 3rem 0;
         }
 
         .product-card {
             background: white;
-            border-radius: var(--radius-lg);
+            border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
             cursor: pointer;
+            transition: transform 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
         }
 
         .product-image {
@@ -267,22 +138,15 @@
         }
 
         .product-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-description {
-            color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
         }
 
         .product-price {
             font-size: 1.3rem;
             font-weight: 800;
             color: var(--success);
-            margin-bottom: 1rem;
+            margin: 0.5rem 0;
         }
 
         /* MODAL */
@@ -302,7 +166,7 @@
 
         .modal-content {
             background: white;
-            border-radius: var(--radius-lg);
+            border-radius: 1.5rem;
             max-width: 1000px;
             width: 90%;
             max-height: 85vh;
@@ -317,14 +181,9 @@
             margin-bottom: 1.5rem;
         }
 
-        /* PASTAS E SUBPASTAS (CARNAVAL COM VÁRIAS IMAGENS) */
-        .folder-structure {
-            margin: 1rem 0;
-        }
-
         .folder {
             background: #f1f5f9;
-            border-radius: var(--radius);
+            border-radius: 1rem;
             margin-bottom: 1rem;
             overflow: hidden;
         }
@@ -340,7 +199,6 @@
         }
 
         .folder-header i {
-            font-size: 1.2rem;
             color: var(--primary);
         }
 
@@ -362,7 +220,7 @@
 
         .sub-item {
             background: #f8fafc;
-            border-radius: var(--radius);
+            border-radius: 1rem;
             padding: 0.75rem;
             text-align: center;
             border: 1px solid #e2e8f0;
@@ -376,16 +234,10 @@
             cursor: pointer;
         }
 
-        .sub-item p {
-            margin: 0.5rem 0;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
         .sub-price {
             color: var(--success);
             font-weight: 700;
-            font-size: 0.9rem;
+            margin: 0.5rem 0;
         }
 
         .btn-whats-sub {
@@ -396,85 +248,19 @@
             text-decoration: none;
             font-size: 0.7rem;
             display: inline-block;
-            margin-top: 0.3rem;
         }
 
-        /* BENEFÍCIOS */
-        .benefits {
-            padding: 4rem 0;
-            background: var(--light);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* CTA */
-        .cta {
-            padding: 4rem 0;
+        .btn-kit {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            text-align: center;
             color: white;
-        }
-
-        .cta h3 {
-            font-size: 2rem;
+            padding: 0.8rem;
+            border-radius: 2rem;
+            text-align: center;
+            text-decoration: none;
+            display: block;
             margin-bottom: 1rem;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .btn-whats-large {
-            background: #25D366;
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-        }
-
-        .btn-email {
-            background: white;
-            color: var(--primary);
-            padding: 0.75rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--dark);
-            color: var(--gray);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* WHATSAPP FLOAT */
         .whatsapp-float {
             position: fixed;
             bottom: 2rem;
@@ -493,152 +279,23 @@
             font-size: 1.8rem;
             color: white;
             text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            animation: pulse 2s infinite;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* ADMIN PANEL */
-        .admin-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .admin-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            color: white;
-        }
-
-        .btn-admin {
-            background: var(--success);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-
-        .product-form {
-            background: #1e293b;
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            margin-bottom: 2rem;
-            display: none;
-        }
-
-        .product-form h3 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: white;
-            margin-bottom: 0.25rem;
-        }
-
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            border: none;
-        }
-
-        .btn-save {
-            background: var(--success);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-
-        .admin-products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .admin-card {
-            background: #1e293b;
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        .admin-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .admin-card-info {
-            padding: 1rem;
-            color: white;
-        }
-
-        .admin-card-actions {
-            display: flex;
-            gap: 0.5rem;
-            padding: 1rem;
-            border-top: 1px solid #334155;
-        }
-
-        .btn-edit, .btn-delete {
-            flex: 1;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-
-        .btn-edit { background: var(--primary); color: white; }
-        .btn-delete { background: #ef4444; color: white; }
 
         @media (max-width: 768px) {
             .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            .hero-stats {
-                justify-content: center;
-            }
             .nav {
                 display: none;
-            }
-            .container {
-                padding: 0 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header" id="header">
+<header class="header">
     <div class="container">
         <div class="header-content">
             <div class="logo">
@@ -651,84 +308,52 @@
                 <a href="#benefits">Benefícios</a>
                 <a href="#contact">Contato</a>
             </nav>
-            <button id="adminBtn" class="admin-trigger hidden" onclick="openAdminLogin()">
-                <i class="fas fa-lock"></i> Admin
-            </button>
         </div>
     </div>
 </header>
 
-<!-- HERO -->
 <section id="home" class="hero">
     <div class="container">
         <div class="hero-grid">
             <div>
-                <span class="hero-badge">✨ Materiais Exclusivos</span>
                 <h2>Arquivos pedagógicos para transformar suas aulas</h2>
                 <p>Materiais digitais prontos para usar. Baixe imediatamente após a compra.</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">+100</div>
-                        <div class="stat-label">Arquivos</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">⭐ 5.0</div>
-                        <div class="stat-label">Avaliações</div>
-                    </div>
-                </div>
                 <a href="#products" class="btn-primary"><i class="fas fa-book"></i> Ver Catálogo</a>
             </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Materiais">
+            <div>
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" style="width:100%; border-radius:1.5rem;" alt="Materiais">
             </div>
         </div>
     </div>
 </section>
 
-<!-- FILTROS -->
-<div class="container filters">
-    <h3>📂 Explore por categoria</h3>
-    <div class="filter-buttons" id="filterButtons">
-        <button class="filter-btn active" data-filter="all">✨ Todos</button>
-        <button class="filter-btn" data-filter="datas">🎉 Datas Comemorativas</button>
-        <button class="filter-btn" data-filter="alfabetizacao">📖 Alfabetização</button>
-        <button class="filter-btn" data-filter="kits">🏆 Kits Premium</button>
-    </div>
-</div>
-
-<!-- PRODUTOS -->
 <section id="products" class="products">
     <div class="container">
         <div class="products-grid" id="productsGrid"></div>
     </div>
 </section>
 
-<!-- BENEFÍCIOS -->
-<section id="benefits" class="benefits">
+<section id="benefits" style="padding:4rem 0; background:#f8fafc;">
     <div class="container">
-        <h3 class="section-title">✨ Por que escolher nossos materiais?</h3>
-        <div class="benefits-grid">
-            <div class="benefit-card"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4><p>Materiais coloridos e criativos</p></div>
-            <div class="benefit-card"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4><p>Receba na hora</p></div>
-            <div class="benefit-card"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4><p>Base Nacional Comum</p></div>
-            <div class="benefit-card"><div class="benefit-icon">💳</div><h4>Pagamento Seguro</h4><p>Pix ou Cartão</p></div>
+        <h3 style="text-align:center; font-size:2rem; margin-bottom:2rem;">✨ Benefícios</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem;">
+            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">🎨 Design Atraente</div>
+            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">⚡ Download Imediato</div>
+            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">📚 Alinhado à BNCC</div>
+            <div style="background:white; padding:1.5rem; border-radius:1rem; text-align:center;">💳 Pagamento Seguro</div>
         </div>
     </div>
 </section>
 
-<!-- CTA -->
-<section id="contact" class="cta">
+<section id="contact" style="padding:4rem 0; background:linear-gradient(135deg, #6366f1, #4f46e5); text-align:center; color:white;">
     <div class="container">
-        <h3>🚀 Pronto para transformar suas aulas?</h3>
-        <p>Adquira já os materiais e revolucione sua rotina escolar</p>
-        <div class="cta-buttons">
-            <a href="https://wa.me/5500000000000" class="btn-whats-large"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:contato@pedagoart.com" class="btn-email"><i class="fas fa-envelope"></i> Email</a>
-        </div>
+        <h3 style="font-size:2rem;">🚀 Pronto para transformar suas aulas?</h3>
+        <p style="margin:1rem 0;">Adquira já os materiais e revolucione sua rotina escolar</p>
+        <a href="https://wa.me/5500000000000" style="background:#25D366; color:white; padding:0.75rem 2rem; border-radius:2rem; text-decoration:none; display:inline-block;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 </section>
 
-<footer class="footer">
+<footer style="background:#0f172a; color:#64748b; text-align:center; padding:2rem;">
     <p>© 2026 Cleisiane Barreto • PedagoArt Kids</p>
 </footer>
 
@@ -736,168 +361,116 @@
     <a href="https://wa.me/5500000000000"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<!-- MODAL DE PRODUTO (COM PASTAS) -->
 <div id="productModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <h2 id="modalTitle"></h2>
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button onclick="closeModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
         </div>
         <div id="modalBody"></div>
     </div>
 </div>
 
-<!-- MODAL ADMIN LOGIN -->
-<div id="adminLoginModal" class="modal">
-    <div class="modal-content" style="max-width: 400px;">
-        <h2>🔒 Acesso Restrito</h2>
-        <input type="password" id="adminPassword" style="width:100%; padding:0.5rem; margin:1rem 0; border:1px solid #ccc; border-radius:0.5rem;" placeholder="Senha">
-        <button onclick="checkAdminLogin()" style="background:var(--primary); color:white; border:none; padding:0.5rem 1rem; border-radius:0.5rem; width:100%; cursor:pointer;">Entrar</button>
-    </div>
-</div>
-
-<!-- PAINEL ADMIN -->
-<div id="adminPanel" class="admin-panel">
-    <div class="admin-container">
-        <div class="admin-header">
-            <h2>🛠️ Painel do Proprietário</h2>
-            <button class="btn-admin" onclick="closeAdminPanel()">🔒 Sair</button>
-        </div>
-        <button class="btn-admin" onclick="showAddForm()" style="margin-bottom:1rem;">➕ Adicionar Produto</button>
-
-        <div id="productForm" class="product-form">
-            <h3 id="formTitle">➕ Adicionar Produto</h3>
-            <input type="hidden" id="productId">
-            <div class="form-group"><label>Título</label><input type="text" id="prodTitle" placeholder="Ex: 🎉 Datas Comemorativas"></div>
-            <div class="form-group"><label>Descrição</label><textarea id="prodDescription" rows="3"></textarea></div>
-            <div class="form-group"><label>Preço do Kit</label><input type="text" id="prodPrice" placeholder="Ex: R$ 19,90"></div>
-            <div class="form-group"><label>Categoria</label><select id="prodCategory"><option value="datas">Datas</option><option value="alfabetizacao">Alfabetização</option><option value="kits">Kits Premium</option></select></div>
-            <div class="form-group"><label>URL Capa</label><input type="text" id="prodImage" placeholder="https://..."></div>
-            <div class="form-group"><label>Pastas (ex: Carnaval com imagens)</label>
-                <div id="foldersList"></div>
-                <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
-                    <input type="text" id="newFolderName" placeholder="Nome da pasta (Ex: Carnaval)" style="flex:2;">
-                    <button onclick="addFolder()" style="background:var(--primary); border:none; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">➕ Adicionar Pasta</button>
-                </div>
-            </div>
-            <div style="margin-top:1rem;"><button class="btn-save" onclick="saveProduct()">💾 Salvar</button><button class="btn-save" onclick="hideForm()" style="background:#ef4444; margin-left:0.5rem;">Cancelar</button></div>
-        </div>
-
-        <h3 style="color:white;">📦 Seus Produtos</h3>
-        <div id="adminProductsList" class="admin-products"></div>
-    </div>
-</div>
-
 <script>
     // ============================================
-    // ACESSO RESTRITO - SÓ APARECE COM ?admin=true
+    // PRODUTO COM TODAS AS PASTAS DE DATAS COMEMORATIVAS
     // ============================================
-    const urlParams = new URLSearchParams(window.location.search);
-    const isAdminMode = urlParams.get('admin') === 'true';
-    
-    if (isAdminMode) {
-        document.getElementById('adminBtn').classList.remove('hidden');
-    }
-
-    // ============================================
-    // CONFIGURAÇÕES
-    // ============================================
-    const ADMIN_PASSWORD = "admin123";
-    let products = [];
-    let currentFolders = [];
-
-    // ============================================
-    // PRODUTOS PADRÃO COM SUBPASTAS
-    // ============================================
-    const defaultProducts = [
+    const products = [
         {
             id: 1,
             title: "🎉 Datas Comemorativas",
-            description: "Materiais para todas as datas especiais do ano",
-            price: "R$ 19,90",
+            description: "Materiais para todas as datas especiais do ano letivo",
+            price: "R$ 29,90",
             image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
             category: "datas",
             folders: [
-                {
-                    name: "🎭 Carnaval",
-                    images: [
-                        { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval 1", price: "R$ 2,90" },
-                        { url: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval 2", price: "R$ 2,90" },
-                        { url: "https://images.unsplash.com/photo-1532689373850-cf3e8d4b78f9?auto=format&fit=crop&w=300&q=80", caption: "Atividade Carnaval", price: "R$ 3,90" }
-                    ]
-                },
-                {
-                    name: "🐰 Páscoa",
-                    images: [
-                        { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=300&q=80", caption: "Ovo de Páscoa", price: "R$ 3,90" },
-                        { url: "https://images.unsplash.com/photo-1510695425548-1c82f5e8c0b5?auto=format&fit=crop&w=300&q=80", caption: "Coelho da Páscoa", price: "R$ 3,90" }
-                    ]
-                },
-                {
-                    name: "🌽 Festa Junina",
-                    images: [
-                        { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Bandeirinhas", price: "R$ 3,90" },
-                        { url: "https://images.unsplash.com/photo-1533681478154-7e3bbf3fcb1c?auto=format&fit=crop&w=300&q=80", caption: "Balão Junino", price: "R$ 2,90" }
-                    ]
-                }
+                // JANEIRO
+                { name: "📅 Janeiro", images: [] },
+                // FEVEREIRO
+                { name: "🎭 Fevereiro - Carnaval", images: [
+                    { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" },
+                    { url: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=300&q=80", caption: "Fantasia de Carnaval", price: "R$ 4,90" }
+                ]},
+                // MARÇO
+                { name: "🎪 Março - Dia do Circo", images: [
+                    { url: "https://images.unsplash.com/photo-1532689373850-cf3e8d4b78f9?auto=format&fit=crop&w=300&q=80", caption: "Palhaço - Dia do Circo", price: "R$ 3,90" },
+                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Atividade Circo", price: "R$ 3,90" }
+                ]},
+                // ABRIL - Tiradentes
+                { name: "🇧🇷 Abril - Tiradentes", images: [
+                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "Tiradentes - História", price: "R$ 3,90" }
+                ]},
+                // MAIO - Dia das Mães
+                { name: "💐 Maio - Dia das Mães", images: [
+                    { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=300&q=80", caption: "Cartão para Mamãe", price: "R$ 4,90" },
+                    { url: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=300&q=80", caption: "Atividade Dia das Mães", price: "R$ 3,90" }
+                ]},
+                // JUNHO - Festa Junina
+                { name: "🌽 Junho - Festa Junina", images: [
+                    { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Bandeirinhas Juninas", price: "R$ 3,90" },
+                    { url: "https://images.unsplash.com/photo-1533681478154-7e3bbf3fcb1c?auto=format&fit=crop&w=300&q=80", caption: "Balão Junino", price: "R$ 3,90" }
+                ]},
+                // JULHO - Independência de Sergipe
+                { name: "🏛️ Julho - Independência de Sergipe", images: [
+                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "História de Sergipe", price: "R$ 4,90" }
+                ]},
+                // AGOSTO - Dia dos Pais
+                { name: "👨 Agosto - Dia dos Pais", images: [
+                    { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=300&q=80", caption: "Cartão para Papai", price: "R$ 4,90" }
+                ]},
+                // SETEMBRO - Independência do Brasil
+                { name: "🇧🇷 Setembro - Independência do Brasil", images: [
+                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "7 de Setembro", price: "R$ 4,90" },
+                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Bandeira do Brasil", price: "R$ 3,90" }
+                ]},
+                // OUTUBRO - Dia das Crianças
+                { name: "🧸 Outubro - Dia das Crianças", images: [
+                    { url: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=300&q=80", caption: "Brinquedo para colorir", price: "R$ 3,90" },
+                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Atividade Dia das Crianças", price: "R$ 3,90" }
+                ]},
+                // NOVEMBRO - Proclamação da República e Consciência Negra
+                { name: "📜 Novembro - Proclamação da República", images: [
+                    { url: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=300&q=80", caption: "15 de Novembro", price: "R$ 4,90" }
+                ]},
+                { name: "✊🏿 Novembro - Consciência Negra", images: [
+                    { url: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=300&q=80", caption: "Cultura Afro", price: "R$ 4,90" }
+                ]},
+                // DEZEMBRO - Natal
+                { name: "🎄 Dezembro - Natal", images: [
+                    { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=300&q=80", caption: "Árvore de Natal", price: "R$ 4,90" },
+                    { url: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=300&q=80", caption: "Presépio", price: "R$ 4,90" }
+                ]}
             ]
         },
         {
             id: 2,
-            title: "📖 Alfabetização",
-            description: "Atividades de leitura e escrita",
+            title: "📖 Alfabetização Completa",
+            description: "Atividades de leitura, escrita e coordenação motora",
             price: "R$ 24,90",
             image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
             category: "alfabetizacao",
             folders: [
-                {
-                    name: "🔤 Alfabeto",
-                    images: [
-                        { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=300&q=80", caption: "Letra A", price: "R$ 2,90" },
-                        { url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80", caption: "Letra B", price: "R$ 2,90" }
-                    ]
-                },
-                {
-                    name: "✍️ Caligrafia",
-                    images: [
-                        { url: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=300&q=80", caption: "Treino da letra cursiva", price: "R$ 3,90" }
-                    ]
-                }
+                { name: "🔤 Alfabeto", images: [
+                    { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=300&q=80", caption: "Letra A", price: "R$ 2,90" },
+                    { url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80", caption: "Letra B", price: "R$ 2,90" }
+                ]},
+                { name: "✍️ Caligrafia", images: [
+                    { url: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=300&q=80", caption: "Treino da letra cursiva", price: "R$ 3,90" }
+                ]}
             ]
         }
     ];
 
-    function loadProducts() {
-        const saved = localStorage.getItem('pedagoart_products');
-        if (saved) {
-            products = JSON.parse(saved);
-        } else {
-            products = defaultProducts;
-            saveProducts();
-        }
-        renderProducts();
-    }
-
-    function saveProducts() {
-        localStorage.setItem('pedagoart_products', JSON.stringify(products));
-    }
-
-    function renderProducts(filter = "all") {
+    function renderProducts() {
         const container = document.getElementById('productsGrid');
-        if (!container) return;
-        let filtered = filter === "all" ? products : products.filter(p => p.category === filter);
-        if (filtered.length === 0) {
-            container.innerHTML = '<div style="grid-column:1/-1; text-align:center;">Nenhum produto encontrado</div>';
-            return;
-        }
         let html = '';
-        for (let p of filtered) {
+        for (let p of products) {
             html += `
                 <div class="product-card" onclick="openProductModal(${p.id})">
-                    <img class="product-image" src="${p.image}" onerror="this.src='https://placehold.co/600x400'">
+                    <img class="product-image" src="${p.image}" alt="${p.title}">
                     <div class="product-info">
                         <h3 class="product-title">${p.title}</h3>
-                        <p class="product-description">${p.description.substring(0, 80)}...</p>
+                        <p style="color:#64748b;">${p.description.substring(0, 80)}...</p>
                         <div class="product-price">💰 ${p.price}</div>
                     </div>
                 </div>
@@ -909,14 +482,20 @@
     function openProductModal(id) {
         const product = products.find(p => p.id === id);
         if (!product) return;
+        
         document.getElementById('modalTitle').innerHTML = product.title;
         
-        let foldersHtml = '<div class="folder-structure">';
-        for (let folder of (product.folders || [])) {
+        let foldersHtml = `<div class="modal-price" style="color:green; font-size:1.3rem; font-weight:bold; margin-bottom:1rem;">💰 ${product.price} - Kit Completo</div>
+                           <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-kit">🎁 Comprar Kit Completo (Todas as pastas)</a>
+                           <div style="text-align:center; margin:1rem 0;">⭐ ESCOLHA POR PASTA ⭐</div>
+                           <div class="folder-structure">`;
+        
+        for (let folder of product.folders) {
             foldersHtml += `
                 <div class="folder">
                     <div class="folder-header" onclick="toggleFolder(this)">
                         <i class="fas fa-folder"></i> 📁 ${folder.name}
+                        <span style="margin-left:auto; font-size:0.7rem;">${folder.images.length} itens</span>
                     </div>
                     <div class="folder-content">
                         <div class="images-subgrid">
@@ -924,27 +503,18 @@
             for (let img of folder.images) {
                 foldersHtml += `
                     <div class="sub-item">
-                        <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/150x120'">
+                        <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/150x120/6366f1/white?text=Imagem'">
                         <p>${img.caption}</p>
                         <div class="sub-price">💰 ${img.price}</div>
                         <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar ${img.caption} - ${img.price}" class="btn-whats-sub">🛒 Comprar</a>
                     </div>
                 `;
             }
-            foldersHtml += `
-                        </div>
-                    </div>
-                </div>
-            `;
+            foldersHtml += `</div></div></div>`;
         }
-        foldersHtml += '</div>';
         
-        document.getElementById('modalBody').innerHTML = `
-            <div style="color:green; font-size:1.3rem; font-weight:bold; margin-bottom:1rem;">💰 ${product.price} - Kit Completo</div>
-            <a href="https://wa.me/5500000000000?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-primary" style="display:block; text-align:center;">🎁 Comprar Kit Completo</a>
-            <div style="text-align:center; margin:1rem 0;">⭐ ESCOLHA POR PASTA ⭐</div>
-            ${foldersHtml}
-        `;
+        foldersHtml += `</div>`;
+        document.getElementById('modalBody').innerHTML = foldersHtml;
         document.getElementById('productModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
@@ -961,223 +531,27 @@
 
     function openZoom(url) {
         const win = window.open();
-        win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;">Fechar</button></body></html>`);
+        win.document.write(`
+            <html>
+            <head><title>Visualização</title></head>
+            <body style="margin:0; display:flex; justify-content:center; align-items:center; min-height:100vh; background:#000;">
+                <img src="${url}" style="max-width:90%; max-height:90vh; border-radius:1rem;">
+                <button onclick="window.close()" style="position:fixed; top:20px; right:20px; background:white; border:none; padding:10px 20px; border-radius:1rem; cursor:pointer;">Fechar</button>
+            </body>
+            </html>
+        `);
     }
-
-    function setupFilters() {
-        const btns = document.querySelectorAll('.filter-btn');
-        btns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                btns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                renderProducts(this.dataset.filter);
-            });
-        });
-    }
-
-    // ADMIN
-    let tempFolders = [];
-
-    function openAdminLogin() {
-        if (!isAdminMode) return;
-        document.getElementById('adminLoginModal').style.display = 'flex';
-    }
-
-    function checkAdminLogin() {
-        const pass = document.getElementById('adminPassword').value;
-        if (pass === ADMIN_PASSWORD) {
-            document.getElementById('adminLoginModal').style.display = 'none';
-            document.querySelector('.header').style.display = 'none';
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.filters').style.display = 'none';
-            document.querySelector('.products').style.display = 'none';
-            document.querySelector('.benefits').style.display = 'none';
-            document.querySelector('.cta').style.display = 'none';
-            document.querySelector('.footer').style.display = 'none';
-            document.querySelector('.whatsapp-float').style.display = 'none';
-            document.getElementById('adminPanel').style.display = 'block';
-            renderAdminProducts();
-        } else {
-            alert('Senha incorreta!');
-        }
-    }
-
-    function closeAdminPanel() {
-        document.getElementById('adminPanel').style.display = 'none';
-        location.reload();
-    }
-
-    function addFolder() {
-        const name = document.getElementById('newFolderName').value;
-        if (!name) { alert('Digite o nome da pasta'); return; }
-        tempFolders.push({ name, images: [] });
-        renderFoldersList();
-        document.getElementById('newFolderName').value = '';
-    }
-
-    function removeFolder(index) {
-        tempFolders.splice(index, 1);
-        renderFoldersList();
-    }
-
-    function addImageToFolder(folderIndex) {
-        const url = prompt('URL da imagem:');
-        const caption = prompt('Legenda:');
-        const price = prompt('Preço (Ex: R$ 2,90):');
-        if (url) {
-            tempFolders[folderIndex].images.push({ url, caption: caption || 'Imagem', price: price || 'R$ 2,90' });
-            renderFoldersList();
-        }
-    }
-
-    function removeImageFromFolder(folderIndex, imageIndex) {
-        tempFolders[folderIndex].images.splice(imageIndex, 1);
-        renderFoldersList();
-    }
-
-    function renderFoldersList() {
-        const container = document.getElementById('foldersList');
-        if (!container) return;
-        let html = '';
-        for (let i = 0; i < tempFolders.length; i++) {
-            html += `<div style="background:#334155; padding:1rem; border-radius:0.5rem; margin-bottom:1rem;">
-                        <div style="display:flex; justify-content:space-between;">
-                            <strong>📁 ${tempFolders[i].name}</strong>
-                            <button onclick="removeFolder(${i})" style="background:#ef4444; border:none; border-radius:0.5rem; padding:0.2rem 0.5rem; cursor:pointer;">🗑️</button>
-                        </div>
-                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">`;
-            for (let j = 0; j < tempFolders[i].images.length; j++) {
-                html += `<div style="background:#1e293b; padding:0.5rem; border-radius:0.5rem; width:100px;">
-                            <img src="${tempFolders[i].images[j].url}" style="width:100%; height:60px; object-fit:cover; border-radius:0.3rem;">
-                            <div style="font-size:10px;">${tempFolders[i].images[j].caption}</div>
-                            <div style="font-size:10px; color:green;">${tempFolders[i].images[j].price}</div>
-                            <button onclick="removeImageFromFolder(${i}, ${j})" style="background:#ef4444; border:none; border-radius:0.3rem; font-size:10px; padding:2px; cursor:pointer; margin-top:3px;">Remover</button>
-                        </div>`;
-            }
-            html += `</div><button onclick="addImageToFolder(${i})" style="background:var(--primary); border:none; border-radius:0.5rem; padding:0.3rem 0.8rem; margin-top:0.5rem; cursor:pointer;">➕ Adicionar Imagem</button>
-                    </div>`;
-        }
-        container.innerHTML = html;
-    }
-
-    function showAddForm() {
-        document.getElementById('formTitle').innerHTML = '➕ Adicionar Produto';
-        document.getElementById('productId').value = '';
-        document.getElementById('prodTitle').value = '';
-        document.getElementById('prodDescription').value = '';
-        document.getElementById('prodPrice').value = '';
-        document.getElementById('prodCategory').value = 'datas';
-        document.getElementById('prodImage').value = '';
-        tempFolders = [];
-        renderFoldersList();
-        document.getElementById('productForm').style.display = 'block';
-    }
-
-    function hideForm() {
-        document.getElementById('productForm').style.display = 'none';
-    }
-
-    function editProduct(id) {
-        const product = products.find(p => p.id === id);
-        if (!product) return;
-        document.getElementById('formTitle').innerHTML = '✏️ Editar Produto';
-        document.getElementById('productId').value = product.id;
-        document.getElementById('prodTitle').value = product.title;
-        document.getElementById('prodDescription').value = product.description;
-        document.getElementById('prodPrice').value = product.price;
-        document.getElementById('prodCategory').value = product.category;
-        document.getElementById('prodImage').value = product.image;
-        tempFolders = product.folders ? [...product.folders] : [];
-        renderFoldersList();
-        document.getElementById('productForm').style.display = 'block';
-    }
-
-    function saveProduct() {
-        const id = document.getElementById('productId').value;
-        const title = document.getElementById('prodTitle').value;
-        const description = document.getElementById('prodDescription').value;
-        const price = document.getElementById('prodPrice').value;
-        const category = document.getElementById('prodCategory').value;
-        const image = document.getElementById('prodImage').value;
-        if (!title || !description || !price || !image) { alert('Preencha todos os campos!'); return; }
-        if (id) {
-            const index = products.findIndex(p => p.id == id);
-            if (index !== -1) products[index] = { ...products[index], title, description, price, category, image, folders: tempFolders };
-        } else {
-            const newId = Math.max(...products.map(p => p.id), 0) + 1;
-            products.push({ id: newId, title, description, price, category, image, folders: tempFolders });
-        }
-        saveProducts();
-        renderAdminProducts();
-        renderProducts();
-        hideForm();
-        alert('Produto salvo!');
-    }
-
-    function deleteProduct(id) {
-        if (confirm('Excluir produto?')) {
-            products = products.filter(p => p.id !== id);
-            saveProducts();
-            renderAdminProducts();
-            renderProducts();
-        }
-    }
-
-    function renderAdminProducts() {
-        const container = document.getElementById('adminProductsList');
-        if (!container) return;
-        let html = '';
-        for (let p of products) {
-            html += `
-                <div class="admin-card">
-                    <img src="${p.image}" onerror="this.src='https://placehold.co/600x400'">
-                    <div class="admin-card-info">
-                        <h4>${p.title}</h4>
-                        <p>💰 ${p.price}</p>
-                        <p style="font-size:0.7rem;">📁 ${p.folders?.length || 0} pastas</p>
-                    </div>
-                    <div class="admin-card-actions">
-                        <button class="btn-edit" onclick="editProduct(${p.id})">✏️</button>
-                        <button class="btn-delete" onclick="deleteProduct(${p.id})">🗑️</button>
-                    </div>
-                </div>
-            `;
-        }
-        container.innerHTML = html;
-    }
-
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-    });
 
     window.onclick = (e) => {
         const modal = document.getElementById('productModal');
-        const loginModal = document.getElementById('adminLoginModal');
         if (e.target === modal) closeModal();
-        if (e.target === loginModal) loginModal.style.display = 'none';
     };
 
-    loadProducts();
-    setupFilters();
-
+    renderProducts();
     window.toggleFolder = toggleFolder;
     window.openProductModal = openProductModal;
     window.closeModal = closeModal;
     window.openZoom = openZoom;
-    window.openAdminLogin = openAdminLogin;
-    window.checkAdminLogin = checkAdminLogin;
-    window.closeAdminPanel = closeAdminPanel;
-    window.showAddForm = showAddForm;
-    window.hideForm = hideForm;
-    window.addFolder = addFolder;
-    window.removeFolder = removeFolder;
-    window.addImageToFolder = addImageToFolder;
-    window.removeImageFromFolder = removeImageFromFolder;
-    window.saveProduct = saveProduct;
-    window.editProduct = editProduct;
-    window.deleteProduct = deleteProduct;
 </script>
 </body>
 </html>
