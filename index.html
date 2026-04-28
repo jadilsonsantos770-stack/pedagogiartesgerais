@@ -7,11 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --laranja: #FF6B35;
@@ -29,24 +25,11 @@
             color: var(--dark);
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
 
-        /* ANIMAÇÕES */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
+        @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* CABEÇALHO */
         .header {
             position: fixed;
             top: 0;
@@ -58,11 +41,7 @@
             padding: 0.8rem 0;
         }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
 
         .logo h1 {
             font-size: 1.8rem;
@@ -73,22 +52,9 @@
             color: transparent;
         }
 
-        .nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .nav a:hover {
-            color: var(--laranja);
-        }
+        .logo p { font-size: 0.7rem; color: #64748B; }
+        .nav { display: flex; gap: 2rem; }
+        .nav a { text-decoration: none; color: var(--dark); font-weight: 600; cursor: pointer; }
 
         .admin-trigger {
             background: linear-gradient(135deg, var(--roxo), var(--rosa));
@@ -99,89 +65,30 @@
             cursor: pointer;
             font-weight: 700;
             margin-left: 1rem;
-            transition: all 0.3s;
         }
 
-        .admin-trigger:hover {
-            transform: scale(1.05);
-        }
+        .hidden { display: none !important; }
 
-        /* HERO */
-        .hero {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            padding: 7rem 0 3rem;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero h2 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+        .hero { min-height: 70vh; display: flex; align-items: center; padding: 7rem 0 3rem; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero h2 { font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--laranja), var(--rosa));
             color: white;
             padding: 1rem 2rem;
             border-radius: 3rem;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            transition: all 0.3s;
-            cursor: pointer;
             border: none;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+        .hero-image img { width: 100%; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-        .hero-image img {
-            width: 100%;
-            border-radius: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        /* SEÇÃO DE ABAS */
-        .abas-section {
-            padding: 2rem 0 4rem;
-            background: white;
-            border-radius: 3rem 3rem 0 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .abas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
+        .abas-section { padding: 2rem 0 4rem; background: white; border-radius: 3rem 3rem 0 0; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .abas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
 
         .aba-card {
             background: white;
@@ -192,43 +99,13 @@
             transition: all 0.3s;
             border: 2px solid transparent;
         }
+        .aba-card:hover { transform: translateY(-5px); border-color: var(--laranja); }
+        .aba-icon { font-size: 3rem; text-align: center; padding: 1.5rem 0 0; }
+        .aba-image { width: 100%; height: 160px; object-fit: cover; }
+        .aba-info { padding: 1.5rem; text-align: center; }
+        .aba-title { font-size: 1.3rem; font-weight: 800; }
+        .aba-count { color: var(--verde); font-weight: 600; }
 
-        .aba-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border-color: var(--laranja);
-        }
-
-        .aba-icon {
-            font-size: 3rem;
-            text-align: center;
-            padding: 1.5rem 0 0;
-        }
-
-        .aba-image {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-
-        .aba-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .aba-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .aba-count {
-            color: var(--verde);
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -253,21 +130,8 @@
             padding: 2rem;
         }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #E2E8F0;
-            padding-bottom: 1rem;
-        }
-
-        .images-grid-modal {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E2E8F0; padding-bottom: 1rem; margin-bottom: 1rem; }
+        .images-grid-modal { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
 
         .image-card-modal {
             background: #F8FAFC;
@@ -275,187 +139,31 @@
             padding: 1rem;
             text-align: center;
             border: 1px solid #E2E8F0;
-            transition: all 0.3s;
         }
+        .image-card-modal img { width: 100%; height: 140px; object-fit: cover; border-radius: 0.5rem; cursor: pointer; }
+        .image-caption { margin: 0.5rem 0; font-weight: 600; }
+        .image-price { color: var(--verde); font-weight: 700; }
+        .btn-whats-image { background: #25D366; color: white; padding: 0.3rem 0.8rem; border-radius: 1rem; text-decoration: none; font-size: 0.7rem; display: inline-block; margin-top: 0.5rem; cursor: pointer; border: none; }
+        .btn-kit-aba { background: linear-gradient(135deg, var(--laranja), var(--roxo)); color: white; padding: 0.8rem; border-radius: 2rem; text-align: center; display: block; margin: 1rem 0; font-weight: 700; cursor: pointer; border: none; width: 100%; }
 
-        .image-card-modal:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+        .benefits { padding: 4rem 0; background: linear-gradient(135deg, #1E293B, #0F172A); color: white; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .benefit-card { text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.08); border-radius: 1rem; cursor: pointer; }
+        .benefit-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 
-        .image-card-modal img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
+        .about { padding: 4rem 0; text-align: center; background: white; }
+        .about h3 { font-size: 2.2rem; background: linear-gradient(135deg, var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .signature { margin-top: 1rem; font-style: italic; color: var(--laranja); }
 
-        .image-caption {
-            margin: 0.5rem 0;
-            font-weight: 600;
-        }
+        .cta { padding: 4rem 0; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); text-align: center; color: white; }
+        .cta h3 { font-size: 2rem; }
+        .btn-whats { background: #25D366; color: white; padding: 1rem 2rem; border-radius: 3rem; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; }
 
-        .image-price {
-            color: var(--verde);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-        }
+        .footer { background: var(--dark); color: #94A3B8; text-align: center; padding: 2rem; }
+        .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: pulse 2s infinite; }
+        .whatsapp-float a { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; border-radius: 50%; font-size: 2rem; color: white; text-decoration: none; }
 
-        .btn-whats-image {
-            background: #25D366;
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 1rem;
-            text-decoration: none;
-            font-size: 0.75rem;
-            display: inline-block;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .btn-whats-image:hover {
-            transform: scale(1.05);
-        }
-
-        .btn-kit-aba {
-            background: linear-gradient(135deg, var(--laranja), var(--roxo));
-            color: white;
-            padding: 0.8rem;
-            border-radius: 2rem;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            margin: 1rem 0;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .empty-message {
-            text-align: center;
-            padding: 2rem;
-            color: #94A3B8;
-        }
-
-        /* BENEFÍCIOS */
-        .benefits {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #1E293B, #0F172A);
-            color: white;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .benefit-card {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.08);
-            border-radius: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-3px);
-            background: rgba(255,255,255,0.12);
-        }
-
-        .benefit-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* SOBRE */
-        .about {
-            padding: 4rem 0;
-            text-align: center;
-            background: white;
-        }
-
-        .about h3 {
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .signature {
-            margin-top: 1rem;
-            font-style: italic;
-            color: var(--laranja);
-        }
-
-        /* CTA */
-        .cta {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
-            text-align: center;
-            color: white;
-        }
-
-        .cta h3 {
-            font-size: 2rem;
-        }
-
-        .btn-whats {
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 3rem;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .btn-whats:hover {
-            transform: scale(1.05);
-        }
-
-        .footer {
-            background: var(--dark);
-            color: #94A3B8;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 100;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            font-size: 2rem;
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-
-        .whatsapp-float a:hover {
-            transform: scale(1.1);
-        }
-
-        /* PAINEL ADMIN */
+        /* ADMIN PANEL */
         .admin-panel {
             display: none;
             position: fixed;
@@ -467,134 +175,27 @@
             z-index: 3000;
             overflow-y: auto;
         }
-
-        .admin-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            color: white;
-        }
-
-        .btn-admin {
-            background: #10B981;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-
-        .form-aba {
-            background: #334155;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            margin-bottom: 2rem;
-            display: none;
-        }
-
-        .form-aba h3 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: white;
-            margin-bottom: 0.25rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            border: none;
-        }
-
-        .admin-abas-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .admin-aba-card {
-            background: #334155;
-            border-radius: 1rem;
-            overflow: hidden;
-        }
-
-        .admin-aba-card .aba-image {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .admin-aba-info {
-            padding: 1rem;
-            color: white;
-        }
-
-        .admin-aba-actions {
-            display: flex;
-            gap: 0.5rem;
-            padding: 1rem;
-            border-top: 1px solid #475569;
-        }
-
-        .images-admin-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-
-        .image-admin-item {
-            position: relative;
-            width: 60px;
-        }
-
-        .image-admin-item img {
-            width: 100%;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 0.3rem;
-        }
-
-        .remove-img {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: red;
-            color: white;
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            font-size: 10px;
-            cursor: pointer;
-        }
+        .admin-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; color: white; }
+        .btn-admin { background: #10B981; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; }
+        .form-aba { background: #334155; padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem; display: none; }
+        .form-aba h3 { color: white; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; color: white; margin-bottom: 0.25rem; }
+        .form-group input { width: 100%; padding: 0.5rem; border-radius: 0.5rem; border: none; }
+        .admin-abas-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .admin-aba-card { background: #334155; border-radius: 1rem; overflow: hidden; }
+        .admin-aba-card .aba-image { width: 100%; height: 150px; object-fit: cover; }
+        .admin-aba-info { padding: 1rem; color: white; }
+        .admin-aba-actions { display: flex; gap: 0.5rem; padding: 1rem; border-top: 1px solid #475569; }
+        .images-admin-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0; }
+        .image-admin-item { position: relative; width: 60px; }
+        .image-admin-item img { width: 100%; height: 60px; object-fit: cover; border-radius: 0.3rem; }
 
         @media (max-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .nav {
-                display: none;
-            }
-            .abas-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .nav { display: none; }
+            .abas-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -614,7 +215,7 @@
                 <a onclick="scrollToSection('about')">Sobre</a>
                 <a onclick="scrollToSection('contact')">Contato</a>
             </nav>
-            <button class="admin-trigger" onclick="openAdminLogin()">
+            <button id="adminBtn" class="admin-trigger hidden" onclick="openAdminLogin()">
                 <i class="fas fa-lock"></i> Admin
             </button>
         </div>
@@ -658,7 +259,7 @@
 <section id="about" class="about">
     <div class="container">
         <h3>🌸 Cleisiane Barreto</h3>
-        <p>Pedagoga especializada em criar materiais inclusivos que transformam a rotina escolar em uma experiência mágica e acolhedora.</p>
+        <p>Pedagoga especializada em criar materiais inclusivos que transformam a rotina escolar.</p>
         <p class="signature">"Ensinar é transformar vidas, um material de cada vez."</p>
         <button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Falar com a Pedagoga</button>
     </div>
@@ -679,7 +280,7 @@
     <a href="#" onclick="openWhatsApp(); return false;"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<!-- MODAL DE IMAGENS DA ABA -->
+<!-- MODAL -->
 <div id="imagesModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -694,7 +295,8 @@
 <div id="adminLoginModal" class="modal">
     <div class="modal-content" style="max-width:400px; text-align:center;">
         <h2>🔒 Acesso Restrito</h2>
-        <input type="password" id="adminPassword" style="width:100%; padding:0.8rem; margin:1rem 0; border:1px solid #ccc; border-radius:0.5rem;" placeholder="Senha">
+        <p style="margin:1rem 0;">Digite a senha para acessar o painel</p>
+        <input type="password" id="adminPassword" style="width:100%; padding:0.8rem; border:1px solid #ccc; border-radius:0.5rem; margin-bottom:1rem;" placeholder="Senha">
         <button onclick="checkAdminLogin()" style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; border:none; padding:0.8rem; border-radius:0.5rem; width:100%; cursor:pointer;">Entrar</button>
     </div>
 </div>
@@ -712,12 +314,11 @@
             <h3 id="formTitle">➕ Adicionar Nova ABA</h3>
             <input type="hidden" id="abaId">
             <div class="form-group"><label>Nome da ABA</label><input type="text" id="abaName" placeholder="Ex: 🎭 Carnaval"></div>
-            <div class="form-group"><label>Ícone/Emoji</label><input type="text" id="abaIcon" placeholder="Ex: 🎭"></div>
+            <div class="form-group"><label>Ícone</label><input type="text" id="abaIcon" placeholder="Ex: 🎭"></div>
             <div class="form-group"><label>URL da Imagem de Capa</label><input type="text" id="abaImage" placeholder="https://..."></div>
-            <div class="form-group"><label>Preço do Kit Completo</label><input type="text" id="abaKitPrice" placeholder="Ex: R$ 19,90"></div>
-            
+            <div class="form-group"><label>Preço do Kit</label><input type="text" id="abaKitPrice" placeholder="Ex: R$ 19,90"></div>
             <div class="form-group">
-                <label>📸 Imagens desta ABA</label>
+                <label>Imagens da ABA</label>
                 <div id="imagesList"></div>
                 <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
                     <input type="text" id="newImageUrl" placeholder="URL da imagem" style="flex:2;">
@@ -726,7 +327,6 @@
                     <button onclick="addImage()" style="background:#3B82F6; border:none; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">➕</button>
                 </div>
             </div>
-            
             <div><button class="btn-admin" onclick="saveAba()">💾 Salvar</button><button class="btn-admin" onclick="hideForm()" style="background:#EF4444; margin-left:0.5rem;">Cancelar</button></div>
         </div>
 
@@ -736,88 +336,43 @@
 </div>
 
 <script>
-    // LINK DO WHATSAPP
-    const WHATSAPP_LINK = "https://wa.me/qr/QMLMG265QVDKE1";
+    // ============================================
+    // LINK SECRETO - SÓ APARECE COM ?admin=true
+    // ============================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdminMode = urlParams.get('admin') === 'true';
     
-    function openWhatsApp() {
-        window.open(WHATSAPP_LINK, '_blank');
+    // Só mostra o botão Admin se for o link secreto
+    if (isAdminMode) {
+        document.getElementById('adminBtn').classList.remove('hidden');
     }
 
-    function scrollToSection(sectionId) {
-        document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-    }
+    // SENHA FORTE
+    const ADMIN_PASSWORD = "C1e1s1@ne@2026";
+    const WHATSAPP_LINK = "https://wa.me/qr/QMLMG265QVDKE1";
 
-    const ADMIN_PASSWORD = "admin123";
     let abas = [];
     let tempImages = [];
 
-    // ABAS PADRÃO
+    // ============================================
+    // TODAS AS DATAS COMEMORATIVAS DO ANO
+    // ============================================
     const defaultAbas = [
-        {
-            id: 1, name: "🎭 Carnaval", icon: "🎭",
-            image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 19,90",
-            images: [
-                { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" },
-                { url: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=300&q=80", caption: "Fantasia Colorida", price: "R$ 4,90" }
-            ]
-        },
-        {
-            id: 2, name: "🐰 Páscoa", icon: "🐰",
-            image: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 14,90",
-            images: [
-                { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=300&q=80", caption: "Coelhinho da Páscoa", price: "R$ 3,90" }
-            ]
-        },
-        {
-            id: 3, name: "🌽 Festa Junina", icon: "🌽",
-            image: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 14,90",
-            images: [
-                { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=300&q=80", caption: "Bandeirinhas Juninas", price: "R$ 3,90" }
-            ]
-        },
-        {
-            id: 4, name: "🎄 Natal", icon: "🎄",
-            image: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 19,90",
-            images: [
-                { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=300&q=80", caption: "Árvore de Natal", price: "R$ 3,90" }
-            ]
-        },
-        {
-            id: 5, name: "💐 Dia das Mães", icon: "💐",
-            image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 12,90",
-            images: [
-                { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=300&q=80", caption: "Cartão para Mamãe", price: "R$ 3,90" }
-            ]
-        },
-        {
-            id: 6, name: "👨 Dia dos Pais", icon: "👨",
-            image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 12,90",
-            images: []
-        },
-        {
-            id: 7, name: "🇧🇷 Independência", icon: "🇧🇷",
-            image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 12,90",
-            images: []
-        },
-        {
-            id: 8, name: "📖 Alfabetização", icon: "📖",
-            image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 24,90",
-            images: []
-        },
-        {
-            id: 9, name: "🧩 Inclusão (TEA)", icon: "🧩",
-            image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
-            kitPrice: "R$ 29,90",
-            images: []
-        }
+        { id: 1, name: "🎭 Carnaval", icon: "🎭", image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [{ url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" }] },
+        { id: 2, name: "🐰 Páscoa", icon: "🐰", image: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        { id: 3, name: "🌽 Festa Junina", icon: "🌽", image: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        { id: 4, name: "🇧🇷 Independência do Brasil", icon: "🇧🇷", image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 5, name: "🎄 Natal", icon: "🎄", image: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
+        { id: 6, name: "💐 Dia das Mães", icon: "💐", image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 7, name: "👨 Dia dos Pais", icon: "👨", image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 8, name: "🧸 Dia das Crianças", icon: "🧸", image: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        { id: 9, name: "📖 Alfabetização", icon: "📖", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 24,90", images: [] },
+        { id: 10, name: "🧩 Inclusão (TEA)", icon: "🧩", image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 29,90", images: [] },
+        { id: 11, name: "✊🏿 Consciência Negra", icon: "✊🏿", image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        { id: 12, name: "🏛️ Proclamação da República", icon: "🏛️", image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 13, name: "📚 Dia do Livro", icon: "📚", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
+        { id: 14, name: "🌳 Dia da Árvore", icon: "🌳", image: "https://images.unscramble.it/l6bIP2.jpg?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
+        { id: 15, name: "💧 Dia da Água", icon: "💧", image: "https://images.unsplash.com/photo-1542601906997-08f3fdefa5b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] }
     ];
 
     function loadAbas() {
@@ -840,7 +395,7 @@
                     <div class="aba-info">
                         <h3 class="aba-title">${aba.name}</h3>
                         <div class="aba-count">💰 ${aba.kitPrice} - Kit Completo</div>
-                        <div style="font-size:0.7rem; color:#64748B; margin-top:0.3rem;">📸 ${aba.images.length} imagens</div>
+                        <div style="font-size:0.7rem;">📸 ${aba.images.length} imagens</div>
                     </div>
                 </div>
             `;
@@ -861,20 +416,20 @@
                     <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/300x200/ccc/white?text=Erro'">
                     <div class="image-caption">${img.caption}</div>
                     <div class="image-price">💰 ${img.price}</div>
-                    <button class="btn-whats-image" onclick="openWhatsApp()">🛒 Comprar este item</button>
+                    <button class="btn-whats-image" onclick="openWhatsApp()">🛒 Comprar</button>
                 </div>
             `;
         }
         
         if (aba.images.length === 0) {
-            imagesHtml = `<div class="empty-message"><i class="fas fa-images"></i> Nenhuma imagem disponível ainda.<br><button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Solicitar via WhatsApp</button></div>`;
+            imagesHtml = `<div style="text-align:center; padding:2rem;">Nenhuma imagem disponível.<br><button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Solicitar via WhatsApp</button></div>`;
         }
         
         document.getElementById('modalBody').innerHTML = `
-            <div style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; padding:1rem; border-radius:1rem; text-align:center; margin-bottom:1rem;">
+            <div style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; padding:1rem; border-radius:1rem; text-align:center;">
                 <strong>💰 Kit Completo: ${aba.kitPrice}</strong>
             </div>
-            <button class="btn-kit-aba" onclick="openWhatsApp()">🎁 Comprar Kit Completo (Todas as imagens)</button>
+            <button class="btn-kit-aba" onclick="openWhatsApp()">🎁 Comprar Kit Completo</button>
             <div style="text-align:center; margin:1rem 0;">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div>
             <div class="images-grid-modal">${imagesHtml}</div>
         `;
@@ -883,18 +438,13 @@
         document.body.style.overflow = 'hidden';
     }
 
-    function openZoom(url) {
-        const win = window.open();
-        win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;background:white;border:none;padding:10px 20px;border-radius:1rem;">Fechar</button></body></html>`);
-    }
+    function openWhatsApp() { window.open(WHATSAPP_LINK, '_blank'); }
+    function openZoom(url) { const win = window.open(); win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;background:white;border:none;padding:10px;border-radius:1rem;">Fechar</button></body></html>`); }
+    function closeModal() { document.getElementById('imagesModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
 
-    function closeModal() {
-        document.getElementById('imagesModal').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    // ADMIN
-    function openAdminLogin() { document.getElementById('adminLoginModal').style.display = 'flex'; }
+    // ADMIN - SÓ FUNCIONA NO LINK SECRETO
+    function openAdminLogin() { if (isAdminMode) document.getElementById('adminLoginModal').style.display = 'flex'; }
     function closeAdminLogin() { document.getElementById('adminLoginModal').style.display = 'none'; document.getElementById('adminPassword').value = ''; }
     
     function checkAdminLogin() {
@@ -910,7 +460,7 @@
             document.querySelector('.whatsapp-float').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
             renderAdminAbas();
-        } else alert('Senha incorreta! Use: admin123');
+        } else alert('Senha incorreta!');
     }
     
     function closeAdminPanel() { location.reload(); }
@@ -919,14 +469,7 @@
         const container = document.getElementById('imagesList');
         let html = '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
         for (let i = 0; i < tempImages.length; i++) {
-            html += `
-                <div style="position:relative; width:80px;">
-                    <img src="${tempImages[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;">
-                    <div style="font-size:10px;">${tempImages[i].caption}</div>
-                    <div style="font-size:10px; color:#10B981;">${tempImages[i].price}</div>
-                    <button onclick="removeImage(${i})" style="position:absolute; top:-5px; right:-5px; background:#EF4444; color:white; border:none; border-radius:50%; width:18px; height:18px;">✕</button>
-                </div>
-            `;
+            html += `<div style="position:relative; width:80px;"><img src="${tempImages[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;"><div style="font-size:10px;">${tempImages[i].caption}</div><div style="font-size:10px; color:#10B981;">${tempImages[i].price}</div><button onclick="removeImage(${i})" style="position:absolute; top:-5px; right:-5px; background:#EF4444; color:white; border:none; border-radius:50%; width:18px; height:18px;">✕</button></div>`;
         }
         html += '</div>';
         container.innerHTML = html;
@@ -999,7 +542,7 @@
     }
 
     function deleteAba(id) {
-        if (confirm('Tem certeza que deseja excluir esta ABA?')) {
+        if (confirm('Tem certeza?')) {
             abas = abas.filter(a => a.id !== id);
             saveAbas();
             renderAbas();
@@ -1013,14 +556,12 @@
         for (let aba of abas) {
             html += `
                 <div class="admin-aba-card">
-                    <img class="aba-image" src="${aba.image}" onerror="this.src='https://placehold.co/600x400'">
+                    <img class="aba-image" src="${aba.image}">
                     <div class="admin-aba-info">
                         <h4>${aba.icon} ${aba.name}</h4>
                         <p>💰 ${aba.kitPrice}</p>
-                        <div class="images-admin-list">
-                            ${aba.images.map(img => `<div class="image-admin-item"><img src="${img.url}"><div style="font-size:8px;">${img.caption}</div></div>`).join('')}
-                        </div>
-                        <p style="font-size:0.7rem;">📸 ${aba.images.length} imagens</p>
+                        <div class="images-admin-list">${aba.images.map(img => `<div class="image-admin-item"><img src="${img.url}"><div style="font-size:8px;">${img.caption}</div></div>`).join('')}</div>
+                        <p>📸 ${aba.images.length} imagens</p>
                     </div>
                     <div class="admin-aba-actions">
                         <button class="btn-admin" onclick="editAba(${aba.id})" style="background:#3B82F6;">✏️ Editar</button>
