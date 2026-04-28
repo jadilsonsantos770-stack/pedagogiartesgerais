@@ -11,24 +11,30 @@
 
         :root {
             --laranja: #FF6B35;
+            --laranja-claro: #FF8C5A;
             --azul: #3B82F6;
             --verde: #10B981;
             --roxo: #8B5CF6;
             --rosa: #EC4899;
             --amarelo: #F59E0B;
             --dark: #1E293B;
+            --light: #F8FAFC;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #FFF9F0 0%, #F0F9FF 50%, #F0FDF4 100%);
+            background: var(--light);
             color: var(--dark);
+            overflow-x: hidden;
         }
 
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
 
+        /* ANIMAÇÕES */
         @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
         @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shine { 0% { background-position: -100%; } 100% { background-position: 200%; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .header {
             position: fixed;
@@ -41,119 +47,119 @@
             padding: 0.8rem 0;
         }
 
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            cursor: pointer;
-        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .logo h1 { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); -webkit-background-clip: text; background-clip: text; color: transparent; cursor: pointer; }
         .logo p { font-size: 0.7rem; color: #64748B; }
         .nav { display: flex; gap: 2rem; flex-wrap: wrap; }
-        .nav a { text-decoration: none; color: var(--dark); font-weight: 600; cursor: pointer; }
+        .nav a { text-decoration: none; color: var(--dark); font-weight: 600; cursor: pointer; transition: color 0.3s; }
+        .nav a:hover { color: var(--laranja); }
 
-        .hero { min-height: 70vh; display: flex; align-items: center; padding: 7rem 0 3rem; }
-        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .hero h2 { font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .btn-primary { background: linear-gradient(135deg, var(--laranja), var(--rosa)); color: white; padding: 1rem 2rem; border-radius: 3rem; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; }
-        .hero-image img { width: 100%; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-
-        /* SEÇÃO DE MESES ORGANIZADA */
-        .abas-section { padding: 2rem 0 4rem; background: white; }
-        .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        
-        .mes-grupo { margin-bottom: 3rem; }
-        .mes-titulo { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; padding-left: 1rem; border-left: 5px solid var(--laranja); }
-        .abas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-
-        .aba-card {
-            background: white;
-            border-radius: 1.5rem;
+        /* HERO - TELA INICIAL IMPACTANTE */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 0 4rem;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
         }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255,107,53,0.08), transparent);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--laranja), var(--rosa)); color: white; padding: 0.4rem 1.2rem; border-radius: 2rem; font-size: 0.75rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .hero h2 { font-size: 3.5rem; font-weight: 900; line-height: 1.2; background: linear-gradient(135deg, var(--dark), var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero-highlight { display: inline-block; background: linear-gradient(135deg, var(--amarelo), var(--laranja)); padding: 0.2rem 0.8rem; border-radius: 1rem; color: white; font-size: 0.9rem; margin-right: 0.5rem; }
+        .hero p { color: #64748B; font-size: 1.1rem; margin: 1.5rem 0; line-height: 1.6; }
+        .hero-stats { display: flex; gap: 2rem; margin: 2rem 0; }
+        .stat { text-align: center; background: white; padding: 0.8rem 1.5rem; border-radius: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .stat-number { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .btn-primary { background: linear-gradient(135deg, var(--laranja), var(--rosa)); color: white; padding: 1rem 2rem; border-radius: 3rem; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; transition: all 0.3s; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .hero-image { position: relative; animation: float 3s ease-in-out infinite; }
+        .hero-image img { width: 100%; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .floating-card { position: absolute; bottom: -20px; left: -20px; background: white; padding: 1rem; border-radius: 1rem; display: flex; align-items: center; gap: 0.8rem; box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-left: 5px solid var(--laranja); animation: float 3s ease-in-out infinite; }
+
+        /* ELEMENTOS FLUTUANTES */
+        .floating-deco { position: absolute; pointer-events: none; z-index: 0; font-size: 2rem; }
+        .deco-1 { top: 15%; left: 5%; animation: float 4s ease-in-out infinite; }
+        .deco-2 { top: 70%; right: 3%; animation: float-reverse 3.5s ease-in-out infinite; }
+        .deco-3 { bottom: 10%; left: 10%; animation: float 5s ease-in-out infinite; }
+
+        /* SEÇÃO DE DESTAQUES */
+        .destaques { padding: 4rem 0; background: white; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .destaques-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .destaque-card { background: var(--light); padding: 2rem; border-radius: 1.5rem; text-align: center; transition: all 0.3s; cursor: pointer; }
+        .destaque-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .destaque-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+        /* BENEFÍCIOS */
+        .benefits { padding: 4rem 0; background: linear-gradient(135deg, #1E293B, #0F172A); color: white; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .benefit-card { text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.08); border-radius: 1rem; cursor: pointer; transition: all 0.3s; }
+        .benefit-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.12); }
+        .benefit-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+        /* DEPOIMENTOS */
+        .depoimentos { padding: 4rem 0; background: white; }
+        .depoimentos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .depoimento-card { background: var(--light); padding: 2rem; border-radius: 1.5rem; text-align: center; border: 1px solid #E2E8F0; }
+        .depoimento-texto { font-style: italic; color: #64748B; margin-bottom: 1rem; }
+        .depoimento-autor { font-weight: 700; color: var(--laranja); }
+
+        /* CATÁLOGO ORGANIZADO POR MESES */
+        .catalogo { padding: 4rem 0; background: var(--light); }
+        .mes-grupo { margin-bottom: 3rem; }
+        .mes-titulo { font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem; padding-left: 1rem; border-left: 5px solid var(--laranja); display: flex; align-items: center; gap: 0.5rem; }
+        .abas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+        .aba-card { background: white; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); cursor: pointer; transition: all 0.3s; border: 2px solid transparent; }
         .aba-card:hover { transform: translateY(-5px); border-color: var(--laranja); }
         .aba-icon { font-size: 3rem; text-align: center; padding: 1.5rem 0 0; }
         .aba-image { width: 100%; height: 160px; object-fit: cover; }
         .aba-info { padding: 1.5rem; text-align: center; }
-        .aba-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .aba-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
         .aba-count { color: var(--verde); font-weight: 600; }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: white;
-            border-radius: 1.5rem;
-            max-width: 1000px;
-            width: 90%;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 2rem;
-        }
+        /* SOBRE */
+        .about { padding: 4rem 0; text-align: center; background: white; }
+        .about h3 { font-size: 2.2rem; background: linear-gradient(135deg, var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
+        .signature { margin-top: 1rem; font-style: italic; color: var(--laranja); }
+
+        /* CTA */
+        .cta { padding: 4rem 0; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); text-align: center; color: white; }
+        .cta h3 { font-size: 2rem; margin-bottom: 1rem; }
+        .btn-whats { background: #25D366; color: white; padding: 1rem 2rem; border-radius: 3rem; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; transition: all 0.3s; }
+        .btn-whats:hover { transform: scale(1.05); }
+
+        .footer { background: var(--dark); color: #94A3B8; text-align: center; padding: 2rem; }
+        .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: pulse 2s infinite; }
+        .whatsapp-float a { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; border-radius: 50%; font-size: 2rem; color: white; text-decoration: none; }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: white; border-radius: 1.5rem; max-width: 1000px; width: 90%; max-height: 85vh; overflow-y: auto; padding: 2rem; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E2E8F0; padding-bottom: 1rem; margin-bottom: 1rem; }
         .images-grid-modal { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-        .image-card-modal {
-            background: #F8FAFC;
-            border-radius: 1rem;
-            padding: 1rem;
-            text-align: center;
-            border: 1px solid #E2E8F0;
-        }
+        .image-card-modal { background: #F8FAFC; border-radius: 1rem; padding: 1rem; text-align: center; border: 1px solid #E2E8F0; }
         .image-card-modal img { width: 100%; height: 140px; object-fit: cover; border-radius: 0.5rem; cursor: pointer; }
         .image-caption { margin: 0.5rem 0; font-weight: 600; }
         .image-price { color: var(--verde); font-weight: 700; }
-        .btn-whats-image { background: #25D366; color: white; padding: 0.3rem 0.8rem; border-radius: 1rem; text-decoration: none; font-size: 0.7rem; display: inline-block; margin-top: 0.5rem; cursor: pointer; border: none; }
+        .btn-whats-image { background: #25D366; color: white; padding: 0.3rem 0.8rem; border-radius: 1rem; border: none; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; }
         .btn-kit-aba { background: linear-gradient(135deg, var(--laranja), var(--roxo)); color: white; padding: 0.8rem; border-radius: 2rem; text-align: center; display: block; margin: 1rem 0; font-weight: 700; cursor: pointer; border: none; width: 100%; }
 
-        .benefits { padding: 4rem 0; background: linear-gradient(135deg, #1E293B, #0F172A); color: white; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .benefit-card { text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.08); border-radius: 1rem; cursor: pointer; }
-        .benefit-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-
-        .about { padding: 4rem 0; text-align: center; background: white; }
-        .about h3 { font-size: 2.2rem; background: linear-gradient(135deg, var(--laranja), var(--roxo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .signature { margin-top: 1rem; font-style: italic; color: var(--laranja); }
-
-        .cta { padding: 4rem 0; background: linear-gradient(135deg, var(--laranja), var(--roxo), var(--rosa)); text-align: center; color: white; }
-        .cta h3 { font-size: 2rem; }
-        .btn-whats { background: #25D366; color: white; padding: 1rem 2rem; border-radius: 3rem; border: none; font-weight: 700; cursor: pointer; margin-top: 1rem; }
-
-        .footer { background: var(--dark); color: #94A3B8; text-align: center; padding: 2rem; }
-        .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: pulse 2s infinite; cursor: pointer; }
-        .whatsapp-float a { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; border-radius: 50%; font-size: 2rem; color: white; text-decoration: none; }
-
         /* ADMIN PANEL */
-        .admin-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1E293B;
-            z-index: 3000;
-            overflow-y: auto;
-        }
+        .admin-panel { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1E293B; z-index: 3000; overflow-y: auto; }
         .admin-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; color: white; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; color: white; flex-wrap: wrap; gap: 1rem; }
         .btn-admin { background: #10B981; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; }
         .form-aba { background: #334155; padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem; display: none; }
         .form-aba h3 { color: white; margin-bottom: 1rem; }
@@ -169,9 +175,12 @@
         .image-admin-item { position: relative; width: 60px; }
         .image-admin-item img { width: 100%; height: 60px; object-fit: cover; border-radius: 0.3rem; }
 
+        @keyframes float-reverse { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(15px); } }
         @media (max-width: 768px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .nav { display: none; }
+            .hero h2 { font-size: 2rem; }
+            .hero-stats { justify-content: center; }
             .abas-grid { grid-template-columns: 1fr; }
             .mes-titulo { font-size: 1.4rem; }
         }
@@ -179,17 +188,20 @@
 </head>
 <body>
 
+<div class="floating-deco deco-1">🎨</div>
+<div class="floating-deco deco-2">📚</div>
+<div class="floating-deco deco-3">🧩</div>
+
 <header class="header">
     <div class="container">
         <div class="header-content">
             <div class="logo">
-                <!-- BOTÃO SECRETO: clique 3 vezes no título (SÓ VOCÊ SABE!) -->
                 <h1 id="secretAdminTrigger">🌈 PEDAGOART KIDS</h1>
                 <p>Materiais Pedagógicos Inclusivos</p>
             </div>
             <nav class="nav">
                 <a onclick="scrollToSection('home')">Início</a>
-                <a onclick="scrollToSection('abas')">Catálogo</a>
+                <a onclick="scrollToSection('catalogo')">Catálogo</a>
                 <a onclick="scrollToSection('benefits')">Benefícios</a>
                 <a onclick="scrollToSection('about')">Sobre</a>
                 <a onclick="scrollToSection('contact')">Contato</a>
@@ -198,116 +210,109 @@
     </div>
 </header>
 
+<!-- HERO - TELA INICIAL IMPACTANTE -->
 <section id="home" class="hero">
     <div class="container">
         <div class="hero-grid">
             <div>
-                <h2>Materiais pedagógicos para <span style="color:var(--laranja);">todos</span> os alunos</h2>
-                <p>Atividades prontas para usar, coloridas e inclusivas. Baixe imediatamente!</p>
-                <button class="btn-primary" onclick="scrollToSection('abas')"><i class="fas fa-book-open"></i> Ver Catálogo</button>
+                <div class="hero-badge"><i class="fas fa-star"></i> Novo! Coleção 2026</div>
+                <h2>Materiais pedagógicos para <span class="hero-highlight">TODOS</span> os alunos</h2>
+                <p>🍎 Atividades prontas para usar, coloridas, inclusivas e alinhadas à BNCC. Baixe imediatamente após a compra!</p>
+                <div class="hero-stats">
+                    <div class="stat"><div class="stat-number">+200</div><div>Arquivos</div></div>
+                    <div class="stat"><div class="stat-number">⭐ 5.0</div><div>Avaliações</div></div>
+                    <div class="stat"><div class="stat-number">📚 BNCC</div><div>Alinhado</div></div>
+                </div>
+                <button class="btn-primary" onclick="scrollToSection('catalogo')"><i class="fas fa-calendar-alt"></i> Ver Calendário Completo</button>
             </div>
             <div class="hero-image">
                 <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Materiais">
+                <div class="floating-card">
+                    <i class="fas fa-download" style="font-size: 2rem; color: var(--laranja);"></i>
+                    <div><strong>Download Imediato</strong><br><span style="font-size:0.7rem;">Após a compra</span></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CATÁLOGO ORGANIZADO POR MESES -->
-<section id="abas" class="abas-section">
+<!-- SEÇÃO DE DESTAQUES -->
+<section class="destaques">
     <div class="container">
-        <h2 class="section-title">📚 Calendário Pedagógico Completo</h2>
-        
-        <!-- JANEIRO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 JANEIRO</div>
-            <div class="abas-grid" id="janGrid"></div>
-        </div>
-
-        <!-- FEVEREIRO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 FEVEREIRO</div>
-            <div class="abas-grid" id="fevGrid"></div>
-        </div>
-
-        <!-- MARÇO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 MARÇO</div>
-            <div class="abas-grid" id="marGrid"></div>
-        </div>
-
-        <!-- ABRIL -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 ABRIL</div>
-            <div class="abas-grid" id="abrGrid"></div>
-        </div>
-
-        <!-- MAIO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 MAIO</div>
-            <div class="abas-grid" id="maiGrid"></div>
-        </div>
-
-        <!-- JUNHO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 JUNHO</div>
-            <div class="abas-grid" id="junGrid"></div>
-        </div>
-
-        <!-- JULHO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 JULHO</div>
-            <div class="abas-grid" id="julGrid"></div>
-        </div>
-
-        <!-- AGOSTO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 AGOSTO</div>
-            <div class="abas-grid" id="agoGrid"></div>
-        </div>
-
-        <!-- SETEMBRO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 SETEMBRO</div>
-            <div class="abas-grid" id="setGrid"></div>
-        </div>
-
-        <!-- OUTUBRO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 OUTUBRO</div>
-            <div class="abas-grid" id="outGrid"></div>
-        </div>
-
-        <!-- NOVEMBRO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 NOVEMBRO</div>
-            <div class="abas-grid" id="novGrid"></div>
-        </div>
-
-        <!-- DEZEMBRO -->
-        <div class="mes-grupo">
-            <div class="mes-titulo">📅 DEZEMBRO</div>
-            <div class="abas-grid" id="dezGrid"></div>
+        <h2 class="section-title">🎯 O que você encontra aqui?</h2>
+        <div class="destaques-grid">
+            <div class="destaque-card" onclick="scrollToSection('catalogo')">
+                <div class="destaque-icon">📅</div>
+                <h3>Todas as Datas</h3>
+                <p>Carnaval, Páscoa, Natal, Festa Junina e muito mais!</p>
+            </div>
+            <div class="destaque-card" onclick="openWhatsApp()">
+                <div class="destaque-icon">🧩</div>
+                <h3>Materiais Inclusivos</h3>
+                <p>Atividades adaptadas para TEA, TDAH e Deficiência Intelectual</p>
+            </div>
+            <div class="destaque-card" onclick="openWhatsApp()">
+                <div class="destaque-icon">⚡</div>
+                <h3>Prontos para usar</h3>
+                <p>Baixe e aplique hoje mesmo em sua sala de aula</p>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- BENEFÍCIOS -->
 <section id="benefits" class="benefits">
     <div class="container">
-        <h2 style="text-align:center; font-size:2rem;">✨ Benefícios</h2>
+        <h2 style="text-align:center; font-size:2rem;">✨ Por que escolher a PedagoArt?</h2>
         <div class="benefits-grid">
-            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">🧩</div><h4>Materiais Inclusivos</h4></div>
-            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4></div>
-            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4></div>
-            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">🧩</div><h4>Materiais Inclusivos</h4><p>Adaptados para todos</p></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">⚡</div><h4>Download Imediato</h4><p>Receba na hora</p></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">📚</div><h4>Alinhado à BNCC</h4><p>Base Nacional</p></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">🎨</div><h4>Design Atraente</h4><p>Cores que encantam</p></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">💳</div><h4>Pagamento Seguro</h4><p>Pix ou Cartão</p></div>
+            <div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">👩‍🏫</div><h4>Criado por Pedagoga</h4><p>Testado em sala</p></div>
         </div>
     </div>
 </section>
 
+<!-- DEPOIMENTOS -->
+<section class="depoimentos">
+    <div class="container">
+        <h2 class="section-title">💬 O que dizem nossos clientes</h2>
+        <div class="depoimentos-grid">
+            <div class="depoimento-card"><p class="depoimento-texto">"Materiais maravilhosos! Meus alunos adoraram as atividades de Carnaval!"</p><p class="depoimento-autor">- Professora Ana</p></div>
+            <div class="depoimento-card"><p class="depoimento-texto">"As atividades inclusivas são perfeitas para minha turma com alunos TEA."</p><p class="depoimento-autor">- Professora Mariana</p></div>
+            <div class="depoimento-card"><p class="depoimento-texto">"Economizei horas de preparação! Material pronto e de qualidade."</p><p class="depoimento-autor">- Professora Carla</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CATÁLOGO COMPLETO ORGANIZADO POR MESES -->
+<section id="catalogo" class="catalogo">
+    <div class="container">
+        <h2 class="section-title">📚 Calendário Pedagógico Completo</h2>
+        <p style="text-align:center; margin-bottom:3rem;">Clique em qualquer data para ver as atividades disponíveis</p>
+        
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-snowflake"></i> JANEIRO</div><div class="abas-grid" id="janGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-heart"></i> FEVEREIRO</div><div class="abas-grid" id="fevGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-flower"></i> MARÇO</div><div class="abas-grid" id="marGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-cloud-rain"></i> ABRIL</div><div class="abas-grid" id="abrGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-frog"></i> MAIO</div><div class="abas-grid" id="maiGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-sun"></i> JUNHO</div><div class="abas-grid" id="junGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-umbrella-beach"></i> JULHO</div><div class="abas-grid" id="julGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-wind"></i> AGOSTO</div><div class="abas-grid" id="agoGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-leaf"></i> SETEMBRO</div><div class="abas-grid" id="setGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-spider"></i> OUTUBRO</div><div class="abas-grid" id="outGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-crown"></i> NOVEMBRO</div><div class="abas-grid" id="novGrid"></div></div>
+        <div class="mes-grupo"><div class="mes-titulo"><i class="fas fa-gift"></i> DEZEMBRO</div><div class="abas-grid" id="dezGrid"></div></div>
+    </div>
+</section>
+
+<!-- SOBRE -->
 <section id="about" class="about">
     <div class="container">
         <h3>🌸 Cleisiane Barreto</h3>
-        <p>Pedagoga especializada em criar materiais inclusivos que transformam a rotina escolar.</p>
+        <p>Pedagoga especializada em criar materiais inclusivos que transformam a rotina escolar em uma experiência mágica e acolhedora.</p>
         <p class="signature">"Ensinar é transformar vidas, um material de cada vez."</p>
         <button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Falar com a Pedagoga</button>
     </div>
@@ -316,374 +321,92 @@
 <section id="contact" class="cta">
     <div class="container">
         <h3>🚀 Pronto para transformar suas aulas?</h3>
+        <p>Adquira já os materiais e revolucione sua rotina escolar</p>
         <button class="btn-whats" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</button>
     </div>
 </section>
 
 <footer class="footer">
     <p>© 2026 Cleisiane Barreto • PedagoArt Kids</p>
+    <p style="font-size:0.7rem; margin-top:0.5rem;">🌈 Materiais inclusivos para uma educação que acolhe a todos</p>
 </footer>
 
 <div class="whatsapp-float">
     <a href="#" onclick="openWhatsApp(); return false;"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<!-- MODAL -->
-<div id="imagesModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modalTitle"></h2>
-            <button onclick="closeModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
-        </div>
-        <div id="modalBody"></div>
-    </div>
-</div>
-
-<!-- MODAL LOGIN ADMIN -->
-<div id="adminLoginModal" class="modal">
-    <div class="modal-content" style="max-width:400px; text-align:center;">
-        <h2>🔒 Acesso Restrito</h2>
-        <p style="margin:1rem 0;">Digite a senha para acessar o painel</p>
-        <input type="password" id="adminPassword" style="width:100%; padding:0.8rem; border:1px solid #ccc; border-radius:0.5rem; margin-bottom:1rem;" placeholder="Senha">
-        <button onclick="checkAdminLogin()" style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; border:none; padding:0.8rem; border-radius:0.5rem; width:100%; cursor:pointer;">Entrar</button>
-    </div>
-</div>
-
-<!-- PAINEL ADMIN -->
-<div id="adminPanel" class="admin-panel">
-    <div class="admin-container">
-        <div class="admin-header">
-            <h2>🛠️ Painel do Proprietário</h2>
-            <button class="btn-admin" onclick="closeAdminPanel()">🔒 Sair</button>
-        </div>
-        <button class="btn-admin" onclick="showAddAbaForm()" style="margin-bottom:1rem;">➕ Adicionar Nova Data</button>
-
-        <div id="abaForm" class="form-aba">
-            <h3 id="formTitle">➕ Adicionar Data Comemorativa</h3>
-            <input type="hidden" id="abaId">
-            <div class="form-group"><label>Nome da Data</label><input type="text" id="abaName" placeholder="Ex: 🎭 Carnaval"></div>
-            <div class="form-group"><label>Ícone</label><input type="text" id="abaIcon" placeholder="Ex: 🎭"></div>
-            <div class="form-group"><label>Mês (número)</label><input type="number" id="abaMes" placeholder="1 a 12" min="1" max="12"></div>
-            <div class="form-group"><label>URL da Imagem de Capa</label><input type="text" id="abaImage" placeholder="https://..."></div>
-            <div class="form-group"><label>Preço do Kit</label><input type="text" id="abaKitPrice" placeholder="Ex: R$ 19,90"></div>
-            <div class="form-group">
-                <label>Imagens da Data</label>
-                <div id="imagesList"></div>
-                <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
-                    <input type="text" id="newImageUrl" placeholder="URL da imagem" style="flex:2;">
-                    <input type="text" id="newImageCaption" placeholder="Legenda" style="flex:1;">
-                    <input type="text" id="newImagePrice" placeholder="Preço" style="flex:1;" value="R$ 3,90">
-                    <button onclick="addImage()" style="background:#3B82F6; border:none; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">➕</button>
-                </div>
-            </div>
-            <div><button class="btn-admin" onclick="saveAba()">💾 Salvar</button><button class="btn-admin" onclick="hideForm()" style="background:#EF4444; margin-left:0.5rem;">Cancelar</button></div>
-        </div>
-
-        <h3 style="color:white;">📦 Todas as Datas Comemorativas</h3>
-        <div id="adminAbasList" class="admin-abas-list"></div>
-    </div>
-</div>
+<!-- MODAIS -->
+<div id="imagesModal" class="modal"><div class="modal-content"><div class="modal-header"><h2 id="modalTitle"></h2><button onclick="closeModal()" style="background:none; border:none; font-size:1.5rem;">&times;</button></div><div id="modalBody"></div></div></div>
+<div id="adminLoginModal" class="modal"><div class="modal-content" style="max-width:400px; text-align:center;"><h2>🔒 Acesso Restrito</h2><input type="password" id="adminPassword" style="width:100%; padding:0.8rem; margin:1rem 0; border-radius:0.5rem; border:1px solid #ccc;" placeholder="Senha"><button onclick="checkAdminLogin()" style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; border:none; padding:0.8rem; border-radius:0.5rem; width:100%; cursor:pointer;">Entrar</button></div></div>
+<div id="adminPanel" class="admin-panel"><div class="admin-container"><div class="admin-header"><h2>🛠️ Painel do Proprietário</h2><button class="btn-admin" onclick="closeAdminPanel()">🔒 Sair</button></div><button class="btn-admin" onclick="showAddAbaForm()" style="margin-bottom:1rem;">➕ Adicionar Data</button><div id="abaForm" class="form-aba"><h3 id="formTitle">➕ Adicionar Data</h3><input type="hidden" id="abaId"><div class="form-group"><label>Nome</label><input type="text" id="abaName" placeholder="Ex: Carnaval"></div><div class="form-group"><label>Ícone</label><input type="text" id="abaIcon" placeholder="Ex: 🎭"></div><div class="form-group"><label>Mês (1-12)</label><input type="number" id="abaMes" min="1" max="12"></div><div class="form-group"><label>Imagem Capa</label><input type="text" id="abaImage" placeholder="https://..."></div><div class="form-group"><label>Preço Kit</label><input type="text" id="abaKitPrice" placeholder="R$ 19,90"></div><div class="form-group"><label>Imagens</label><div id="imagesList"></div><div style="display:flex; gap:0.5rem;"><input type="text" id="newImageUrl" placeholder="URL" style="flex:2;"><input type="text" id="newImageCaption" placeholder="Legenda" style="flex:1;"><input type="text" id="newImagePrice" placeholder="Preço" style="flex:1;" value="R$ 3,90"><button onclick="addImage()" style="background:#3B82F6; border:none; padding:0.5rem 1rem; border-radius:0.5rem;">➕</button></div></div><div><button class="btn-admin" onclick="saveAba()">💾 Salvar</button><button class="btn-admin" onclick="hideForm()" style="background:#EF4444; margin-left:0.5rem;">Cancelar</button></div></div><h3 style="color:white;">📦 Todas as Datas</h3><div id="adminAbasList" class="admin-abas-list"></div></div></div>
 
 <script>
-    // ============================================
-    // BOTÃO SECRETO - SÓ VOCÊ SABE!
-    // Clique 3 VEZES no título "PEDAGOART KIDS"
-    // ============================================
-    let clickCount = 0;
-    let clickTimeout;
-    
-    const secretTrigger = document.getElementById('secretAdminTrigger');
-    if (secretTrigger) {
-        secretTrigger.addEventListener('click', function() {
-            clickCount++;
-            clearTimeout(clickTimeout);
-            clickTimeout = setTimeout(() => { clickCount = 0; }, 1000);
-            if (clickCount === 3) {
-                clickCount = 0;
-                openAdminLogin();
-            }
-        });
-    }
+    // BOTÃO SECRETO - clique 3x no título
+    let clickCount = 0, clickTimeout;
+    document.getElementById('secretAdminTrigger').addEventListener('click', function() {
+        clickCount++;
+        clearTimeout(clickTimeout);
+        clickTimeout = setTimeout(() => { clickCount = 0; }, 1000);
+        if (clickCount === 3) { clickCount = 0; openAdminLogin(); }
+    });
 
     const ADMIN_PASSWORD = "C1e1s1@ne@2026";
     const WHATSAPP_LINK = "https://wa.me/qr/QMLMG265QVDKE1";
+    let abas = [], tempImages = [];
 
-    let abas = [];
-    let tempImages = [];
-
-    // TODAS AS DATAS COMEMORATIVAS ORGANIZADAS POR MÊS
+    // TODAS AS DATAS COMEMORATIVAS
     const defaultAbas = [
-        // JANEIRO (mês 1)
         { id: 1, nome: "🎉 Confraternização Universal", icon: "🎉", mes: 1, image: "https://images.unsplash.com/photo-1517298225863-9042b6c17eb7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 9,90", images: [] },
         { id: 2, nome: "👑 Dia de Reis", icon: "👑", mes: 1, image: "https://images.unsplash.com/photo-1605296867424-35fc25c9210a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 9,90", images: [] },
-        // FEVEREIRO (mês 2)
         { id: 3, nome: "🎭 Carnaval", icon: "🎭", mes: 2, image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [{ url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=300&q=80", caption: "Máscara de Carnaval", price: "R$ 3,90" }] },
-        { id: 4, nome: "💘 Dia dos Namorados", icon: "💘", mes: 2, image: "https://images.unsplash.com/photo-1518199266791-5375a83190b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        // MARÇO (mês 3)
         { id: 5, nome: "🎪 Dia do Circo", icon: "🎪", mes: 3, image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
         { id: 6, nome: "💧 Dia Mundial da Água", icon: "💧", mes: 3, image: "https://images.unsplash.com/photo-1542601906997-08f3fdefa5b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 7, nome: "🌸 Dia da Mulher", icon: "🌸", mes: 3, image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        // ABRIL (mês 4)
         { id: 8, nome: "🐰 Páscoa", icon: "🐰", mes: 4, image: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
         { id: 9, nome: "🇧🇷 Tiradentes", icon: "🇧🇷", mes: 4, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 10, nome: "📚 Dia do Livro", icon: "📚", mes: 4, image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        // MAIO (mês 5)
         { id: 11, nome: "💐 Dia das Mães", icon: "💐", mes: 5, image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
         { id: 12, nome: "👷 Dia do Trabalho", icon: "👷", mes: 5, image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        // JUNHO (mês 6)
         { id: 13, nome: "🌽 Festa Junina", icon: "🌽", mes: 6, image: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
-        { id: 14, nome: "💚 Dia do Meio Ambiente", icon: "💚", mes: 6, image: "https://images.unsplash.com/photo-1542601906997-08f3fdefa5b1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        // JULHO (mês 7)
-        { id: 15, nome: "🏛️ Independência da Bahia", icon: "🏛️", mes: 7, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 16, nome: "👴 Dia dos Avós", icon: "👴", mes: 7, image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        // AGOSTO (mês 8)
         { id: 17, nome: "👨 Dia dos Pais", icon: "👨", mes: 8, image: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
         { id: 18, nome: "🎓 Dia do Estudante", icon: "🎓", mes: 8, image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        { id: 19, nome: "🧩 Dia do Folclore", icon: "🧩", mes: 8, image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        // SETEMBRO (mês 9)
         { id: 20, nome: "🇧🇷 Independência do Brasil", icon: "🇧🇷", mes: 9, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
         { id: 21, nome: "🌳 Dia da Árvore", icon: "🌳", mes: 9, image: "https://plus.unsplash.com/premium_photo-1675824741426-594dca588c04?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        // OUTUBRO (mês 10)
         { id: 22, nome: "🧸 Dia das Crianças", icon: "🧸", mes: 10, image: "https://images.unsplash.com/photo-1543083199-3b5b3bb9b6b3?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 19,90", images: [] },
         { id: 23, nome: "👩‍🏫 Dia do Professor", icon: "👩‍🏫", mes: 10, image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] },
-        // NOVEMBRO (mês 11)
         { id: 24, nome: "✊🏿 Consciência Negra", icon: "✊🏿", mes: 11, image: "https://images.unsplash.com/photo-1531932860223-e875c81bd1b7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 16,90", images: [] },
         { id: 25, nome: "🏛️ Proclamação da República", icon: "🏛️", mes: 11, image: "https://images.unsplash.com/photo-1611068023348-3c2f0d3c2c3a?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 12,90", images: [] },
-        // DEZEMBRO (mês 12)
         { id: 26, nome: "🎄 Natal", icon: "🎄", mes: 12, image: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 24,90", images: [] },
         { id: 27, nome: "🎆 Réveillon", icon: "🎆", mes: 12, image: "https://images.unsplash.com/photo-1517298225863-9042b6c17eb7?auto=format&fit=crop&w=600&q=80", kitPrice: "R$ 14,90", images: [] }
     ];
 
-    function loadAbas() {
-        const saved = localStorage.getItem('pedagoart_abas');
-        if (saved) abas = JSON.parse(saved);
-        else { abas = defaultAbas; saveAbas(); }
-        renderAllAbas();
-    }
-
+    function loadAbas() { const saved = localStorage.getItem('pedagoart_abas'); if (saved) abas = JSON.parse(saved); else { abas = defaultAbas; saveAbas(); } renderAllAbas(); }
     function saveAbas() { localStorage.setItem('pedagoart_abas', JSON.stringify(abas)); }
+    function getGridIdByMes(mes) { const meses = ['janGrid', 'fevGrid', 'marGrid', 'abrGrid', 'maiGrid', 'junGrid', 'julGrid', 'agoGrid', 'setGrid', 'outGrid', 'novGrid', 'dezGrid']; return meses[mes-1]; }
+    function renderAllAbas() { for (let mes=1; mes<=12; mes++) { const container = document.getElementById(getGridIdByMes(mes)); if(container){ let html=''; for(let aba of abas.filter(a=>a.mes===mes)){ html+=`<div class="aba-card" onclick="openAbaModal(${aba.id})"><div class="aba-icon">${aba.icon}</div><img class="aba-image" src="${aba.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'"><div class="aba-info"><h3 class="aba-title">${aba.nome}</h3><div class="aba-count">💰 ${aba.kitPrice}</div><div style="font-size:0.7rem;">📸 ${aba.images.length} imagens</div></div></div>`; } container.innerHTML=html; } } }
+    function openAbaModal(abaId){ const aba=abas.find(a=>a.id===abaId); if(!aba) return; document.getElementById('modalTitle').innerHTML=`${aba.icon} ${aba.nome}`; let imagesHtml=''; for(let img of aba.images){ imagesHtml+=`<div class="image-card-modal"><img src="${img.url}" onclick="openZoom('${img.url}')"><div class="image-caption">${img.caption}</div><div class="image-price">💰 ${img.price}</div><button class="btn-whats-image" onclick="openWhatsApp()">🛒 Comprar</button></div>`; } if(aba.images.length===0) imagesHtml=`<div style="text-align:center; padding:2rem;">Nenhuma imagem disponível.<br><button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Solicitar via WhatsApp</button></div>`; document.getElementById('modalBody').innerHTML=`<div style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; padding:1rem; border-radius:1rem; text-align:center;"><strong>💰 Kit Completo: ${aba.kitPrice}</strong></div><button class="btn-kit-aba" onclick="openWhatsApp()">🎁 Comprar Kit Completo</button><div style="text-align:center; margin:1rem 0;">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div><div class="images-grid-modal">${imagesHtml}</div>`; document.getElementById('imagesModal').style.display='flex'; document.body.style.overflow='hidden'; }
+    function openWhatsApp(){ window.open(WHATSAPP_LINK, '_blank'); }
+    function openZoom(url){ const win=window.open(); win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;background:white;border:none;padding:10px;">Fechar</button></body></html>`); }
+    function closeModal(){ document.getElementById('imagesModal').style.display='none'; document.body.style.overflow='auto'; }
+    function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 
-    function renderAllAbas() {
-        // Renderizar por mês
-        for (let mes = 1; mes <= 12; mes++) {
-            const mesAbas = abas.filter(a => a.mes === mes);
-            const gridId = getGridIdByMes(mes);
-            const container = document.getElementById(gridId);
-            if (container) {
-                let html = '';
-                for (let aba of mesAbas) {
-                    html += `
-                        <div class="aba-card" onclick="openAbaModal(${aba.id})">
-                            <div class="aba-icon">${aba.icon}</div>
-                            <img class="aba-image" src="${aba.image}" onerror="this.src='https://placehold.co/600x400/F59E0B/white?text=PedagoArt'">
-                            <div class="aba-info">
-                                <h3 class="aba-title">${aba.nome}</h3>
-                                <div class="aba-count">💰 ${aba.kitPrice} - Kit Completo</div>
-                                <div style="font-size:0.7rem;">📸 ${aba.images.length} imagens</div>
-                            </div>
-                        </div>
-                    `;
-                }
-                container.innerHTML = html;
-            }
-        }
-    }
-
-    function getGridIdByMes(mes) {
-        const meses = ['janGrid', 'fevGrid', 'marGrid', 'abrGrid', 'maiGrid', 'junGrid', 'julGrid', 'agoGrid', 'setGrid', 'outGrid', 'novGrid', 'dezGrid'];
-        return meses[mes - 1];
-    }
-
-    function openAbaModal(abaId) {
-        const aba = abas.find(a => a.id === abaId);
-        if (!aba) return;
-        
-        document.getElementById('modalTitle').innerHTML = `${aba.icon} ${aba.nome}`;
-        
-        let imagesHtml = '';
-        for (let img of aba.images) {
-            imagesHtml += `
-                <div class="image-card-modal">
-                    <img src="${img.url}" onclick="openZoom('${img.url}')" onerror="this.src='https://placehold.co/300x200/ccc/white?text=Erro'">
-                    <div class="image-caption">${img.caption}</div>
-                    <div class="image-price">💰 ${img.price}</div>
-                    <button class="btn-whats-image" onclick="openWhatsApp()">🛒 Comprar</button>
-                </div>
-            `;
-        }
-        
-        if (aba.images.length === 0) {
-            imagesHtml = `<div style="text-align:center; padding:2rem;">Nenhuma imagem disponível.<br><button class="btn-primary" onclick="openWhatsApp()" style="margin-top:1rem;">📱 Solicitar via WhatsApp</button></div>`;
-        }
-        
-        document.getElementById('modalBody').innerHTML = `
-            <div style="background:linear-gradient(135deg, #FF6B35, #8B5CF6); color:white; padding:1rem; border-radius:1rem; text-align:center;">
-                <strong>💰 Kit Completo: ${aba.kitPrice}</strong>
-            </div>
-            <button class="btn-kit-aba" onclick="openWhatsApp()">🎁 Comprar Kit Completo</button>
-            <div style="text-align:center; margin:1rem 0;">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div>
-            <div class="images-grid-modal">${imagesHtml}</div>
-        `;
-        
-        document.getElementById('imagesModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function openWhatsApp() { window.open(WHATSAPP_LINK, '_blank'); }
-    function openZoom(url) { const win = window.open(); win.document.write(`<html><body style="margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#000;"><img src="${url}" style="max-width:90%;max-height:90vh;"><button onclick="window.close()" style="position:fixed;top:20px;right:20px;background:white;border:none;padding:10px;border-radius:1rem;">Fechar</button></body></html>`); }
-    function closeModal() { document.getElementById('imagesModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-    function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
-
-    // ADMIN - Só você sabe onde clicar!
-    function openAdminLogin() { document.getElementById('adminLoginModal').style.display = 'flex'; }
-    function closeAdminLogin() { document.getElementById('adminLoginModal').style.display = 'none'; document.getElementById('adminPassword').value = ''; }
-    
-    function checkAdminLogin() {
-        if (document.getElementById('adminPassword').value === ADMIN_PASSWORD) {
-            closeAdminLogin();
-            document.querySelector('.header').style.display = 'none';
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.abas-section').style.display = 'none';
-            document.querySelector('.benefits').style.display = 'none';
-            document.querySelector('.about').style.display = 'none';
-            document.querySelector('.cta').style.display = 'none';
-            document.querySelector('.footer').style.display = 'none';
-            document.querySelector('.whatsapp-float').style.display = 'none';
-            document.getElementById('adminPanel').style.display = 'block';
-            renderAdminAbas();
-        } else alert('Senha incorreta!');
-    }
-    
-    function closeAdminPanel() { location.reload(); }
-
-    function renderImagesList() {
-        const container = document.getElementById('imagesList');
-        let html = '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
-        for (let i = 0; i < tempImages.length; i++) {
-            html += `<div style="position:relative; width:80px;"><img src="${tempImages[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;"><div style="font-size:10px;">${tempImages[i].caption}</div><div style="font-size:10px; color:#10B981;">${tempImages[i].price}</div><button onclick="removeImage(${i})" style="position:absolute; top:-5px; right:-5px; background:#EF4444; color:white; border:none; border-radius:50%; width:18px; height:18px;">✕</button></div>`;
-        }
-        html += '</div>';
-        container.innerHTML = html;
-    }
-
-    function addImage() {
-        const url = document.getElementById('newImageUrl').value;
-        const caption = document.getElementById('newImageCaption').value;
-        const price = document.getElementById('newImagePrice').value;
-        if (!url) { alert('Digite a URL da imagem'); return; }
-        tempImages.push({ url, caption: caption || 'Imagem', price: price || 'R$ 3,90' });
-        renderImagesList();
-        document.getElementById('newImageUrl').value = '';
-        document.getElementById('newImageCaption').value = '';
-        document.getElementById('newImagePrice').value = 'R$ 3,90';
-    }
-
-    function removeImage(index) { tempImages.splice(index, 1); renderImagesList(); }
-
-    function showAddAbaForm() {
-        document.getElementById('formTitle').innerHTML = '➕ Adicionar Data Comemorativa';
-        document.getElementById('abaId').value = '';
-        document.getElementById('abaName').value = '';
-        document.getElementById('abaIcon').value = '';
-        document.getElementById('abaMes').value = '';
-        document.getElementById('abaImage').value = '';
-        document.getElementById('abaKitPrice').value = '';
-        tempImages = [];
-        renderImagesList();
-        document.getElementById('abaForm').style.display = 'block';
-    }
-
-    function hideForm() { document.getElementById('abaForm').style.display = 'none'; }
-
-    function editAba(id) {
-        const aba = abas.find(a => a.id === id);
-        if (!aba) return;
-        document.getElementById('formTitle').innerHTML = '✏️ Editar Data';
-        document.getElementById('abaId').value = aba.id;
-        document.getElementById('abaName').value = aba.nome;
-        document.getElementById('abaIcon').value = aba.icon;
-        document.getElementById('abaMes').value = aba.mes;
-        document.getElementById('abaImage').value = aba.image;
-        document.getElementById('abaKitPrice').value = aba.kitPrice;
-        tempImages = [...aba.images];
-        renderImagesList();
-        document.getElementById('abaForm').style.display = 'block';
-    }
-
-    function saveAba() {
-        const id = document.getElementById('abaId').value;
-        const nome = document.getElementById('abaName').value;
-        const icon = document.getElementById('abaIcon').value;
-        const mes = parseInt(document.getElementById('abaMes').value);
-        const image = document.getElementById('abaImage').value;
-        const kitPrice = document.getElementById('abaKitPrice').value;
-        
-        if (!nome || !icon || !mes || !image || !kitPrice) { alert('Preencha todos os campos!'); return; }
-        
-        if (id) {
-            const index = abas.findIndex(a => a.id == id);
-            if (index !== -1) abas[index] = { ...abas[index], nome, icon, mes, image, kitPrice, images: tempImages };
-        } else {
-            const newId = Math.max(...abas.map(a => a.id), 0) + 1;
-            abas.push({ id: newId, nome, icon, mes, image, kitPrice, images: tempImages });
-        }
-        
-        saveAbas();
-        renderAllAbas();
-        renderAdminAbas();
-        hideForm();
-        alert('Data salva com sucesso!');
-    }
-
-    function deleteAba(id) {
-        if (confirm('Tem certeza?')) {
-            abas = abas.filter(a => a.id !== id);
-            saveAbas();
-            renderAllAbas();
-            renderAdminAbas();
-        }
-    }
-
-    function renderAdminAbas() {
-        const container = document.getElementById('adminAbasList');
-        let html = '';
-        for (let aba of abas) {
-            html += `
-                <div class="admin-aba-card">
-                    <img class="aba-image" src="${aba.image}">
-                    <div class="admin-aba-info">
-                        <h4>${aba.icon} ${aba.nome}</h4>
-                        <p>📅 Mês: ${aba.mes} | 💰 ${aba.kitPrice}</p>
-                        <div class="images-admin-list">${aba.images.map(img => `<div class="image-admin-item"><img src="${img.url}"><div style="font-size:8px;">${img.caption}</div></div>`).join('')}</div>
-                        <p>📸 ${aba.images.length} imagens</p>
-                    </div>
-                    <div class="admin-aba-actions">
-                        <button class="btn-admin" onclick="editAba(${aba.id})" style="background:#3B82F6;">✏️ Editar</button>
-                        <button class="btn-admin" onclick="deleteAba(${aba.id})" style="background:#EF4444;">🗑️ Excluir</button>
-                    </div>
-                </div>
-            `;
-        }
-        container.innerHTML = html;
-    }
+    // ADMIN
+    function openAdminLogin(){ document.getElementById('adminLoginModal').style.display='flex'; }
+    function checkAdminLogin(){ if(document.getElementById('adminPassword').value===ADMIN_PASSWORD){ document.getElementById('adminLoginModal').style.display='none'; document.querySelector('.header').style.display='none'; document.querySelector('.hero').style.display='none'; document.querySelector('.destaques').style.display='none'; document.querySelector('.benefits').style.display='none'; document.querySelector('.depoimentos').style.display='none'; document.querySelector('.catalogo').style.display='none'; document.querySelector('.about').style.display='none'; document.querySelector('.cta').style.display='none'; document.querySelector('.footer').style.display='none'; document.querySelector('.whatsapp-float').style.display='none'; document.querySelectorAll('.floating-deco').forEach(el=>el.style.display='none'); document.getElementById('adminPanel').style.display='block'; renderAdminAbas(); } else alert('Senha incorreta!'); }
+    function closeAdminPanel(){ location.reload(); }
+    function renderImagesList(){ let html='<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">'; for(let i=0;i<tempImages.length;i++) html+=`<div style="position:relative; width:80px;"><img src="${tempImages[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;"><div style="font-size:10px;">${tempImages[i].caption}</div><div style="font-size:10px; color:#10B981;">${tempImages[i].price}</div><button onclick="removeImage(${i})" style="position:absolute; top:-5px; right:-5px; background:#EF4444; color:white; border:none; border-radius:50%; width:18px; height:18px;">✕</button></div>`; html+='</div>'; document.getElementById('imagesList').innerHTML=html; }
+    function addImage(){ const url=document.getElementById('newImageUrl').value, caption=document.getElementById('newImageCaption').value, price=document.getElementById('newImagePrice').value; if(!url){ alert('Digite a URL'); return; } tempImages.push({url, caption:caption||'Imagem', price:price||'R$ 3,90'}); renderImagesList(); document.getElementById('newImageUrl').value=''; document.getElementById('newImageCaption').value=''; document.getElementById('newImagePrice').value='R$ 3,90'; }
+    function removeImage(index){ tempImages.splice(index,1); renderImagesList(); }
+    function showAddAbaForm(){ document.getElementById('formTitle').innerHTML='➕ Adicionar Data'; document.getElementById('abaId').value=''; document.getElementById('abaName').value=''; document.getElementById('abaIcon').value=''; document.getElementById('abaMes').value=''; document.getElementById('abaImage').value=''; document.getElementById('abaKitPrice').value=''; tempImages=[]; renderImagesList(); document.getElementById('abaForm').style.display='block'; }
+    function hideForm(){ document.getElementById('abaForm').style.display='none'; }
+    function editAba(id){ const aba=abas.find(a=>a.id===id); if(!aba) return; document.getElementById('formTitle').innerHTML='✏️ Editar Data'; document.getElementById('abaId').value=aba.id; document.getElementById('abaName').value=aba.nome; document.getElementById('abaIcon').value=aba.icon; document.getElementById('abaMes').value=aba.mes; document.getElementById('abaImage').value=aba.image; document.getElementById('abaKitPrice').value=aba.kitPrice; tempImages=[...aba.images]; renderImagesList(); document.getElementById('abaForm').style.display='block'; }
+    function saveAba(){ const id=document.getElementById('abaId').value, nome=document.getElementById('abaName').value, icon=document.getElementById('abaIcon').value, mes=parseInt(document.getElementById('abaMes').value), image=document.getElementById('abaImage').value, kitPrice=document.getElementById('abaKitPrice').value; if(!nome||!icon||!mes||!image||!kitPrice){ alert('Preencha todos os campos!'); return; } if(id){ const idx=abas.findIndex(a=>a.id==id); if(idx!==-1) abas[idx]={...abas[idx], nome, icon, mes, image, kitPrice, images:tempImages}; }else{ const newId=Math.max(...abas.map(a=>a.id),0)+1; abas.push({id:newId, nome, icon, mes, image, kitPrice, images:tempImages}); } saveAbas(); renderAllAbas(); renderAdminAbas(); hideForm(); alert('Data salva!'); }
+    function deleteAba(id){ if(confirm('Excluir?')){ abas=abas.filter(a=>a.id!==id); saveAbas(); renderAllAbas(); renderAdminAbas(); } }
+    function renderAdminAbas(){ let html=''; for(let aba of abas){ html+=`<div class="admin-aba-card"><img class="aba-image" src="${aba.image}"><div class="admin-aba-info"><h4>${aba.icon} ${aba.nome}</h4><p>📅 Mês: ${aba.mes} | 💰 ${aba.kitPrice}</p><div class="images-admin-list">${aba.images.map(img=>`<div class="image-admin-item"><img src="${img.url}"><div style="font-size:8px;">${img.caption}</div></div>`).join('')}</div><p>📸 ${aba.images.length} imagens</p></div><div class="admin-aba-actions"><button class="btn-admin" onclick="editAba(${aba.id})" style="background:#3B82F6;">✏️</button><button class="btn-admin" onclick="deleteAba(${aba.id})" style="background:#EF4444;">🗑️</button></div></div>`; } document.getElementById('adminAbasList').innerHTML=html; }
 
     loadAbas();
-    window.onclick = (e) => { if (e.target === document.getElementById('imagesModal')) closeModal(); if (e.target === document.getElementById('adminLoginModal')) closeAdminLogin(); };
-    window.openWhatsApp = openWhatsApp;
-    window.scrollToSection = scrollToSection;
-    window.openAbaModal = openAbaModal;
-    window.closeModal = closeModal;
-    window.openZoom = openZoom;
-    window.openAdminLogin = openAdminLogin;
-    window.checkAdminLogin = checkAdminLogin;
-    window.closeAdminPanel = closeAdminPanel;
-    window.showAddAbaForm = showAddAbaForm;
-    window.hideForm = hideForm;
-    window.editAba = editAba;
-    window.deleteAba = deleteAba;
-    window.addImage = addImage;
-    window.removeImage = removeImage;
-    window.saveAba = saveAba;
+    window.onclick=(e)=>{ if(e.target===document.getElementById('imagesModal')) closeModal(); if(e.target===document.getElementById('adminLoginModal')) closeAdminLogin(); };
+    window.openWhatsApp=openWhatsApp; window.scrollToSection=scrollToSection; window.openAbaModal=openAbaModal; window.closeModal=closeModal; window.openZoom=openZoom;
+    window.openAdminLogin=openAdminLogin; window.checkAdminLogin=checkAdminLogin; window.closeAdminPanel=closeAdminPanel; window.showAddAbaForm=showAddAbaForm; window.hideForm=hideForm; window.editAba=editAba; window.deleteAba=deleteAba; window.addImage=addImage; window.removeImage=removeImage; window.saveAba=saveAba;
+    function closeAdminLogin(){ document.getElementById('adminLoginModal').style.display='none'; document.getElementById('adminPassword').value=''; }
 </script>
 </body>
 </html>
