@@ -116,7 +116,7 @@
         .hero-highlight { display: inline-block; background: linear-gradient(135deg, var(--cor2), var(--cor1)); padding: 0.2rem 0.8rem; border-radius: 1rem; color: white; font-size: 0.9rem; }
         .hero p { color: #64748B; font-size: 1.1rem; margin: 1.5rem 0; }
         .hero-stats { display: flex; gap: 2rem; margin: 2rem 0; }
-        .stat { text-align: center; background: white; padding: 0.8rem 1.5rem; border-radius: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .stat { text-align: center; background: white; padding: 0.8rem 1.5rem; border-radius: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s; cursor: default; }
         .stat:hover { transform: translateY(-3px); background: linear-gradient(135deg, var(--cor1), var(--cor3)); }
         .stat:hover .stat-number, .stat:hover .stat-label { color: white; background: transparent; -webkit-background-clip: unset; }
         .stat-number { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--cor1), var(--cor3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -144,7 +144,7 @@
         .benefits { padding: 5rem 0; background: linear-gradient(135deg, #1A1A2E, #16213E); color: white; position: relative; overflow: hidden; }
         .benefits::before { content: '🎨 📚 🧩 ✏️ 🎭 ✂️ 🔢 🖍️'; position: absolute; font-size: 12rem; opacity: 0.03; bottom: -40px; right: -40px; pointer-events: none; }
         .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .benefit-card { text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.08); border-radius: 1.5rem; backdrop-filter: blur(10px); transition: all 0.3s; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
+        .benefit-card { text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.08); border-radius: 1.5rem; backdrop-filter: blur(10px); transition: all 0.3s; border: 1px solid rgba(255,255,255,0.1); }
         .benefit-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.15); border-color: var(--cor1); }
         .benefit-icon { font-size: 2.5rem; margin-bottom: 0.5rem; display: inline-block; }
         .benefit-card h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
@@ -199,7 +199,6 @@
         .about { padding: 5rem 0; background: white; text-align: center; position: relative; }
         .about h3 { font-size: 2rem; background: linear-gradient(135deg, var(--cor1), var(--cor3)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
         .about p { color: #64748B; max-width: 600px; margin: 0 auto; line-height: 1.7; }
-        .signature { margin-top: 1rem; font-style: italic; color: var(--cor1); font-weight: 600; }
 
         .cta { padding: 4rem 0; background: linear-gradient(135deg, var(--cor1), var(--cor3), var(--cor5)); text-align: center; color: white; position: relative; overflow: hidden; }
         .cta::before { content: '✨ 🎨 📚 🧩 ✏️'; position: absolute; font-size: 8rem; opacity: 0.1; bottom: -30px; left: -30px; }
@@ -299,7 +298,7 @@
 <section id="contact" class="cta">
     <div class="container">
         <h3 id="ctaTitle">🚀 Pronto para transformar suas aulas?</h3>
-        <button class="btn-whats" id="whatsappButton" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</button>
+        <button class="btn-whats" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> Falar com a Pedagoga</button>
     </div>
 </section>
 
@@ -308,7 +307,7 @@
     <p style="font-size:0.7rem;">🌈 Materiais inclusivos para uma educação que acolhe a todos</p>
 </footer>
 
-<div class="whatsapp-float"><a href="#" id="floatWhatsapp" onclick="openWhatsApp(); return false;"><i class="fab fa-whatsapp"></i></a></div>
+<div class="whatsapp-float"><a href="#" onclick="openWhatsApp(); return false;"><i class="fab fa-whatsapp"></i></a></div>
 
 <div id="conteudoModal" class="modal"><div class="modal-content"><div class="modal-header"><h2 id="modalTitle"></h2><button onclick="closeModal()" style="background:none; border:none; font-size:1.5rem;">&times;</button></div><div id="modalBody"></div></div></div>
 <div id="zoomModal" class="zoom-modal" onclick="closeZoom()"><button class="close-zoom" onclick="closeZoom()">✕</button><img id="zoomImage" src=""></div>
@@ -418,7 +417,7 @@
 
     function renderSite() {
         const benefitsContainer = document.getElementById('benefitsGrid');
-        benefitsContainer.innerHTML = dataBeneficios.map(b => `<div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">${b.icon}</div><h4>${b.title}</h4><p>${b.desc}</p></div>`).join('');
+        benefitsContainer.innerHTML = dataBeneficios.map(b => `<div class="benefit-card"><div class="benefit-icon">${b.icon}</div><h4>${b.title}</h4><p>${b.desc}</p></div>`).join('');
         document.getElementById('ctaTitle').innerText = siteTexts.ctaTitle;
         document.getElementById('aboutPhrase').innerText = siteTexts.aboutPhrase;
     }
