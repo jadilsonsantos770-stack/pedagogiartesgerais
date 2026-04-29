@@ -293,7 +293,6 @@
     <div class="container">
         <h3 id="aboutName">🌸 Cleisiane Barreto</h3>
         <p id="aboutPhrase">"Ensinar é transformar vidas, um material de cada vez."</p>
-        <p class="signature" id="aboutSignature">Pedagoga especializada em Educação Inclusiva</p>
     </div>
 </section>
 
@@ -321,8 +320,6 @@
         <div class="admin-section"><h3>📝 Editar Textos do Site</h3>
             <div class="edit-text"><label>Título do CTA</label><input type="text" id="editCtaTitle" placeholder="Título do CTA"></div>
             <div class="edit-text"><label>Frase Sobre</label><input type="text" id="editAboutPhrase" placeholder="Frase"></div>
-            <div class="edit-text"><label>Assinatura Sobre</label><input type="text" id="editAboutSignature" placeholder="Assinatura"></div>
-            <div class="edit-text"><label>Link do WhatsApp (número com código do país)</label><input type="text" id="editWhatsappLink" placeholder="https://wa.me/5511999999999"></div>
             <button class="btn-add" onclick="saveTexts()">💾 Salvar Textos</button>
         </div>
 
@@ -349,8 +346,8 @@
 </div>
 
 <script>
-    // LINK DO WHATSAPP (VOCÊ PODE EDITAR NO ADMIN)
-    let WHATSAPP_LINK = "https://wa.me/qr/QMLMG265QVDKE1";
+    // LINK DO WHATSAPP FIXO
+    const WHATSAPP_LINK = "https://wa.me/qr/QMLMG265QVDKE1";
     
     function openWhatsApp() { window.open(WHATSAPP_LINK, '_blank'); }
     function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
@@ -389,12 +386,9 @@
 
     let siteTexts = {
         ctaTitle: "🚀 Pronto para transformar suas aulas?",
-        aboutPhrase: "\"Ensinar é transformar vidas, um material de cada vez.\"",
-        aboutSignature: "Pedagoga especializada em Educação Inclusiva",
-        whatsappLink: "https://wa.me/qr/QMLMG265QVDKE1"
+        aboutPhrase: "\"Ensinar é transformar vidas, um material de cada vez.\""
     };
 
-    // FUNÇÃO PARA SALVAR TUDO
     function saveAllToLocalStorage() {
         localStorage.setItem('pedagoart_matematica', JSON.stringify(dataMatematica));
         localStorage.setItem('pedagoart_alfabetizacao', JSON.stringify(dataAlfabetizacao));
@@ -402,10 +396,8 @@
         localStorage.setItem('pedagoart_datas', JSON.stringify(dataDatas));
         localStorage.setItem('pedagoart_beneficios', JSON.stringify(dataBeneficios));
         localStorage.setItem('pedagoart_textos', JSON.stringify(siteTexts));
-        console.log("✅ Dados salvos no localStorage!");
     }
 
-    // FUNÇÃO PARA CARREGAR DADOS SALVOS
     function loadFromLocalStorage() {
         const savedMat = localStorage.getItem('pedagoart_matematica');
         const savedAlf = localStorage.getItem('pedagoart_alfabetizacao');
@@ -419,26 +411,18 @@
         if (savedArt) dataArtes = JSON.parse(savedArt);
         if (savedDat) dataDatas = JSON.parse(savedDat);
         if (savedBen) dataBeneficios = JSON.parse(savedBen);
-        if (savedTxt) {
-            siteTexts = JSON.parse(savedTxt);
-            WHATSAPP_LINK = siteTexts.whatsappLink;
-        }
+        if (savedTxt) siteTexts = JSON.parse(savedTxt);
         
         renderSite();
-        console.log("✅ Dados carregados do localStorage!");
     }
 
-    // FUNÇÃO PARA RENDERIZAR O SITE
     function renderSite() {
         const benefitsContainer = document.getElementById('benefitsGrid');
         benefitsContainer.innerHTML = dataBeneficios.map(b => `<div class="benefit-card" onclick="openWhatsApp()"><div class="benefit-icon">${b.icon}</div><h4>${b.title}</h4><p>${b.desc}</p></div>`).join('');
         document.getElementById('ctaTitle').innerText = siteTexts.ctaTitle;
         document.getElementById('aboutPhrase').innerText = siteTexts.aboutPhrase;
-        document.getElementById('aboutSignature').innerText = siteTexts.aboutSignature;
-        WHATSAPP_LINK = siteTexts.whatsappLink;
     }
 
-    // FUNÇÃO PARA RENDERIZAR ADMIN
     function renderAdminItems() {
         document.getElementById('listaMatematica').innerHTML = dataMatematica.map(item => `<div class="admin-item"><img src="${item.imagem}"><div><strong>${item.nome}</strong><br>💰 ${item.price}</div><div class="admin-actions"><button class="btn-edit" onclick="editItem('matematica',${item.id})">✏️</button><button class="btn-delete" onclick="deleteItem('matematica',${item.id})">🗑️</button></div></div>`).join('');
         document.getElementById('listaAlfabetizacao').innerHTML = dataAlfabetizacao.map(item => `<div class="admin-item"><img src="${item.imagem}"><div><strong>${item.nome}</strong><br>💰 ${item.price}</div><div class="admin-actions"><button class="btn-edit" onclick="editItem('alfabetizacao',${item.id})">✏️</button><button class="btn-delete" onclick="deleteItem('alfabetizacao',${item.id})">🗑️</button></div></div>`).join('');
@@ -446,23 +430,16 @@
         document.getElementById('listaDatas').innerHTML = dataDatas.map(item => `<div class="admin-item"><img src="${item.imagem}"><div><strong>${item.nome}</strong><br>📅 ${item.mes}<br>💰 ${item.price}</div><div class="admin-actions"><button class="btn-edit" onclick="editItem('datas',${item.id})">✏️</button><button class="btn-delete" onclick="deleteItem('datas',${item.id})">🗑️</button></div></div>`).join('');
         document.getElementById('editCtaTitle').value = siteTexts.ctaTitle;
         document.getElementById('editAboutPhrase').value = siteTexts.aboutPhrase;
-        document.getElementById('editAboutSignature').value = siteTexts.aboutSignature;
-        document.getElementById('editWhatsappLink').value = siteTexts.whatsappLink;
     }
 
-    // SALVAR TEXTOS (INCLUINDO WHATSAPP)
     function saveTexts() {
         siteTexts.ctaTitle = document.getElementById('editCtaTitle').value;
         siteTexts.aboutPhrase = document.getElementById('editAboutPhrase').value;
-        siteTexts.aboutSignature = document.getElementById('editAboutSignature').value;
-        siteTexts.whatsappLink = document.getElementById('editWhatsappLink').value;
-        WHATSAPP_LINK = siteTexts.whatsappLink;
         saveAllToLocalStorage();
         renderSite();
         alert('Textos salvos com sucesso!');
     }
 
-    // ADICIONAR ITEM
     function addItem(tipo) {
         if (tipo === 'matematica') {
             const nome = document.getElementById('matNome').value;
@@ -532,7 +509,6 @@
     function showAddForm(tipo) { document.getElementById(`form${tipo.charAt(0).toUpperCase()+tipo.slice(1)}`).style.display = 'block'; }
     function hideForm(tipo) { document.getElementById(`form${tipo.charAt(0).toUpperCase()+tipo.slice(1)}`).style.display = 'none'; }
 
-    // MODAL PARA CLIENTES
     function abrirModal(tipo) {
         let titulo, dados, kitPreco;
         if (tipo === 'matematica') { titulo = "🔢 Matemática Lúdica"; dados = dataMatematica; kitPreco = "R$ 25,90"; }
@@ -580,7 +556,6 @@
         location.reload(); 
     }
 
-    // INICIALIZAÇÃO - CARREGA DADOS SALVOS
     loadFromLocalStorage();
     
     window.onclick = (e) => { if (e.target === document.getElementById('conteudoModal')) closeModal(); if (e.target === document.getElementById('zoomModal')) closeZoom(); };
